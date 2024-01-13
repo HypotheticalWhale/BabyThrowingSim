@@ -33,7 +33,7 @@ func point_head_to_mouse():
 	var angle = atan2(direction.y, direction.x)  # Calculate the angle in radians
 
 func _input(event):
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+	if Input.is_action_pressed("shoot"):
 		spawn_fireball()
 
 func spawn_fireball():
