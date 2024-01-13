@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4hm1g85durbr"]
+
+[ext_resource type="Texture2D" uid="uid://bwwuv6me1wnxb" path="res://assets/Buggie.png" id="1_2f44i"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_ynasf"]
+[ext_resource type="PackedScene" uid="uid://g6ecrdq310o3" path="res://Projectile/Baby.tscn" id="2_pl5ob"]
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_ynasf")
+projectile_scene = ExtResource("2_pl5ob")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_2f44i")
+hframes = 4
+vframes = 7
