@@ -1,10 +1,8 @@
-extends CharacterBody2D
+extends RigidBody2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+var type = "projectile"
+var gravity = 50  # Adjust the gravity strength
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	move_and_collide(velocity)
+func _integrate_forces(state):
+	linear_velocity += Vector2(0, gravity) * state.step
+	rotation = linear_velocity.angle()  # This will orient the fireball in its movement direction
