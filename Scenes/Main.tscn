@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=3 format=3 uid="uid://o5alyyhdvq4h"]
 
+[ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_64lo6")
+spawn_reg_dad = true
 
 [node name="Player" parent="." instance=ExtResource("1_jcchd")]
-position = Vector2(128, 88)
+position = Vector2(306, 263)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(632, 373)
+zoom = Vector2(1.5, 1.5)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(951, 271)

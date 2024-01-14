@@ -14,6 +14,15 @@ texture = ExtResource("1_2f44i")
 hframes = 4
 vframes = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="reload_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 3)
 shape = SubResource("CircleShape2D_qgiqf")
+
+[connection signal="timeout" from="reload_timer" to="." method="_on_reload_timer_timeout"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hitbox_body_entered"]
