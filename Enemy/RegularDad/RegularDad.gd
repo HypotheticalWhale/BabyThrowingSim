@@ -11,7 +11,11 @@ func _ready():
 
 func _process(delta: float) -> void:
 	move_and_slide()
+	if velocity == Vector2.ZERO:
+		await get_tree().create_timer(2.0).timeout
+		self.queue_free()
 
 
 func _on_hurtbox_body_entered(body):
+	
 	self.queue_free()
