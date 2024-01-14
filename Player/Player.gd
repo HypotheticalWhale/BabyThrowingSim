@@ -22,7 +22,16 @@
 
 extends Node2D
 
-@export var projectile_scene: PackedScene
+var current_projectile = preload("res://Projectile/Baby.tscn")
+@onready var reload_timer = $reload_timer
+var can_shoot: bool = true
+var MAX_HEALTH = 10
+var current_health = 10
+
+func _ready():
+	var baby = current_projectile.instantiate()
+	var get_reload_speed = baby.reload_speed
+	reload_timer.wait_time = get_reload_speed
 
 func _physics_process(delta):
 	point_head_to_mouse()
@@ -33,14 +42,29 @@ func point_head_to_mouse():
 	var angle = atan2(direction.y, direction.x)  # Calculate the angle in radians
 
 func _input(event):
-	if Input.is_action_pressed("shoot"):
-		spawn_fireball()
+	if can_shoot and Input.is_action_pressed("shoot"):
+		shoot_projectile()
 
-func spawn_fireball():
-	var fireball = projectile_scene.instantiate()
-	add_child(fireball)
+func shoot_projectile():
+	var baby = current_projectile.instantiate()
+	add_child(baby)
 	var mouse_pos = get_global_mouse_position()
-	var direction = (mouse_pos - fireball.global_position).normalized()
+	var direction = (mouse_pos - baby.global_position).normalized()
 	var initial_speed = 700  # Set your desired speed
-	fireball.linear_velocity = direction * initial_speed
+	baby.linear_velocity = direction * initial_speed
+	# Set cooldown timer for shooting
+	can_shoot = false
+	reload_timer.start()
 	
+func _on_reload_timer_timeout():
+	can_shoot = true
+
+func get_hit(damage):
+	current_health = current_health - damage
+	if current_health == 0:
+		print("you lose")
+		self.queue_free()
+	
+func _on_hitbox_body_entered(body):
+	get_hit(body.damage)
+	body.queue_free()
