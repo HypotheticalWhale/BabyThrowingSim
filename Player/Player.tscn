@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c4hm1g85durbr"]
 
-[ext_resource type="Texture2D" uid="uid://bwwuv6me1wnxb" path="res://assets/Buggie.png" id="1_2f44i"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_ynasf"]
+[ext_resource type="Texture2D" uid="uid://ox5174pwio7w" path="res://assets/Mom.png" id="2_ofyms"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qgiqf"]
 radius = 11.0
@@ -10,9 +10,7 @@ radius = 11.0
 script = ExtResource("1_ynasf")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_2f44i")
-hframes = 4
-vframes = 7
+texture = ExtResource("2_ofyms")
 
 [node name="reload_timer" type="Timer" parent="."]
 one_shot = true
