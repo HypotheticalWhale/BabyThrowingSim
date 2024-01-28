@@ -4,10 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://so1vmpt5rc3f" path="res://assets/Dad.png" id="2_hgqjf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17r2i"]
-radius = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2qyol"]
-radius = 8.0
 
 [node name="RegularDad" type="CharacterBody2D"]
 collision_layer = 4
@@ -25,4 +23,5 @@ shape = SubResource("CircleShape2D_17r2i")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_2qyol")
 
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
