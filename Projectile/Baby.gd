@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var type = "projectile"
-var gravity = 50  # Adjust the gravity strength
+var gravity = 30  # Adjust the gravity strength
 var reload_speed = 1.0
 
 func _integrate_forces(state):
