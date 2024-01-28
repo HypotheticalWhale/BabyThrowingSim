@@ -1,15 +1,16 @@
 extends Node2D
 var current_projectile = preload("res://Projectile/Baby.tscn")
 var current_exp = 0
+var type = "player"
 @onready var reload_timer = $reload_timer
 var can_shoot: bool = true
-var MAX_HEALTH = 10
-var current_health = 10
+@export var MAX_HEALTH = 10
 
 func _ready():
 	var baby = current_projectile.instantiate()
 	var get_reload_speed = baby.reload_speed
 	reload_timer.wait_time = get_reload_speed
+	GlobalVars.current_health = MAX_HEALTH
 
 func _physics_process(delta):
 	point_head_to_mouse()
@@ -38,8 +39,8 @@ func _on_reload_timer_timeout():
 	can_shoot = true
 
 func get_hit(damage):
-	current_health = current_health - damage
-	if current_health == 0:
+	GlobalVars.current_health -= damage
+	if GlobalVars.current_health == 0:
 		print("you lose")
 		self.queue_free()
 	

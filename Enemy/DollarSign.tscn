@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpnkxnucf6fxo"]
+
+[ext_resource type="Texture2D" uid="uid://b7ae72luf88p2" path="res://assets/Boat.png" id="1_nojeb"]
+[ext_resource type="Script" path="res://Enemy/DollarSign.gd" id="1_ohk0f"]
+
+[node name="DollarSign" type="Node2D"]
+script = ExtResource("1_ohk0f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_nojeb")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

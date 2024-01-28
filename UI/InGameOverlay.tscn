@@ -1,20 +1,76 @@
-[gd_scene load_steps=2 format=3 uid="uid://b5kwochsing33"]
+[gd_scene load_steps=4 format=3 uid="uid://b5kwochsing33"]
 
+[ext_resource type="Script" path="res://UI/CurrentMoney.gd" id="1_058lx"]
 [ext_resource type="Script" path="res://UI/CurrentExp.gd" id="1_l5nsb"]
+[ext_resource type="Script" path="res://UI/CurrentHealth.gd" id="2_427qk"]
 
 [node name="InGameOverlay" type="CanvasLayer"]
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
-offset_right = 1279.0
-offset_bottom = 29.0
+[node name="TopRightContainer" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -53.0
+offset_bottom = 28.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+size_flags_vertical = 0
+alignment = 2
 
-[node name="ExpLabel" type="Label" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="TopRightContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+
+[node name="MoneyContainer" type="HBoxContainer" parent="TopRightContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MoneyLabel" type="Label" parent="TopRightContainer/MarginContainer/MoneyContainer"]
+layout_mode = 2
+text = "Money: $"
+horizontal_alignment = 2
+
+[node name="CurrentMoney" type="Label" parent="TopRightContainer/MarginContainer/MoneyContainer"]
+layout_mode = 2
+script = ExtResource("1_058lx")
+
+[node name="TopLeftContainer" type="VBoxContainer" parent="."]
+offset_right = 111.0
+offset_bottom = 55.0
+size_flags_horizontal = 0
+
+[node name="ExpMargin" type="MarginContainer" parent="TopLeftContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+
+[node name="ExpContainer" type="HBoxContainer" parent="TopLeftContainer/ExpMargin"]
+layout_mode = 2
+
+[node name="ExpLabel" type="Label" parent="TopLeftContainer/ExpMargin/ExpContainer"]
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 0
-text = "EXP:"
+text = "Confidence:"
 
-[node name="CurrentExp" type="Label" parent="VBoxContainer"]
+[node name="CurrentExp" type="Label" parent="TopLeftContainer/ExpMargin/ExpContainer"]
 layout_mode = 2
 text = "0"
 script = ExtResource("1_l5nsb")
+
+[node name="HealthMargin" type="MarginContainer" parent="TopLeftContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+
+[node name="HealthContainer" type="HBoxContainer" parent="TopLeftContainer/HealthMargin"]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="TopLeftContainer/HealthMargin/HealthContainer"]
+layout_mode = 2
+text = "Sanity:"
+
+[node name="CurrentHealth" type="Label" parent="TopLeftContainer/HealthMargin/HealthContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("2_427qk")
