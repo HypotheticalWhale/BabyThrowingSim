@@ -1,15 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://g6ecrdq310o3"]
 
-[ext_resource type="Texture2D" uid="uid://c3j5gl2xbyksm" path="res://assets/Bolt.png" id="1_hqb2b"]
 [ext_resource type="Script" path="res://Projectile/Baby.gd" id="1_xdvmk"]
+[ext_resource type="Texture2D" uid="uid://xjdqjs0x6kx" path="res://assets/Baby.png" id="2_gljeo"]
 
 [node name="Baby" type="RigidBody2D"]
 collision_mask = 4
 script = ExtResource("1_xdvmk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_hqb2b")
-hframes = 4
+texture = ExtResource("2_gljeo")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(2, -8, -6, -2, -6, 0, -5, 1, -2, 1, -4, 6, -3, 8, 5, 1, 5, -1, 3, -3, 6, -6, 4, -8)

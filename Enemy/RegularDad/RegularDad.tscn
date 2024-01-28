@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bpy1vdq6nwblq"]
 
-[ext_resource type="Texture2D" uid="uid://djv8sw3jar88w" path="res://assets/kraken.png" id="1_fo4ij"]
 [ext_resource type="Script" path="res://Enemy/RegularDad/RegularDad.gd" id="1_h77ta"]
+[ext_resource type="Texture2D" uid="uid://so1vmpt5rc3f" path="res://assets/Dad.png" id="2_hgqjf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17r2i"]
 radius = 8.0
@@ -14,7 +14,7 @@ collision_layer = 4
 script = ExtResource("1_h77ta")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_fo4ij")
+texture = ExtResource("2_hgqjf")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 4
