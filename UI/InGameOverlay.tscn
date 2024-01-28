@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5kwochsing33"]
+
+[ext_resource type="Script" path="res://UI/CurrentExp.gd" id="1_l5nsb"]
+
+[node name="InGameOverlay" type="CanvasLayer"]
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+offset_right = 1279.0
+offset_bottom = 29.0
+
+[node name="ExpLabel" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+text = "EXP:"
+
+[node name="CurrentExp" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("1_l5nsb")
