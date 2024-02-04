@@ -2,6 +2,7 @@ extends Node2D
 @export var spawn_reg_dad: bool# Adjust this value to set the spawn interval in seconds
 @onready var regular_dad = preload("res://Enemy/RegularDad/RegularDad.tscn")
 var regular_dad_spawn_timer
+var type = "main"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var reg_dad = regular_dad.instantiate()
