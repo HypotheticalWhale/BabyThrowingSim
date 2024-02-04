@@ -17,7 +17,7 @@ func _process(delta):
 
 
 func _on_timer_timeout():
-	pass # Replace with function body.
+	queue_free()
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ximtr"]
@@ -39,7 +39,6 @@ scale = Vector2(2.3125, 2.3125)
 texture = ExtResource("1_km5q5")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
 autostart = true
 

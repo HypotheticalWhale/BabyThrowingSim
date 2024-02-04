@@ -4,9 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
 [ext_resource type="PackedScene" uid="uid://b5kwochsing33" path="res://UI/InGameOverlay.tscn" id="2_tsnw5"]
 [ext_resource type="Texture2D" uid="uid://46knn8816ogc" path="res://assets/Billboard.png" id="3_wfr5g"]
-[ext_resource type="PackedScene" path="res://UI/LevelUpOptions.tscn" id="4_2tcou"]
+[ext_resource type="PackedScene" uid="uid://gni7cn8wa1ws" path="res://UI/LevelUpOptions.tscn" id="4_2tcou"]
 [ext_resource type="Texture2D" uid="uid://bgq4kmvjrbmjx" path="res://assets/PorchBackground.png" id="4_h3b1c"]
-[ext_resource type="Texture2D" uid="uid://x44fejyn8kdg" path="res://assets/BeefSoapAd.png" id="4_onrnb"]
+[ext_resource type="Texture2D" path="res://assets/BeefSoapAd.png" id="4_onrnb"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
@@ -36,5 +36,3 @@ zoom = Vector2(1.4, 1.4)
 position = Vector2(890, 302)
 
 [node name="LevelUpOptions" parent="." instance=ExtResource("4_2tcou")]
-
-[node name="InGameOverlay2" parent="." instance=ExtResource("2_tsnw5")]

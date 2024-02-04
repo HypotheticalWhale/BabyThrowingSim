@@ -1,16 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://gni7cn8wa1ws"]
+[gd_scene load_steps=5 format=3 uid="uid://gni7cn8wa1ws"]
 
 [ext_resource type="Script" path="res://UI/LevelUpOptions.gd" id="1_hnxw3"]
-[ext_resource type="Script" path="res://UI/LevelUpOption.gd" id="2_7mtjl"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tn5k"]
-size = Vector2(173, 262)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cklfo"]
-size = Vector2(175, 269.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mb26j"]
-size = Vector2(151, 265)
+[ext_resource type="Script" path="res://UI/Button.gd" id="2_hqkld"]
+[ext_resource type="Script" path="res://UI/SecondButton.gd" id="3_shk3t"]
+[ext_resource type="Script" path="res://UI/ThirdButton.gd" id="4_8oauw"]
 
 [node name="LevelUpOptions" type="CanvasLayer"]
 process_mode = 2
@@ -42,44 +35,21 @@ custom_minimum_size = Vector2(2.08165e-12, 200)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 300
+theme_override_constants/separation = 150
 alignment = 1
 
-[node name="First" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="FirstButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Option 1"
-script = ExtResource("2_7mtjl")
+script = ExtResource("2_hqkld")
 
-[node name="firstarea" type="Area2D" parent="VBoxContainer/HBoxContainer/First"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer/First/firstarea"]
-position = Vector2(66.5, 46.5)
-shape = SubResource("RectangleShape2D_4tn5k")
-
-[node name="Second" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="SecondButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Option 2
-"
-script = ExtResource("2_7mtjl")
+script = ExtResource("3_shk3t")
 
-[node name="secondarea" type="Area2D" parent="VBoxContainer/HBoxContainer/Second"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer/Second/secondarea"]
-position = Vector2(67.5, 47.25)
-shape = SubResource("RectangleShape2D_cklfo")
-
-[node name="Third" type="Label" parent="VBoxContainer/HBoxContainer"]
+[node name="ThirdButton" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Option 3"
-script = ExtResource("2_7mtjl")
+script = ExtResource("4_8oauw")
 
-[node name="thirdarea" type="Area2D" parent="VBoxContainer/HBoxContainer/Third"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/HBoxContainer/Third/thirdarea"]
-position = Vector2(55.5, 51)
-shape = SubResource("RectangleShape2D_mb26j")
-
-[connection signal="input_event" from="VBoxContainer/HBoxContainer/First/firstarea" to="." method="_on_firstarea_input_event"]
-[connection signal="input_event" from="VBoxContainer/HBoxContainer/Second/secondarea" to="." method="_on_secondarea_input_event"]
-[connection signal="input_event" from="VBoxContainer/HBoxContainer/Third/thirdarea" to="." method="_on_thirdarea_input_event"]
-[connection signal="input_event" from="VBoxContainer/HBoxContainer/Third/thirdarea" to="." method="_on_area_2d_input_event"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/FirstButton" to="." method="_on_first_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/SecondButton" to="." method="_on_second_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ThirdButton" to="." method="_on_third_button_pressed"]

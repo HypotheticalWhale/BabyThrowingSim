@@ -40,9 +40,9 @@ func randomize_options():
 		if random_index not in selected:
 			selected.append(random_index)
 			picked_skills.append(skill_upgrade_options[random_index])
-	$VBoxContainer/HBoxContainer/First.current_skill = picked_skills[0]
-	$VBoxContainer/HBoxContainer/Second.current_skill = picked_skills[1]
-	$VBoxContainer/HBoxContainer/Third.current_skill = picked_skills[2]
+	$VBoxContainer/HBoxContainer/FirstButton.current_skill = picked_skills[0]
+	$VBoxContainer/HBoxContainer/SecondButton.current_skill = picked_skills[1]
+	$VBoxContainer/HBoxContainer/ThirdButton.current_skill = picked_skills[2]
 	
 func reset_pick_options():
 	picked_skills = []
@@ -50,33 +50,30 @@ func reset_pick_options():
 		if current_run_upgrades[upgrade] == 7:
 			print(upgrade + " is at level 5. Remove from dictionary")
 			skill_upgrade_options.erase(skill_upgrade_options.find(upgrade))
+			
 # GET INPUT FROM PLAYER
-func _on_firstarea_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed:
-		current_run_upgrades[$VBoxContainer/HBoxContainer/First.current_skill] += 1
-		get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades #update player stats		
-		reset_pick_options()
-		get_tree().paused = false
-		visible = false
-		set_process_input(false)		
+func _on_first_button_pressed():
+	current_run_upgrades[$VBoxContainer/HBoxContainer/FirstButton.current_skill] += 1
+	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
+	reset_pick_options()
+	get_tree().paused = false
+	visible = false
+	set_process_input(false)				
 
 
-func _on_secondarea_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed:
-		current_run_upgrades[$VBoxContainer/HBoxContainer/Second.current_skill] += 1		
-		get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades
-		print(get_tree().current_scene.get_node("Player").current_run_upgrades)
-		reset_pick_options()
-		get_tree().paused = false
-		visible = false		
-		set_process_input(false)		
+func _on_second_button_pressed():
+	current_run_upgrades[$VBoxContainer/HBoxContainer/SecondButton.current_skill] += 1
+	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
+	reset_pick_options()
+	get_tree().paused = false
+	visible = false
+	set_process_input(false)				
 
-func _on_thirdarea_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton and event.pressed:
-		current_run_upgrades[$VBoxContainer/HBoxContainer/Third.current_skill] += 1
-		get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
-		reset_pick_options()
-		get_tree().paused = false
-		visible = false
-		set_process_input(false)				
 
+func _on_third_button_pressed():
+	current_run_upgrades[$VBoxContainer/HBoxContainer/ThirdButton.current_skill] += 1
+	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
+	reset_pick_options()
+	get_tree().paused = false
+	visible = false
+	set_process_input(false)				

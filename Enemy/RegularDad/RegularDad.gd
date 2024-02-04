@@ -23,15 +23,7 @@ func _on_hurtbox_body_entered(body):
 
 
 func _on_hurtbox_area_entered(area):	
-	if area.type == "projectile":
-		GlobalVars.current_exp += exp
-		var randomValue := randf()
-		if randomValue <= monry_drop_rate:
-			var give_player_money = you_got_cash.instantiate()
-			get_tree().current_scene.add_child(give_player_money)
-			give_player_money.global_position = global_position
-			GlobalVars.current_money += 1
-	elif not area.owner.type == "player":
+	if not area.owner.type == "player":
 		GlobalVars.current_exp += exp
 		var randomValue := randf()
 		if randomValue <= monry_drop_rate:

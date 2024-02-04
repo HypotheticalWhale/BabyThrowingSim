@@ -7,7 +7,7 @@ var exploding: bool = false
 signal gameover
 
 var current_run_upgrades = {
-	"exploding":1,
+	"exploding":0,
 	"bounce":0,
 	"multi":0,
 	"slow":0,
@@ -36,6 +36,7 @@ func _physics_process(delta):
 	point_head_to_mouse()
 	if not exploding:
 		if current_run_upgrades["exploding"] >= 1:
+			print("set exploding to 1")
 			exploding = true
 
 func point_head_to_mouse():
