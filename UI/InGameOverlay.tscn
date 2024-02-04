@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5kwochsing33"]
+[gd_scene load_steps=6 format=3 uid="uid://b5kwochsing33"]
 
+[ext_resource type="Theme" uid="uid://c3qn6yugq26ly" path="res://assets/PixelTheme.tres" id="1_5f5rg"]
 [ext_resource type="Script" path="res://UI/CurrentMoney.gd" id="1_058lx"]
 [ext_resource type="Script" path="res://UI/CurrentExp.gd" id="1_l5nsb"]
 [ext_resource type="Script" path="res://UI/CurrentHealth.gd" id="2_427qk"]
@@ -30,11 +31,13 @@ size_flags_vertical = 0
 
 [node name="MoneyLabel" type="Label" parent="TopRightContainer/MarginContainer/MoneyContainer"]
 layout_mode = 2
+theme = ExtResource("1_5f5rg")
 text = "Money: $"
 horizontal_alignment = 2
 
 [node name="CurrentMoney" type="Label" parent="TopRightContainer/MarginContainer/MoneyContainer"]
 layout_mode = 2
+theme = ExtResource("1_5f5rg")
 script = ExtResource("1_058lx")
 
 [node name="HealthMargin" type="MarginContainer" parent="TopRightContainer"]
@@ -70,10 +73,12 @@ layout_mode = 2
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 0
+theme = ExtResource("1_5f5rg")
 text = "Confidence:"
 
 [node name="CurrentExp" type="Label" parent="TopLeftContainer/ExpMargin/ExpContainer"]
 layout_mode = 2
+theme = ExtResource("1_5f5rg")
 text = "0"
 script = ExtResource("1_l5nsb")
 
@@ -87,10 +92,12 @@ layout_mode = 2
 
 [node name="LevelLabel" type="Label" parent="TopLeftContainer/LevelMargin/LevelContainer"]
 layout_mode = 2
+theme = ExtResource("1_5f5rg")
 text = "You are a level "
 
 [node name="CurrentLevel" type="Label" parent="TopLeftContainer/LevelMargin/LevelContainer"]
 layout_mode = 2
+theme = ExtResource("1_5f5rg")
 script = ExtResource("4_4y85q")
 
 [node name="LevelLabel2" type="Label" parent="TopLeftContainer/LevelMargin/LevelContainer"]

@@ -65,8 +65,8 @@ func _on_secondarea_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and event.pressed:
 		current_run_upgrades[$VBoxContainer/HBoxContainer/Second.current_skill] += 1		
 		get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades
+		print(get_tree().current_scene.get_node("Player").current_run_upgrades)
 		reset_pick_options()
-		
 		get_tree().paused = false
 		visible = false		
 		set_process_input(false)		
@@ -76,7 +76,6 @@ func _on_thirdarea_input_event(viewport, event, shape_idx):
 		current_run_upgrades[$VBoxContainer/HBoxContainer/Third.current_skill] += 1
 		get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 		reset_pick_options()
-		
 		get_tree().paused = false
 		visible = false
 		set_process_input(false)				
