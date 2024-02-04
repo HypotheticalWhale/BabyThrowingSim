@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5kwochsing33"]
+[gd_scene load_steps=6 format=3 uid="uid://b5kwochsing33"]
 
 [ext_resource type="Theme" uid="uid://c3qn6yugq26ly" path="res://assets/PixelTheme.tres" id="1_5f5rg"]
 [ext_resource type="Script" path="res://UI/CurrentMoney.gd" id="1_058lx"]
@@ -92,13 +92,13 @@ layout_mode = 2
 
 [node name="LevelLabel" type="Label" parent="TopLeftContainer/LevelMargin/LevelContainer"]
 layout_mode = 2
-text = "You are a level "
 theme = ExtResource("1_5f5rg")
+text = "You are a level "
 
 [node name="CurrentLevel" type="Label" parent="TopLeftContainer/LevelMargin/LevelContainer"]
 layout_mode = 2
-script = ExtResource("4_4y85q")
 theme = ExtResource("1_5f5rg")
+script = ExtResource("4_4y85q")
 
 [node name="LevelLabel2" type="Label" parent="TopLeftContainer/LevelMargin/LevelContainer"]
 layout_mode = 2
