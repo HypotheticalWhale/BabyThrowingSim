@@ -3,6 +3,7 @@ var current_projectile = preload("res://Projectile/Baby.tscn")
 var current_exp = 0
 var type = "player"
 var can_shoot: bool = true
+var exploding: bool = false
 signal gameover
 
 var current_run_upgrades = {
@@ -33,6 +34,10 @@ func _ready():
 
 func _physics_process(delta):
 	point_head_to_mouse()
+	if not exploding:
+		if current_run_upgrades["exploding"] >= 1:
+			print("set exploding to 1")
+			exploding = true
 
 func point_head_to_mouse():
 	var mouse_pos = get_global_mouse_position()  # Get the global position of the mouse cursor
@@ -45,6 +50,8 @@ func _input(event):
 
 func shoot_projectile():
 	var baby = current_projectile.instantiate()
+	if exploding:
+		baby.exploding = true
 	add_child(baby)
 	var mouse_pos = get_global_mouse_position()
 	var direction = (mouse_pos - baby.global_position).normalized()
