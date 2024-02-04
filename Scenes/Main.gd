@@ -7,21 +7,23 @@ func _ready():
 	var reg_dad = regular_dad.instantiate()
 	var regular_dad_spawn_interval = reg_dad.spawn_interval
 	if spawn_reg_dad:
-		new_timer(regular_dad_spawn_interval)
-		regular_dad_spawn_timer.start()
+		start_timer(regular_dad_spawn_interval,"regular_dad")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if spawn_reg_dad:
-		pass
+	pass
 
-func new_timer(spawn_interval):
-	regular_dad_spawn_timer = Timer.new()
-	regular_dad_spawn_timer.one_shot = false
-	regular_dad_spawn_timer.wait_time = spawn_interval
-	add_child(regular_dad_spawn_timer)
-	regular_dad_spawn_timer.timeout.connect(_on_regdad_spawn_timer_timeout)
-	
+func start_timer(spawn_interval, typeofdad):
+	if typeofdad == "regular_dad":
+		regular_dad_spawn_timer = Timer.new()
+		regular_dad_spawn_timer.one_shot = false
+		regular_dad_spawn_timer.wait_time = spawn_interval
+		add_child(regular_dad_spawn_timer)
+		regular_dad_spawn_timer.timeout.connect(_on_regdad_spawn_timer_timeout)
+		regular_dad_spawn_timer.start()
+		return
+		
 func _on_regdad_spawn_timer_timeout() -> void:
 	var reg_dad = regular_dad.instantiate()
 	reg_dad.global_position = $Marker2D.global_position
 	add_child(reg_dad)
+	
