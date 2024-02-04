@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://78tsk14pc6dc"]
+
+[ext_resource type="Texture2D" uid="uid://fua5bucoab7m" path="res://assets/Coconut.png" id="1_km5q5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ximtr"]
+radius = 18.0278
+
+[node name="Explosion" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3, 3)
+shape = SubResource("CircleShape2D_ximtr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.3125, 2.3125)
+texture = ExtResource("1_km5q5")

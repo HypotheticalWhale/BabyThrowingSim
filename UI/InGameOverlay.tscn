@@ -4,8 +4,10 @@
 [ext_resource type="Script" path="res://UI/CurrentMoney.gd" id="1_058lx"]
 [ext_resource type="Script" path="res://UI/CurrentExp.gd" id="1_l5nsb"]
 [ext_resource type="Script" path="res://UI/CurrentHealth.gd" id="2_427qk"]
+[ext_resource type="Script" path="res://UI/CurrentLevel.gd" id="4_4y85q"]
 
 [node name="InGameOverlay" type="CanvasLayer"]
+process_mode = 3
 
 [node name="TopRightContainer" type="VBoxContainer" parent="."]
 anchors_preset = 1
@@ -38,6 +40,22 @@ layout_mode = 2
 theme = ExtResource("1_5f5rg")
 script = ExtResource("1_058lx")
 
+[node name="HealthMargin" type="MarginContainer" parent="TopRightContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 5
+
+[node name="HealthContainer" type="HBoxContainer" parent="TopRightContainer/HealthMargin"]
+layout_mode = 2
+
+[node name="HealthLabel" type="Label" parent="TopRightContainer/HealthMargin/HealthContainer"]
+layout_mode = 2
+text = "Sanity Left:"
+
+[node name="CurrentHealth" type="Label" parent="TopRightContainer/HealthMargin/HealthContainer"]
+layout_mode = 2
+text = "0"
+script = ExtResource("2_427qk")
+
 [node name="TopLeftContainer" type="VBoxContainer" parent="."]
 offset_right = 111.0
 offset_bottom = 55.0
@@ -64,20 +82,25 @@ theme = ExtResource("1_5f5rg")
 text = "0"
 script = ExtResource("1_l5nsb")
 
-[node name="HealthMargin" type="MarginContainer" parent="TopLeftContainer"]
+[node name="LevelMargin" type="MarginContainer" parent="TopLeftContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
 
-[node name="HealthContainer" type="HBoxContainer" parent="TopLeftContainer/HealthMargin"]
+[node name="LevelContainer" type="HBoxContainer" parent="TopLeftContainer/LevelMargin"]
 layout_mode = 2
 
-[node name="HealthLabel" type="Label" parent="TopLeftContainer/HealthMargin/HealthContainer"]
+[node name="LevelLabel" type="Label" parent="TopLeftContainer/LevelMargin/LevelContainer"]
 layout_mode = 2
+text = "You are a level "
 theme = ExtResource("1_5f5rg")
-text = "Sanity:"
 
-[node name="CurrentHealth" type="Label" parent="TopLeftContainer/HealthMargin/HealthContainer"]
+[node name="CurrentLevel" type="Label" parent="TopLeftContainer/LevelMargin/LevelContainer"]
 layout_mode = 2
+script = ExtResource("4_4y85q")
 theme = ExtResource("1_5f5rg")
-text = "0"
-script = ExtResource("2_427qk")
+
+[node name="LevelLabel2" type="Label" parent="TopLeftContainer/LevelMargin/LevelContainer"]
+layout_mode = 2
+text = " mom
+"

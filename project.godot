@@ -23,6 +23,8 @@ GlobalVars="*res://UI/GlobalVars.gd"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=2
+window/size/borderless=true
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
