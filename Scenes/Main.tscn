@@ -1,10 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://o5alyyhdvq4h"]
 
+
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
 [ext_resource type="PackedScene" uid="uid://b5kwochsing33" path="res://UI/InGameOverlay.tscn" id="2_tsnw5"]
 [ext_resource type="PackedScene" uid="uid://gni7cn8wa1ws" path="res://UI/LevelUpOptions.tscn" id="4_2tcou"]
+[ext_resource type="Texture2D" uid="uid://46knn8816ogc" path="res://assets/Billboard.png" id="3_wfr5g"]
 [ext_resource type="Texture2D" uid="uid://bgq4kmvjrbmjx" path="res://assets/PorchBackground.png" id="4_h3b1c"]
+[ext_resource type="Texture2D" uid="uid://x44fejyn8kdg" path="res://assets/BeefSoapAd.png" id="4_onrnb"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
@@ -14,6 +17,14 @@ spawn_reg_dad = true
 position = Vector2(411, 184)
 texture = ExtResource("4_h3b1c")
 
+[node name="Billboard" type="Sprite2D" parent="."]
+position = Vector2(491, 158)
+texture = ExtResource("3_wfr5g")
+
+[node name="Content" type="Sprite2D" parent="Billboard"]
+texture = ExtResource("4_onrnb")
+
+[node name="InGameOverlay" parent="." instance=ExtResource("2_tsnw5")]
 [node name="Player" parent="." instance=ExtResource("1_jcchd")]
 position = Vector2(306, 263)
 
