@@ -6,9 +6,7 @@ func _process(delta):
 
 func move_up():
 	var currentPos = global_position
-	print(currentPos)
 	currentPos.y -= moveAmount
-	print(currentPos)
 	global_position = currentPos
 
 func _on_timer_timeout():

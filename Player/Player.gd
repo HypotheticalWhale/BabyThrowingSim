@@ -2,8 +2,27 @@ extends Node2D
 var current_projectile = preload("res://Projectile/Baby.tscn")
 var current_exp = 0
 var type = "player"
-@onready var reload_timer = $reload_timer
 var can_shoot: bool = true
+signal gameover
+
+var current_run_upgrades = {
+	"exploding":0,
+	"bounce":0,
+	"multi":0,
+	"slow":0,
+	"enemies-spawn-less":0,
+	"enemies-close-freeze":0,
+	"enemies-close-damage":0,
+	"enemies-close-slow":0,
+	"side-gun":0,
+	"damage-up":0,
+	"reload-speed":0,
+	"max-health":0,
+	"heal-periodically":0,
+	"charge-shot-bigger":0
+}
+
+@onready var reload_timer = $reload_timer
 @export var MAX_HEALTH = 10
 
 func _ready():
@@ -35,15 +54,18 @@ func shoot_projectile():
 	can_shoot = false
 	reload_timer.start()
 	
-func _on_reload_timer_timeout():
-	can_shoot = true
-
 func get_hit(damage):
 	GlobalVars.current_health -= damage
 	if GlobalVars.current_health == 0:
-		print("you lose")
+		emit_signal("gameover")
+		print("You went insane... going home to take a break")
 		self.queue_free()
+		
+func _on_reload_timer_timeout():
+	can_shoot = true
+
 	
 func _on_hitbox_body_entered(body):
 	get_hit(body.damage)
 	body.queue_free()
+
