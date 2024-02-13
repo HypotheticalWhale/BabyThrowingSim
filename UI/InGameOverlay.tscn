@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b5kwochsing33"]
 
-[ext_resource type="Theme" path="res://assets/PixelTheme.tres" id="1_5f5rg"]
+[ext_resource type="Theme" uid="uid://b2bivy30xsq24" path="res://assets/PixelTheme.tres" id="1_5f5rg"]
 [ext_resource type="Script" path="res://UI/CurrentMoney.gd" id="1_058lx"]
 [ext_resource type="Script" path="res://UI/CurrentExp.gd" id="1_l5nsb"]
 [ext_resource type="Script" path="res://UI/CurrentHealth.gd" id="2_427qk"]

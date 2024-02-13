@@ -57,6 +57,7 @@ func _on_first_button_pressed():
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
 	get_tree().paused = false
+	get_tree().current_scene.get_node("Billboard/Content").visible = true
 	visible = false
 	set_process_input(false)				
 
@@ -66,6 +67,7 @@ func _on_second_button_pressed():
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
 	get_tree().paused = false
+	get_tree().current_scene.get_node("Billboard/Content").visible = true	
 	visible = false
 	set_process_input(false)				
 
@@ -75,5 +77,6 @@ func _on_third_button_pressed():
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
 	get_tree().paused = false
+	get_tree().current_scene.get_node("Billboard/Content").visible = true	
 	visible = false
 	set_process_input(false)				
