@@ -1,16 +1,37 @@
-[gd_scene load_steps=8 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=12 format=3 uid="uid://o5alyyhdvq4h"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
+[ext_resource type="Texture2D" uid="uid://cqf6ykpa5sbe2" path="res://assets/RoomInterior.png" id="2_8bhpa"]
 [ext_resource type="PackedScene" uid="uid://b5kwochsing33" path="res://UI/InGameOverlay.tscn" id="2_tsnw5"]
+[ext_resource type="Texture2D" uid="uid://dqn80kofyu36p" path="res://assets/PermaDamageButtonNormal.png" id="3_1ytwl"]
 [ext_resource type="Texture2D" uid="uid://46knn8816ogc" path="res://assets/Billboard.png" id="3_wfr5g"]
+[ext_resource type="Texture2D" uid="uid://bs8pnvryeqjhw" path="res://assets/PermaDamageButtonPressed.png" id="4_0eyy7"]
 [ext_resource type="PackedScene" uid="uid://gni7cn8wa1ws" path="res://UI/LevelUpOptions.tscn" id="4_2tcou"]
 [ext_resource type="Texture2D" uid="uid://bgq4kmvjrbmjx" path="res://assets/PorchBackground.png" id="4_h3b1c"]
 [ext_resource type="Texture2D" uid="uid://x44fejyn8kdg" path="res://assets/BeefSoapAd.png" id="4_onrnb"]
+[ext_resource type="Texture2D" uid="uid://c6wu4ks0moel7" path="res://assets/DamageRack.png" id="5_2vydq"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
 spawn_reg_dad = true
+
+[node name="Interior" type="Sprite2D" parent="."]
+position = Vector2(20, 276)
+texture = ExtResource("2_8bhpa")
+
+[node name="PermaDamageButton" type="TextureButton" parent="Interior"]
+offset_left = -56.0
+offset_top = -26.0
+offset_right = -16.0
+offset_bottom = 14.0
+texture_normal = ExtResource("3_1ytwl")
+texture_pressed = ExtResource("4_0eyy7")
+
+[node name="PermaDamageIndicator" type="Sprite2D" parent="Interior"]
+position = Vector2(-39, 18)
+texture = ExtResource("5_2vydq")
+hframes = 4
 
 [node name="PorchBackground" type="Sprite2D" parent="."]
 position = Vector2(411, 184)
@@ -26,7 +47,7 @@ texture = ExtResource("4_onrnb")
 [node name="InGameOverlay" parent="." instance=ExtResource("2_tsnw5")]
 
 [node name="Player" parent="." instance=ExtResource("1_jcchd")]
-position = Vector2(138, 256)
+position = Vector2(183, 219)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(418, 195)

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ox5174pwio7w" path="res://assets/Mom.png" id="2_ofyms"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_okdm2"]
-height = 174.0
+height = 274.0
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_ynasf")
