@@ -17,7 +17,7 @@ position = Vector2(411, 184)
 texture = ExtResource("4_h3b1c")
 
 [node name="Billboard" type="Sprite2D" parent="."]
-position = Vector2(460, 158)
+position = Vector2(491, 158)
 texture = ExtResource("3_wfr5g")
 
 [node name="Content" type="Sprite2D" parent="Billboard"]
