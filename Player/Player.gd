@@ -25,7 +25,7 @@ var current_run_upgrades = {
 }
 
 @onready var reload_timer = $reload_timer
-@export var MAX_HEALTH = 10
+@export var MAX_HEALTH = 1
 
 func _ready():
 	var baby = current_projectile.instantiate()
@@ -99,7 +99,7 @@ func get_hit(damage):
 	if GlobalVars.current_health == 0:
 		emit_signal("gameover")
 		print("You went insane... going home to take a break")
-		self.queue_free()
+		SceneManager.change_scene("combat", "interior")
 		
 func _on_reload_timer_timeout():
 	can_shoot = true
