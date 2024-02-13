@@ -25,6 +25,7 @@ func check_if_player_levels():
 
 func level_up():
 	var level_up_options = get_tree().current_scene.get_node("LevelUpOptions")
+	get_tree().current_scene.get_node("Billboard/Content").visible = false
 	level_up_options.show()
 	level_up_options.randomize_options()
 	level_up_options.set_process_input(true)
