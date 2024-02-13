@@ -47,9 +47,12 @@ func randomize_options():
 func reset_pick_options():
 	picked_skills = []
 	for upgrade in current_run_upgrades.keys():
-		if current_run_upgrades[upgrade] == 7:
+		if upgrade == "multi" and current_run_upgrades[upgrade] == 2 and current_run_upgrades.has(upgrade):
+			print("Multi is at level 3. Remove from dictionary")			
+			skill_upgrade_options.erase(upgrade)
+		if current_run_upgrades[upgrade] == 5 and current_run_upgrades.has(upgrade):
 			print(upgrade + " is at level 5. Remove from dictionary")
-			skill_upgrade_options.erase(skill_upgrade_options.find(upgrade))
+			skill_upgrade_options.erase(upgrade)
 			
 # GET INPUT FROM PLAYER
 func _on_first_button_pressed():

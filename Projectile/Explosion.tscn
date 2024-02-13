@@ -5,17 +5,44 @@
 [sub_resource type="GDScript" id="GDScript_0yhbw"]
 script/source = "extends Node2D
 var type = \"projectile\"
-
+var level = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	if level == 1:
+		scale.x = 1.2
+		scale.y = 1.2
+	elif level == 2:
+		scale.x = 1.4
+		scale.y = 1.4
+	elif level == 3:
+		scale.x = 1.6
+		scale.y = 1.6
+	elif level == 4:
+		scale.x = 1.8
+		scale.y = 1.8
+	elif level == 5:
+		scale.x = 2.0
+		scale.y = 2.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
-
+	if level == 1:
+		scale.x = 1.2
+		scale.y = 1.2
+	elif level == 2:
+		scale.x = 1.4
+		scale.y = 1.4
+	elif level == 3:
+		scale.x = 1.6
+		scale.y = 1.6
+	elif level == 4:
+		scale.x = 1.8
+		scale.y = 1.8
+	elif level == 5:
+		scale.x = 2.0
+		scale.y = 2.0
+		
 func _on_timer_timeout():
 	queue_free()
 "
@@ -39,6 +66,7 @@ scale = Vector2(2.3125, 2.3125)
 texture = ExtResource("1_km5q5")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
 one_shot = true
 autostart = true
 

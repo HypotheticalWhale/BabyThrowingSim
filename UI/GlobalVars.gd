@@ -19,7 +19,7 @@ func check_if_player_levels():
 	if current_exp == exp_to_next_level:
 		current_level += 1
 		level_up()
-		exp_to_next_level *= 2
+		#exp_to_next_level *= 2 change when we dw to debug anymore
 		current_exp = 0
 		get_tree().paused = true
 

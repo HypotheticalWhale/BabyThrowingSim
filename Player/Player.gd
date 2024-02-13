@@ -4,6 +4,7 @@ var current_exp = 0
 var type = "player"
 var can_shoot: bool = true
 var exploding: bool = false
+var multi:bool = false
 signal gameover
 
 var current_run_upgrades = {
@@ -36,8 +37,10 @@ func _physics_process(delta):
 	point_head_to_mouse()
 	if not exploding:
 		if current_run_upgrades["exploding"] >= 1:
-			print("set exploding to 1")
 			exploding = true
+	if not multi:
+		if current_run_upgrades["multi"] >= 1:
+			multi = true
 
 func point_head_to_mouse():
 	var mouse_pos = get_global_mouse_position()  # Get the global position of the mouse cursor
@@ -51,7 +54,7 @@ func _input(event):
 func shoot_projectile():
 	var baby = current_projectile.instantiate()
 	if exploding:
-		baby.exploding = true
+		baby.exploding = current_run_upgrades["exploding"]
 	add_child(baby)
 	var mouse_pos = get_global_mouse_position()
 	var direction = (mouse_pos - baby.global_position).normalized()
@@ -60,7 +63,37 @@ func shoot_projectile():
 	# Set cooldown timer for shooting
 	can_shoot = false
 	reload_timer.start()
-	
+	if current_run_upgrades["multi"] >= 1 and multi:
+		var shiftedPos = Vector2(global_position.x, global_position.y+10)
+		baby.global_position = shiftedPos
+		baby = current_projectile.instantiate()
+		if exploding:
+			baby.exploding = current_run_upgrades["exploding"]
+		add_child(baby)
+		mouse_pos = get_global_mouse_position()
+		direction = (mouse_pos - baby.global_position).normalized()
+		initial_speed = 900  # Set your desired speed
+		baby.linear_velocity = direction * initial_speed
+		baby.gravity = 3
+		# Set cooldown timer for shooting
+		can_shoot = false
+		reload_timer.start()
+	if current_run_upgrades["multi"] == 2 and multi:
+		var shiftedPos = Vector2(global_position.x, global_position.y-10)
+		baby.global_position = shiftedPos
+		baby = current_projectile.instantiate()
+		if exploding:
+			baby.exploding = current_run_upgrades["exploding"]
+		add_child(baby)
+		mouse_pos = get_global_mouse_position()
+		direction = (mouse_pos - baby.global_position).normalized()
+		initial_speed = 600  # Set your desired speed
+		baby.linear_velocity = direction * initial_speed
+		baby.gravity = 7		
+		# Set cooldown timer for shooting
+		can_shoot = false
+		reload_timer.start()
+			
 func get_hit(damage):
 	GlobalVars.current_health -= damage
 	if GlobalVars.current_health == 0:

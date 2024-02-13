@@ -27,4 +27,3 @@ func _on_regdad_spawn_timer_timeout() -> void:
 	var reg_dad = regular_dad.instantiate()
 	reg_dad.global_position = $Marker2D.global_position
 	add_child(reg_dad)
-	

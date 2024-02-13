@@ -6,7 +6,10 @@ extends CharacterBody2D
 @export var spawn_interval: float = 2.0
 @export var damage: int = 1
 @export var exp:int = 1
-@export var monry_drop_rate: float = 0.4
+@export var money_drop_rate: float = 0.4
+@export var MAX_HP:int = 1
+@export var current_hp:int = 1
+
 var you_got_cash = preload("res://Enemy/DollarSign.tscn")
 
 func _ready():
@@ -18,17 +21,21 @@ func _process(delta: float) -> void:
 		await get_tree().create_timer(2.0).timeout
 		self.queue_free()
 
+func get_hit(damage):
+	current_hp -= damage
+	if current_hp <= 0:
+		self.queue_free()
+		
 func _on_hurtbox_body_entered(body):
 	self.queue_free()
 
-
-func _on_hurtbox_area_entered(area):	
+func _on_hurtbox_area_entered(area):
 	if not area.owner.type == "player":
+		get_hit(area.owner.damage)
 		GlobalVars.current_exp += exp
 		var randomValue := randf()
-		if randomValue <= monry_drop_rate:
+		if randomValue <= money_drop_rate:
 			var give_player_money = you_got_cash.instantiate()
 			get_tree().current_scene.add_child(give_player_money)
 			give_player_money.global_position = global_position
 			GlobalVars.current_money += 1
-	self.queue_free()
