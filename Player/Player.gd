@@ -40,7 +40,7 @@ func _physics_process(delta):
 	if not multi:
 		if current_run_upgrades["multi"] >= 1:
 			multi = true
-	
+	current_run_upgrades["enemies-spawn-less"]
 func point_head_to_mouse():
 	var mouse_pos = get_global_mouse_position()  # Get the global position of the mouse cursor
 	var direction = (mouse_pos - global_position).normalized()  # Calculate the direction to the cursor
