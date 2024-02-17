@@ -12,7 +12,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-
+ 
 func start_timer(spawn_interval, typeofdad):
 	if typeofdad == "regular_dad":
 		regular_dad_spawn_timer = Timer.new()

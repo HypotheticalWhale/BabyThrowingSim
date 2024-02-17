@@ -15,11 +15,9 @@ var you_got_cash = preload("res://Enemy/DollarSign.tscn")
 func _ready():
 	velocity = direction * speed
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	spawn_interval = 2.0 * GlobalVars.spawn_less_multiplier
 	move_and_slide()
-	if velocity == Vector2.ZERO:
-		await get_tree().create_timer(2.0).timeout
-		self.queue_free()
 
 func get_hit(damage):
 	current_hp -= damage
@@ -30,7 +28,11 @@ func _on_hurtbox_body_entered(body):
 	self.queue_free()
 
 func _on_hurtbox_area_entered(area):
-	if not area.owner.type == "player":
+	if area.owner.type == "freeze_area":
+		velocity = Vector2(0,0)
+		await get_tree().create_timer(1.0).timeout
+		velocity = direction * speed
+	elif not area.owner.type == "player":
 		get_hit(area.owner.damage)
 		GlobalVars.current_exp += exp
 		var randomValue := randf()

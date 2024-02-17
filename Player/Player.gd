@@ -1,5 +1,6 @@
 extends Node2D
 var current_projectile = preload("res://Projectile/Baby.tscn")
+var freeze_area = preload("res://Projectile/FreezeArea.tscn")
 var current_exp = 0
 var type = "player"
 var can_shoot: bool = true
@@ -22,7 +23,14 @@ var current_run_upgrades = {
 	"heal-periodically":0,
 	"charge-shot-bigger":0
 }
+
 var enemies_spawn_less_options = [1,0.95,0.9,0.85,0.8,0.75]
+var spawn_less_index
+var freeze_enemy_timer_options = [0,3,2.2,1.7,1.5,1]
+var damage_up_options = [0,0.5,1,1.5,2,2.5]
+var reload_speed_options = [1,0.95,0.9,0.87,0.82,0.75]
+
+@onready var spawn_freeze_aoe = $freeze_enemy_timer
 @onready var reload_timer = $reload_timer
 @export var MAX_HEALTH = 1
 
@@ -40,6 +48,12 @@ func _physics_process(delta):
 	if not multi:
 		if current_run_upgrades["multi"] >= 1:
 			multi = true
+	spawn_less_index = current_run_upgrades["enemies-spawn-less"]
+	GlobalVars.spawn_less_multiplier = enemies_spawn_less_options[spawn_less_index]
+	if current_run_upgrades["reload-speed"] > 0:
+		reload_timer.wait_time = reload_speed_options[current_run_upgrades["reload-speed"]]
+	if current_run_upgrades["enemies-close-freeze"] > 0:
+		spawn_freeze_aoe.wait_time = freeze_enemy_timer_options[current_run_upgrades["enemies-close-freeze"]]
 	
 func point_head_to_mouse():
 	var mouse_pos = get_global_mouse_position()  # Get the global position of the mouse cursor
@@ -51,7 +65,9 @@ func _input(event):
 		shoot_projectile()
 
 func shoot_projectile():
-	var baby = current_projectile.instantiate()
+	var baby = current_projectile.instantiate()	
+	if current_run_upgrades["damage-up"] > 0:
+		baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["damage-up"]]
 	if exploding:
 		baby.exploding = current_run_upgrades["exploding"]
 	add_child(baby)
@@ -66,6 +82,8 @@ func shoot_projectile():
 		var shiftedPos = Vector2(global_position.x, global_position.y+10)
 		baby.global_position = shiftedPos
 		baby = current_projectile.instantiate()
+		if current_run_upgrades["damage-up"] > 0:
+			baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["damage-up"]]
 		if exploding:
 			baby.exploding = current_run_upgrades["exploding"]
 		add_child(baby)
@@ -81,6 +99,8 @@ func shoot_projectile():
 		var shiftedPos = Vector2(global_position.x, global_position.y-10)
 		baby.global_position = shiftedPos
 		baby = current_projectile.instantiate()
+		if current_run_upgrades["damage-up"] > 0:
+			baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["damage-up"]]
 		if exploding:
 			baby.exploding = current_run_upgrades["exploding"]
 		add_child(baby)
@@ -108,3 +128,8 @@ func _on_hitbox_body_entered(body):
 	get_hit(body.damage)
 	body.queue_free()
 
+func _on_freeze_enemy_timer_timeout():
+	var freeze_aoe = freeze_area.instantiate()
+	add_child(freeze_aoe)
+	freeze_aoe.global_position = $ProjectilePos.global_position
+	

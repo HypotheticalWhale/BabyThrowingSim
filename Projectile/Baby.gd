@@ -5,7 +5,7 @@ var gravity = 5  # Adjust the gravity strength
 var reload_speed = 1.0
 
 var exploding = 0
-
+var initial_damage = 1
 var damage = 1
 var explosion_scene = preload("res://Projectile/Explosion.tscn")
 var damage_number_scene = preload("res://Enemy/DamageNumber.tscn")
