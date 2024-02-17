@@ -11,6 +11,8 @@ script = ExtResource("1_ynasf")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_ofyms")
+hframes = 2
+vframes = 2
 
 [node name="reload_timer" type="Timer" parent="."]
 one_shot = true

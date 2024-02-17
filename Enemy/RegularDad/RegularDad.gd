@@ -13,6 +13,7 @@ extends CharacterBody2D
 var you_got_cash = preload("res://Enemy/DollarSign.tscn")
 
 func _ready():
+	$AnimationPlayer.play("walk_left")
 	velocity = direction * speed
 
 func _process(delta: float) -> void:
