@@ -58,9 +58,10 @@ func _on_first_button_pressed():
 	current_run_upgrades[$VBoxContainer/HBoxContainer/FirstButton.current_skill] += 1
 	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "max-health":
 		print("upgrade max_health")
-		
 		GlobalVars.current_health += 1
 		get_tree().current_scene.get_node("Player").MAX_HEALTH += 1
+	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "enemies-close-freeze":
+		get_tree().current_scene.get_node("Player").get_node("freeze_enemy_timer").start()
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
 	get_tree().paused = false
@@ -75,6 +76,8 @@ func _on_second_button_pressed():
 		print("upgrade max_health")
 		GlobalVars.current_health += 1
 		get_tree().current_scene.get_node("Player").MAX_HEALTH += 1
+	if $VBoxContainer/HBoxContainer/SecondButton.current_skill == "enemies-close-freeze":
+		get_tree().current_scene.get_node("Player").get_node("freeze_enemy_timer").start()
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
 	get_tree().paused = false
@@ -89,6 +92,8 @@ func _on_third_button_pressed():
 		print("upgrade max_health")
 		GlobalVars.current_health += 1
 		get_tree().current_scene.get_node("Player").MAX_HEALTH += 1
+	if $VBoxContainer/HBoxContainer/ThirdButton.current_skill == "enemies-close-freeze":
+		get_tree().current_scene.get_node("Player").get_node("freeze_enemy_timer").start()
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
 	get_tree().paused = false
