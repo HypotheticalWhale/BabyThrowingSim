@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 var current_skill
 
 # Called when the node enters the scene tree for the first time.
@@ -12,4 +12,4 @@ func _process(delta):
 	for i in range(words.size()):
 		words[i] = words[i].capitalize()
 	var capitalized_skill = " ".join(words)
-	text = capitalized_skill
+	$RichTextLabel.text = "[center]" + str(capitalized_skill) + "[/center]"
