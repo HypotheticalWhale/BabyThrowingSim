@@ -11,7 +11,6 @@ var current_run_upgrades = {
 	"exploding":0,
 	"bounce":0,
 	"multi":0,
-	"slow":0,
 	"enemies-spawn-less":0,
 	"enemies-close-freeze":0,
 	"enemies-close-damage":0,
@@ -23,7 +22,7 @@ var current_run_upgrades = {
 	"heal-periodically":0,
 	"charge-shot-bigger":0
 }
-
+var enemies_spawn_less_options = [1,0.95,0.9,0.85,0.8,0.75]
 @onready var reload_timer = $reload_timer
 @export var MAX_HEALTH = 1
 

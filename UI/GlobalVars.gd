@@ -5,6 +5,7 @@ var current_health = 0
 var current_money = 0
 var current_level:int = 0
 var exp_to_next_level:int = 1
+var spawn_less_multiplier = 0
 
 func _ready():
 	pass # Replace with function body.

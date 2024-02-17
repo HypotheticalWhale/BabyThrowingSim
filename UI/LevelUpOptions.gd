@@ -4,7 +4,6 @@ var skill_upgrade_options = [
 	"exploding",
 	"bounce",
 	"multi",
-	"slow",
 	"enemies-spawn-less",
 	"enemies-close-freeze",
 	"enemies-close-damage",
