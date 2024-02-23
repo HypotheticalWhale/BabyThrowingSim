@@ -55,8 +55,8 @@ texture = ExtResource("4_onrnb")
 position = Vector2(183, 219)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(418, 195)
-zoom = Vector2(1.4, 1.4)
+position = Vector2(428, 196)
+zoom = Vector2(1.5, 1.5)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(890, 302)
