@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=15 format=3 uid="uid://o5alyyhdvq4h"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
@@ -12,16 +12,39 @@
 [ext_resource type="Texture2D" uid="uid://x44fejyn8kdg" path="res://assets/BeefSoapAd.png" id="4_onrnb"]
 [ext_resource type="Texture2D" uid="uid://c6wu4ks0moel7" path="res://assets/DamageRack.png" id="5_2vydq"]
 [ext_resource type="Texture2D" uid="uid://bimjbvl02s345" path="res://assets/PorchFacade.png" id="7_r06g6"]
+[ext_resource type="Texture2D" uid="uid://bxkb3tvqnnb7n" path="res://assets/Porch.png" id="7_tpx61"]
+[ext_resource type="Texture2D" uid="uid://4kjde4mrohju" path="res://assets/trapdoor.png" id="8_p06lc"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
 spawn_reg_dad = true
 
-[node name="Interior" type="Sprite2D" parent="."]
-position = Vector2(20, 276)
+[node name="PorchBackground" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(411, 184)
+texture = ExtResource("4_h3b1c")
+
+[node name="Player" parent="." instance=ExtResource("1_jcchd")]
+
+[node name="Porch" type="Sprite2D" parent="."]
+position = Vector2(71, 230)
+texture = ExtResource("7_tpx61")
+
+[node name="PorchWall" type="Sprite2D" parent="Porch"]
+position = Vector2(-51, 34)
+texture = ExtResource("7_r06g6")
+
+[node name="Trapdoor" type="Sprite2D" parent="Porch"]
+position = Vector2(60, -24)
+texture = ExtResource("8_p06lc")
+offset = Vector2(16, 11)
+
+[node name="Interior" type="Sprite2D" parent="Porch"]
+z_index = -1
+position = Vector2(-51, 46)
 texture = ExtResource("2_8bhpa")
 
-[node name="PermaDamageButton" type="TextureButton" parent="Interior"]
+[node name="PermaDamageButton" type="TextureButton" parent="Porch/Interior"]
 offset_left = -56.0
 offset_top = -26.0
 offset_right = -16.0
@@ -29,18 +52,10 @@ offset_bottom = 14.0
 texture_normal = ExtResource("3_1ytwl")
 texture_pressed = ExtResource("4_0eyy7")
 
-[node name="PermaDamageIndicator" type="Sprite2D" parent="Interior"]
+[node name="PermaDamageIndicator" type="Sprite2D" parent="Porch/Interior"]
 position = Vector2(-39, 18)
 texture = ExtResource("5_2vydq")
 hframes = 4
-
-[node name="PorchBackground" type="Sprite2D" parent="."]
-position = Vector2(411, 184)
-texture = ExtResource("4_h3b1c")
-
-[node name="PorchWall" type="Sprite2D" parent="PorchBackground"]
-position = Vector2(-391, 80)
-texture = ExtResource("7_r06g6")
 
 [node name="Billboard" type="Sprite2D" parent="."]
 position = Vector2(491, 158)
@@ -50,9 +65,6 @@ texture = ExtResource("3_wfr5g")
 texture = ExtResource("4_onrnb")
 
 [node name="InGameOverlay" parent="." instance=ExtResource("2_tsnw5")]
-
-[node name="Player" parent="." instance=ExtResource("1_jcchd")]
-position = Vector2(183, 219)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(418, 195)

@@ -33,12 +33,14 @@ size_flags_vertical = 0
 [node name="MoneyLabel" type="Label" parent="TopRightContainer/MarginContainer/MoneyContainer"]
 layout_mode = 2
 theme = ExtResource("1_5f5rg")
+theme_override_font_sizes/font_size = 22
 text = "Money: $"
 horizontal_alignment = 2
 
 [node name="CurrentMoney" type="Label" parent="TopRightContainer/MarginContainer/MoneyContainer"]
 layout_mode = 2
 theme = ExtResource("1_5f5rg")
+theme_override_font_sizes/font_size = 22
 script = ExtResource("1_058lx")
 
 [node name="HealthMargin" type="MarginContainer" parent="TopRightContainer"]
@@ -50,19 +52,27 @@ layout_mode = 2
 
 [node name="HealthLabel" type="Label" parent="TopRightContainer/HealthMargin/HealthContainer"]
 layout_mode = 2
+theme = ExtResource("1_5f5rg")
+theme_override_font_sizes/font_size = 22
 text = "Sanity Left:"
 
 [node name="CurrentHealth" type="Label" parent="TopRightContainer/HealthMargin/HealthContainer"]
 layout_mode = 2
+theme = ExtResource("1_5f5rg")
+theme_override_font_sizes/font_size = 22
 text = "0"
 script = ExtResource("2_427qk")
 
 [node name="Label" type="Label" parent="TopRightContainer/HealthMargin/HealthContainer"]
 layout_mode = 2
+theme = ExtResource("1_5f5rg")
+theme_override_font_sizes/font_size = 22
 text = "/"
 
 [node name="MaxHealth" type="Label" parent="TopRightContainer/HealthMargin/HealthContainer"]
 layout_mode = 2
+theme = ExtResource("1_5f5rg")
+theme_override_font_sizes/font_size = 22
 text = "0"
 script = ExtResource("4_ovbsm")
 
@@ -84,11 +94,13 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("1_5f5rg")
+theme_override_font_sizes/font_size = 22
 text = "Confidence:"
 
 [node name="CurrentExp" type="Label" parent="TopLeftContainer/ExpMargin/ExpContainer"]
 layout_mode = 2
 theme = ExtResource("1_5f5rg")
+theme_override_font_sizes/font_size = 22
 text = "0"
 script = ExtResource("1_l5nsb")
 
@@ -103,14 +115,18 @@ layout_mode = 2
 [node name="LevelLabel" type="Label" parent="TopLeftContainer/LevelMargin/LevelContainer"]
 layout_mode = 2
 theme = ExtResource("1_5f5rg")
+theme_override_font_sizes/font_size = 22
 text = "You are a level "
 
 [node name="CurrentLevel" type="Label" parent="TopLeftContainer/LevelMargin/LevelContainer"]
 layout_mode = 2
 theme = ExtResource("1_5f5rg")
+theme_override_font_sizes/font_size = 22
 script = ExtResource("4_4y85q")
 
 [node name="LevelLabel2" type="Label" parent="TopLeftContainer/LevelMargin/LevelContainer"]
 layout_mode = 2
+theme = ExtResource("1_5f5rg")
+theme_override_font_sizes/font_size = 22
 text = " mom
 "
