@@ -49,9 +49,12 @@ func reset_pick_options():
 		if upgrade == "multi" and current_run_upgrades[upgrade] == 2 and current_run_upgrades.has(upgrade):
 			print("Multi is at level 3. Remove from dictionary")			
 			skill_upgrade_options.erase(upgrade)
+			
 		if current_run_upgrades[upgrade] == 5 and current_run_upgrades.has(upgrade):
 			print(upgrade + " is at level 5. Remove from dictionary")
-			skill_upgrade_options.erase(upgrade)
+			if upgrade != "max-health":
+				skill_upgrade_options.erase(upgrade)
+			print("new upgrade array: ",skill_upgrade_options)
 			
 # GET INPUT FROM PLAYER
 func _on_first_button_pressed():

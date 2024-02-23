@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Exposed variables
-@export var speed: float = 200.0
+@export var initial_speed: float = 200.0
 @export var direction: Vector2 = Vector2.LEFT  # Adjust the direction as needed
 @export var spawn_interval: float = 2.0
 @export var damage: int = 1
@@ -9,10 +9,12 @@ extends CharacterBody2D
 @export var money_drop_rate: float = 0.4
 @export var MAX_HP:int = 1
 @export var current_hp:int = 1
+var speed
 
 var you_got_cash = preload("res://Enemy/DollarSign.tscn")
 
 func _ready():
+	speed = initial_speed
 	$AnimationPlayer.play("walk_left")
 	velocity = direction * speed
 
@@ -29,7 +31,10 @@ func _on_hurtbox_body_entered(body):
 	self.queue_free()
 
 func _on_hurtbox_area_entered(area):
-	if area.owner.type == "freeze_area":
+	if area.owner.type == "slow_aura":
+		speed = initial_speed * area.owner.slow_multiplier
+		velocity = direction * speed
+	elif area.owner.type == "freeze_area":
 		velocity = Vector2(0,0)
 		await get_tree().create_timer(1.0).timeout
 		velocity = direction * speed
