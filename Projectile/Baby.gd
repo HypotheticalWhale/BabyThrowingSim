@@ -55,7 +55,7 @@ func _on_area_2d_area_entered(area):
 	var shiftedPos = Vector2(currentPos.x + 1, currentPos.y)	
 	get_tree().current_scene.add_child(damage_number)
 	damage_number.global_position = shiftedPos
-	damage_number.get_child(0).text = str(damage)	
+	damage_number.get_child(0).text = str(damage)
 	if exploding >= 1:
 		var explode = explosion_scene.instantiate()
 		explode.level = exploding
