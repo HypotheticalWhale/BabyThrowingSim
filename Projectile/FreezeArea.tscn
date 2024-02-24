@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cau1pwllcc5mo"]
 
-[ext_resource type="Texture2D" uid="uid://pu286uobp0g8" path="res://assets/Fish.png" id="1_3ox4y"]
 [ext_resource type="Script" path="res://Projectile/FreezeArea.gd" id="1_pylxx"]
+[ext_resource type="Texture2D" uid="uid://diiukwxb3gw6r" path="res://assets/Flash.png" id="2_rmfhx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36rgd"]
 size = Vector2(499, 591)
@@ -19,9 +19,9 @@ position = Vector2(239.5, 285.5)
 shape = SubResource("RectangleShape2D_36rgd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.258824)
 position = Vector2(0, 2.5)
-scale = Vector2(31, 36.9375)
-texture = ExtResource("1_3ox4y")
+texture = ExtResource("2_rmfhx")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2

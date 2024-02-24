@@ -34,7 +34,16 @@ func _on_hurtbox_area_entered(area):
 	if area.owner.type == "slow_aura":
 		speed = initial_speed * area.owner.slow_multiplier
 		velocity = direction * speed
-	elif area.owner.type == "freeze_area":
+	if area.owner.type == "damage_area":
+		get_hit(area.owner.damage)
+		GlobalVars.current_exp += exp
+		var randomValue := randf()
+		if randomValue <= money_drop_rate:
+			var give_player_money = you_got_cash.instantiate()
+			get_tree().current_scene.add_child(give_player_money)
+			give_player_money.global_position = global_position
+			GlobalVars.current_money += 1
+	if area.owner.type == "freeze_area":
 		velocity = Vector2(0,0)
 		await get_tree().create_timer(1.0).timeout
 		velocity = direction * speed

@@ -1,38 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4hm1g85durbr"]
+[gd_scene load_steps=10 format=3 uid="uid://c4hm1g85durbr"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_ynasf"]
 [ext_resource type="Texture2D" uid="uid://ox5174pwio7w" path="res://assets/Mom.png" id="2_ofyms"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_okdm2"]
 height = 274.0
-
-[sub_resource type="Animation" id="Animation_l2hnj"]
-resource_name = "to_trapdoor"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(183, 219), Vector2(120, 219)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 1]
-}
 
 [sub_resource type="Animation" id="Animation_dsqn7"]
 length = 0.001
@@ -62,7 +34,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_w7pcf"]
-resource_name = "to_interior"
+resource_name = "trapdoor_to_interior"
 length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -74,14 +46,116 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(40, 219), Vector2(60, 294)]
+"values": [Vector2(64, 219), Vector2(64, 292)]
+}
+
+[sub_resource type="Animation" id="Animation_l2hnj"]
+resource_name = "combat_to_trapdoor"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(183, 219), Vector2(120, 219)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_u3is4"]
+resource_name = "trapdoor_to_combat"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(120, 219), Vector2(183, 219)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_p7y2c"]
+resource_name = "interior_to_trapdoor"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(64, 292), Vector2(64, 219)]
+}
+
+[sub_resource type="Animation" id="Animation_l2hnj"]
+resource_name = "to_trapdoor"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(183, 219), Vector2(120, 219)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wydrd"]
 _data = {
 "RESET": SubResource("Animation_dsqn7"),
-"to_interior": SubResource("Animation_w7pcf"),
-"to_trapdoor": SubResource("Animation_l2hnj")
+"combat_to_trapdoor": SubResource("Animation_l2hnj"),
+"interior_to_trapdoor": SubResource("Animation_p7y2c"),
+"trapdoor_to_combat": SubResource("Animation_u3is4"),
+"trapdoor_to_interior": SubResource("Animation_w7pcf")
 }
 
 [node name="Player" type="Node2D"]
@@ -94,18 +168,12 @@ hframes = 2
 vframes = 2
 frame = 2
 
-[node name="reload_timer" type="Timer" parent="."]
-one_shot = true
-
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_okdm2")
-
-[node name="freeze_enemy_timer" type="Timer" parent="."]
-wait_time = 0.1
 
 [node name="ProjectilePos" type="Marker2D" parent="."]
 position = Vector2(16, 0)
@@ -115,6 +183,19 @@ libraries = {
 "": SubResource("AnimationLibrary_wydrd")
 }
 
-[connection signal="timeout" from="reload_timer" to="." method="_on_reload_timer_timeout"]
+[node name="freeze_enemy_timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="damage_enemy_timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="reload_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="heal_timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="freeze_enemy_timer" to="." method="_on_freeze_enemy_timer_timeout"]
+[connection signal="timeout" from="damage_enemy_timer" to="." method="_on_damage_enemy_timer_timeout"]
+[connection signal="timeout" from="reload_timer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="heal_timer" to="." method="_on_heal_timer_timeout"]
