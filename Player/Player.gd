@@ -20,7 +20,6 @@ var current_run_upgrades = {
 	"enemies-close-freeze":0,
 	"enemies-close-damage":0,
 	"enemies-close-slow":0,
-	"side-gun":0,
 	"damage-up":0,
 	"reload-speed":0,
 	"max-health":0,
@@ -30,13 +29,15 @@ var current_run_upgrades = {
 var enemies_spawn_less_options = [1,0.95,0.9,0.85,0.8,0.75]
 var spawn_less_index
 var freeze_enemy_timer_options = [0,3,2.2,1.7,1.5,1]
-var damage_enemy_timer_options = [0,3,2.2,1.7,1.5,1]
+var damage_enemy_timer_options = [0,3,1,1.7,1.5,1]
+var heal_timer_options = [1,10,9,8,7,6,5]
 var slow_enemy_options = [1,0.6,0.5,0.4,0.3,0.2]
 var damage_up_options = [0,0.5,1,1.5,2,2.5]
 var reload_speed_options = [1,0.95,0.9,0.87,0.82,0.75]
 
 @onready var spawn_freeze_aoe = $freeze_enemy_timer
 @onready var spawn_damage_aoe = $damage_enemy_timer
+@onready var heal_timer = $heal_timer
 @onready var reload_timer = $reload_timer
 @export var MAX_HEALTH = 1
 
@@ -159,3 +160,10 @@ func _on_damage_enemy_timer_timeout():
 	var damage_aoe = damage_area.instantiate()
 	add_child(damage_aoe)
 	damage_aoe.global_position = $ProjectilePos.global_position
+
+func _on_heal_timer_timeout():
+	if GlobalVars.current_health < MAX_HEALTH:
+		GlobalVars.current_health += 1
+	heal_timer.wait_time = heal_timer_options[current_run_upgrades["heal-periodically"]]
+	heal_timer.start()
+		
