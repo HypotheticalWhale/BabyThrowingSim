@@ -1,6 +1,7 @@
 extends Node2D
 var current_projectile = preload("res://Projectile/Baby.tscn")
 var freeze_area = preload("res://Projectile/FreezeArea.tscn")
+var damage_area = preload("res://Projectile/DamageArea.tscn")
 var slow_area = preload("res://Projectile/SlowAura.tscn")
 var current_exp = 0
 var type = "player"
@@ -24,17 +25,18 @@ var current_run_upgrades = {
 	"reload-speed":0,
 	"max-health":0,
 	"heal-periodically":0,
-	"charge-shot-bigger":0
 }
 
 var enemies_spawn_less_options = [1,0.95,0.9,0.85,0.8,0.75]
 var spawn_less_index
 var freeze_enemy_timer_options = [0,3,2.2,1.7,1.5,1]
-var slow_enemy_options = [1,0.3,0.8,0.7,0.6,0.5]
+var damage_enemy_timer_options = [0,3,2.2,1.7,1.5,1]
+var slow_enemy_options = [1,0.6,0.5,0.4,0.3,0.2]
 var damage_up_options = [0,0.5,1,1.5,2,2.5]
 var reload_speed_options = [1,0.95,0.9,0.87,0.82,0.75]
 
 @onready var spawn_freeze_aoe = $freeze_enemy_timer
+@onready var spawn_damage_aoe = $damage_enemy_timer
 @onready var reload_timer = $reload_timer
 @export var MAX_HEALTH = 1
 
@@ -64,6 +66,8 @@ func _physics_process(delta):
 		reload_timer.wait_time = reload_speed_options[current_run_upgrades["reload-speed"]]
 	if current_run_upgrades["enemies-close-freeze"] > 0:
 		spawn_freeze_aoe.wait_time = freeze_enemy_timer_options[current_run_upgrades["enemies-close-freeze"]]
+	if current_run_upgrades["enemies-close-damage"] > 0:
+		spawn_damage_aoe.wait_time = damage_enemy_timer_options[current_run_upgrades["enemies-close-damage"]]
 	if current_run_upgrades["enemies-close-slow"] > 0:
 		slow_aoe.slow_multiplier = slow_enemy_options[current_run_upgrades["enemies-close-slow"]]
 	
@@ -151,3 +155,7 @@ func _on_freeze_enemy_timer_timeout():
 	add_child(freeze_aoe)
 	freeze_aoe.global_position = $ProjectilePos.global_position
 	
+func _on_damage_enemy_timer_timeout():
+	var damage_aoe = damage_area.instantiate()
+	add_child(damage_aoe)
+	damage_aoe.global_position = $ProjectilePos.global_position

@@ -13,7 +13,6 @@ var skill_upgrade_options = [
 	"reload-speed",
 	"max-health",
 	"heal-periodically",
-	"charge-shot-bigger"
 ]
 @onready var current_run_upgrades = get_tree().current_scene.get_node("Player").current_run_upgrades
 
@@ -65,6 +64,8 @@ func _on_first_button_pressed():
 		get_tree().current_scene.get_node("Player").MAX_HEALTH += 1
 	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "enemies-close-freeze":
 		get_tree().current_scene.get_node("Player").get_node("freeze_enemy_timer").start()
+	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "enemies-close-damage":
+		get_tree().current_scene.get_node("Player").get_node("damage_enemy_timer").start()
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
 	get_tree().paused = false
@@ -81,6 +82,8 @@ func _on_second_button_pressed():
 		get_tree().current_scene.get_node("Player").MAX_HEALTH += 1
 	if $VBoxContainer/HBoxContainer/SecondButton.current_skill == "enemies-close-freeze":
 		get_tree().current_scene.get_node("Player").get_node("freeze_enemy_timer").start()
+	if $VBoxContainer/HBoxContainer/SecondButton.current_skill == "enemies-close-damage":
+		get_tree().current_scene.get_node("Player").get_node("damage_enemy_timer").start()
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
 	get_tree().paused = false
@@ -97,6 +100,8 @@ func _on_third_button_pressed():
 		get_tree().current_scene.get_node("Player").MAX_HEALTH += 1
 	if $VBoxContainer/HBoxContainer/ThirdButton.current_skill == "enemies-close-freeze":
 		get_tree().current_scene.get_node("Player").get_node("freeze_enemy_timer").start()
+	if $VBoxContainer/HBoxContainer/ThirdButton.current_skill == "enemies-close-damage":
+		get_tree().current_scene.get_node("Player").get_node("damage_enemy_timer").start()
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
 	get_tree().paused = false
