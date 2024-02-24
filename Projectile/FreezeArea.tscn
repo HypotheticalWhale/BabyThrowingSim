@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Projectile/FreezeArea.gd" id="1_pylxx"]
 [ext_resource type="Texture2D" uid="uid://diiukwxb3gw6r" path="res://assets/Flash.png" id="2_a1ouk"]
 
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36rgd"]
 size = Vector2(499, 591)
 

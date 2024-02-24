@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4cc5s2kpfbcr"
-
-path="res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"
+uid="uid://c8i0cw40e6wi7"
+path="res://.godot/imported/recp_cannon_ctrl.png-fa5e0651615f4924799a361e63028b85.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Camera.png"
-dest_files=["res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"]
+source_file="res://sample_assets/recp_cannon_ctrl.png"
+dest_files=["res://.godot/imported/recp_cannon_ctrl.png-fa5e0651615f4924799a361e63028b85.ctex"]
 
 [params]
 

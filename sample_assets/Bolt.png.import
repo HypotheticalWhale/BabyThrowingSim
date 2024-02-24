@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4cc5s2kpfbcr"
-
-path="res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"
+uid="uid://c3j5gl2xbyksm"
+path="res://.godot/imported/Bolt.png-3c7ce508a18a5002c72efe0e0adcd4d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Camera.png"
-dest_files=["res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"]
+source_file="res://sample_assets/Bolt.png"
+dest_files=["res://.godot/imported/Bolt.png-3c7ce508a18a5002c72efe0e0adcd4d1.ctex"]
 
 [params]
 

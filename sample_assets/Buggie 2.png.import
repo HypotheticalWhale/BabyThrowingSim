@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4cc5s2kpfbcr"
-
-path="res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"
+uid="uid://cw6csq18bx1fd"
+path="res://.godot/imported/Buggie 2.png-897e9d67273fc3825fc59a8ca3d0f049.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Camera.png"
-dest_files=["res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"]
+source_file="res://sample_assets/Buggie 2.png"
+dest_files=["res://.godot/imported/Buggie 2.png-897e9d67273fc3825fc59a8ca3d0f049.ctex"]
 
 [params]
 

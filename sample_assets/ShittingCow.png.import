@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4cc5s2kpfbcr"
-
-path="res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"
+uid="uid://dib8lmr4s2eu"
+path="res://.godot/imported/ShittingCow.png-91d1fb50def52e61d8860c82aed4333b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Camera.png"
-dest_files=["res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"]
+source_file="res://sample_assets/ShittingCow.png"
+dest_files=["res://.godot/imported/ShittingCow.png-91d1fb50def52e61d8860c82aed4333b.ctex"]
 
 [params]
 

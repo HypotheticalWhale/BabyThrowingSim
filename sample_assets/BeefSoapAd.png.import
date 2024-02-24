@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4cc5s2kpfbcr"
-
-path="res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"
+uid="uid://x44fejyn8kdg"
+path="res://.godot/imported/BeefSoapAd.png-89920a1aae84f4b8b80386da87f686f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Camera.png"
-dest_files=["res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"]
+source_file="res://sample_assets/BeefSoapAd.png"
+dest_files=["res://.godot/imported/BeefSoapAd.png-89920a1aae84f4b8b80386da87f686f1.ctex"]
 
 [params]
 

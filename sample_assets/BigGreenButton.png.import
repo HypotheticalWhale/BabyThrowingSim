@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4cc5s2kpfbcr"
-
-path="res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"
+uid="uid://dornbx7hjjao0"
+path="res://.godot/imported/BigGreenButton.png-53ca61afd55eb7135a9554070ece8913.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Camera.png"
-dest_files=["res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"]
+source_file="res://sample_assets/BigGreenButton.png"
+dest_files=["res://.godot/imported/BigGreenButton.png-53ca61afd55eb7135a9554070ece8913.ctex"]
 
 [params]
 

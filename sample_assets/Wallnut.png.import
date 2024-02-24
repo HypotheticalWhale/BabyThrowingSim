@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4cc5s2kpfbcr"
-
-path="res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"
+uid="uid://csdg7r1fp48ho"
+path="res://.godot/imported/Wallnut.png-c89db3e9295ce8028c6d223cd5ef80c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Camera.png"
-dest_files=["res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"]
+source_file="res://sample_assets/Wallnut.png"
+dest_files=["res://.godot/imported/Wallnut.png-c89db3e9295ce8028c6d223cd5ef80c8.ctex"]
 
 [params]
 

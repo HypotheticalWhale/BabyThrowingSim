@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4cc5s2kpfbcr"
-
-path="res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"
+uid="uid://uslj7ijko42k"
+path="res://.godot/imported/meter_green.png-aed15c061e4ddae37efda7cddd9ffbea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Camera.png"
-dest_files=["res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"]
+source_file="res://sample_assets/meter_green.png"
+dest_files=["res://.godot/imported/meter_green.png-aed15c061e4ddae37efda7cddd9ffbea.ctex"]
 
 [params]
 

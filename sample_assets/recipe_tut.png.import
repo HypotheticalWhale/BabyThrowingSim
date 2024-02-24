@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4cc5s2kpfbcr"
-
-path="res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"
+uid="uid://civ4hi06ejvh6"
+path="res://.godot/imported/recipe_tut.png-9dffbf7c732554ea69a4e36b1d085289.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Camera.png"
-dest_files=["res://.godot/imported/Camera.png-b8037e4e439e5965d69fc76b34be639f.ctex"]
+source_file="res://sample_assets/recipe_tut.png"
+dest_files=["res://.godot/imported/recipe_tut.png-9dffbf7c732554ea69a4e36b1d085289.ctex"]
 
 [params]
 
