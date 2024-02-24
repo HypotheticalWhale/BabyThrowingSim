@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=19 format=3 uid="uid://o5alyyhdvq4h"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
@@ -14,6 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://bimjbvl02s345" path="res://assets/PorchFacade.png" id="7_r06g6"]
 [ext_resource type="Texture2D" uid="uid://bxkb3tvqnnb7n" path="res://assets/Porch.png" id="7_tpx61"]
 [ext_resource type="Texture2D" uid="uid://4kjde4mrohju" path="res://assets/trapdoor.png" id="8_p06lc"]
+[ext_resource type="Script" path="res://UI/StartButton.gd" id="11_72rcm"]
+[ext_resource type="Texture2D" uid="uid://c3a5rb57jvkrl" path="res://assets/UpgradesButtonNormal.png" id="11_pfjov"]
+[ext_resource type="Texture2D" uid="uid://dajxh02mihts4" path="res://assets/UpgradesButtonPressed.png" id="12_ygahd"]
+[ext_resource type="Texture2D" uid="uid://b3fiajblgvew4" path="res://assets/UpgradesButtonHover.png" id="13_4ekb5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
@@ -38,6 +42,18 @@ texture = ExtResource("7_r06g6")
 position = Vector2(60, -24)
 texture = ExtResource("8_p06lc")
 offset = Vector2(16, 11)
+
+[node name="StartButton" type="TextureButton" parent="Porch"]
+visible = false
+offset_left = -5.0
+offset_top = -28.0
+offset_right = 123.0
+offset_bottom = 100.0
+scale = Vector2(0.25, 0.25)
+texture_normal = ExtResource("11_pfjov")
+texture_pressed = ExtResource("12_ygahd")
+texture_hover = ExtResource("13_4ekb5")
+script = ExtResource("11_72rcm")
 
 [node name="Interior" type="Sprite2D" parent="Porch"]
 z_index = -1
@@ -74,8 +90,11 @@ zoom = Vector2(1.5, 1.5)
 position = Vector2(890, 302)
 
 [node name="CombatCameraMarker" type="Marker2D" parent="."]
+position = Vector2(428, 196)
 
 [node name="InteriorCameraMarker" type="Marker2D" parent="."]
 position = Vector2(50, 256)
 
 [node name="LevelUpOptions" parent="." instance=ExtResource("4_2tcou")]
+
+[connection signal="pressed" from="Porch/StartButton" to="Porch/StartButton" method="_on_pressed"]
