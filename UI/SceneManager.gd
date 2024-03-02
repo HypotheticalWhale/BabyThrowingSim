@@ -56,7 +56,7 @@ func change_scene(old_scene, new_scene):
 		camera_movement_tween.tween_property(camera, "global_position", new_camera_position, camera_movement_duration).set_trans(Tween.TRANS_QUAD)
 		
 		var camera_zoom_tween = get_tree().create_tween()
-		var new_camera_zoom = Vector2(1, 1)
+		var new_camera_zoom = Vector2(1.5, 1.5)
 		camera_zoom_tween.tween_property(camera, "zoom", new_camera_zoom, camera_movement_duration)
 		
 		var porch_wall_transparency_tween = get_tree().create_tween()
