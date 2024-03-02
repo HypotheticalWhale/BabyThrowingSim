@@ -1,21 +1,20 @@
 extends CharacterBody2D
 
 # Exposed variables
-@export var initial_speed: float = 200.0
+@export var initial_speed: float = 100.0
 @export var direction: Vector2 = Vector2.LEFT  # Adjust the direction as needed
-@export var spawn_interval: float = 2.0
+@export var spawn_interval: float = 5
 @export var damage: int = 1
 @export var exp:int = 1
 @export var money_drop_rate: float = 0.4
-@export var MAX_HP:int = 1
-@export var current_hp:int = 1
+@export var MAX_HP:int = 3
+@export var current_hp:int = 3
 var speed
 
 var you_got_cash = preload("res://Enemy/DollarSign.tscn")
 
 func _ready():
 	speed = initial_speed
-	$AnimationPlayer.play("walk_left")
 	velocity = direction * speed
 
 func _physics_process(delta: float) -> void:
