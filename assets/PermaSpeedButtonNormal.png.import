@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw3skhw4okom3"
-path="res://.godot/imported/UpgradesButtonClicked.png-0e9a3d4ce969de1e66db6c36eaa448ba.ctex"
+uid="uid://cs2fnodikj1wk"
+path="res://.godot/imported/PermaSpeedButtonNormal.png-f8d62b66aa846530cbf78f0884e593c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/UpgradesButtonClicked.png"
-dest_files=["res://.godot/imported/UpgradesButtonClicked.png-0e9a3d4ce969de1e66db6c36eaa448ba.ctex"]
+source_file="res://assets/PermaSpeedButtonNormal.png"
+dest_files=["res://.godot/imported/PermaSpeedButtonNormal.png-f8d62b66aa846530cbf78f0884e593c6.ctex"]
 
 [params]
 
