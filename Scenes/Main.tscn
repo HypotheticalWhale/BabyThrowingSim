@@ -1,16 +1,17 @@
-[gd_scene load_steps=19 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=20 format=3 uid="uid://o5alyyhdvq4h"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
 [ext_resource type="Texture2D" uid="uid://cqf6ykpa5sbe2" path="res://assets/RoomInterior.png" id="2_8bhpa"]
 [ext_resource type="PackedScene" uid="uid://b5kwochsing33" path="res://UI/InGameOverlay.tscn" id="2_tsnw5"]
 [ext_resource type="Texture2D" uid="uid://dqn80kofyu36p" path="res://assets/PermaDamageButtonNormal.png" id="3_1ytwl"]
-[ext_resource type="Texture2D" uid="uid://46knn8816ogc" path="res://assets/Billboard.png" id="3_wfr5g"]
+[ext_resource type="Texture2D" path="res://assets/Billboard.png" id="3_wfr5g"]
 [ext_resource type="Texture2D" uid="uid://bs8pnvryeqjhw" path="res://assets/PermaDamageButtonPressed.png" id="4_0eyy7"]
 [ext_resource type="PackedScene" uid="uid://gni7cn8wa1ws" path="res://UI/LevelUpOptions.tscn" id="4_2tcou"]
 [ext_resource type="Texture2D" uid="uid://bgq4kmvjrbmjx" path="res://assets/PorchBackground.png" id="4_h3b1c"]
-[ext_resource type="Texture2D" uid="uid://x44fejyn8kdg" path="res://assets/BeefSoapAd.png" id="4_onrnb"]
+[ext_resource type="Texture2D" path="res://assets/BeefSoapAd.png" id="4_onrnb"]
 [ext_resource type="Texture2D" uid="uid://c6wu4ks0moel7" path="res://assets/DamageRack.png" id="5_2vydq"]
+[ext_resource type="Theme" uid="uid://brjt2pwolmayy" path="res://assets/RetroGamingTheme.tres" id="7_83w2i"]
 [ext_resource type="Texture2D" uid="uid://bimjbvl02s345" path="res://assets/PorchFacade.png" id="7_r06g6"]
 [ext_resource type="Texture2D" uid="uid://bxkb3tvqnnb7n" path="res://assets/Porch.png" id="7_tpx61"]
 [ext_resource type="Texture2D" uid="uid://4kjde4mrohju" path="res://assets/trapdoor.png" id="8_p06lc"]
@@ -50,6 +51,7 @@ offset_top = -28.0
 offset_right = 123.0
 offset_bottom = 100.0
 scale = Vector2(0.25, 0.25)
+theme = ExtResource("7_83w2i")
 texture_normal = ExtResource("11_pfjov")
 texture_pressed = ExtResource("12_ygahd")
 texture_hover = ExtResource("13_4ekb5")
@@ -65,6 +67,7 @@ offset_left = -56.0
 offset_top = -26.0
 offset_right = -16.0
 offset_bottom = 14.0
+theme = ExtResource("7_83w2i")
 texture_normal = ExtResource("3_1ytwl")
 texture_pressed = ExtResource("4_0eyy7")
 
