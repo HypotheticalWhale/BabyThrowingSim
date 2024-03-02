@@ -25,7 +25,6 @@ func _process(delta):
 func reset_all_stats():
 	current_exp = 0
 	current_health = 0
-	current_money = 0
 	current_level = 0
 	exp_to_next_level = 1
 	spawn_less_multiplier = 0
