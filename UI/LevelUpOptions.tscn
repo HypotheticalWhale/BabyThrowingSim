@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/LevelUpOptions.gd" id="1_hnxw3"]
 [ext_resource type="Script" path="res://UI/Button.gd" id="2_hqkld"]
-[ext_resource type="Theme" path="res://assets/PixelTheme.tres" id="2_qap56"]
+[ext_resource type="Theme" uid="uid://brjt2pwolmayy" path="res://assets/RetroGamingTheme.tres" id="2_qap56"]
 [ext_resource type="Script" path="res://UI/SecondButton.gd" id="3_shk3t"]
 [ext_resource type="Texture2D" uid="uid://c3a5rb57jvkrl" path="res://assets/UpgradesButtonNormal.png" id="3_wll8i"]
 [ext_resource type="Script" path="res://UI/ThirdButton.gd" id="4_8oauw"]
