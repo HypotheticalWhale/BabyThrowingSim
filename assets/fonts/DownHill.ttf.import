@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://onwuxo86a8kn"
-path="res://.godot/imported/DownHill.ttf-24521d2034dc94bad2b7024742a5984b.fontdata"
+path="res://.godot/imported/DownHill.ttf-98be3e90c581a994782dbbd2e85a746b.fontdata"
 
 [deps]
 
-source_file="res://sample_assets/fonts/DownHill.ttf"
-dest_files=["res://.godot/imported/DownHill.ttf-24521d2034dc94bad2b7024742a5984b.fontdata"]
+source_file="res://assets/fonts/DownHill.ttf"
+dest_files=["res://.godot/imported/DownHill.ttf-98be3e90c581a994782dbbd2e85a746b.fontdata"]
 
 [params]
 

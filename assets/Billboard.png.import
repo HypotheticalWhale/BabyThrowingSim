@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x44fejyn8kdg"
-path="res://.godot/imported/BeefSoapAd.png-89920a1aae84f4b8b80386da87f686f1.ctex"
+uid="uid://46knn8816ogc"
+path="res://.godot/imported/Billboard.png-d556b32cea9529d783f24112241b67b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sample_assets/BeefSoapAd.png"
-dest_files=["res://.godot/imported/BeefSoapAd.png-89920a1aae84f4b8b80386da87f686f1.ctex"]
+source_file="res://assets/Billboard.png"
+dest_files=["res://.godot/imported/Billboard.png-d556b32cea9529d783f24112241b67b8.ctex"]
 
 [params]
 
