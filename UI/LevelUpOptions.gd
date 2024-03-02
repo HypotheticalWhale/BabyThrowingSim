@@ -62,7 +62,7 @@ func _on_first_button_pressed():
 		get_tree().current_scene.get_node("Player").MAX_HEALTH += 1
 	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "enemies-close-freeze":
 		get_tree().current_scene.get_node("Player").get_node("freeze_enemy_timer").start()
-		get_tree().current_scene.get_node("FreezeCameraSprite").visible = true		
+		get_tree().current_scene.get_node("FreezeCameraSprite").visible = true
 	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "enemies-close-damage":
 		get_tree().current_scene.get_node("Player").get_node("damage_enemy_timer").start()
 	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "heal-periodically":

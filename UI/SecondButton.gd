@@ -1,5 +1,5 @@
 extends TextureButton
-var current_skill
+var current_skill = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

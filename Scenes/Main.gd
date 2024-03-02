@@ -1,14 +1,24 @@
 extends Node2D
-@export var spawn_reg_dad: bool# Adjust this value to set the spawn interval in seconds
+@export var spawn_reg_dad: bool# Adjust this value to set whether or not dad spawns
+@export var spawn_tough_dad: bool
+
 @onready var regular_dad = preload("res://Enemy/RegularDad/RegularDad.tscn")
+@onready var tough_dad = preload("res://Enemy/ToughDad/ToughDad.tscn")
 var regular_dad_spawn_timer
+var tough_dad_spawn_timer
 var type = "main"
+var enemies = []
+var spawn_timers = []
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var reg_dad = regular_dad.instantiate()
 	var regular_dad_spawn_interval = reg_dad.spawn_interval
+	var tog_dad = tough_dad.instantiate()
+	var tough_dad_spawn_interval = tog_dad.spawn_interval
 	if spawn_reg_dad:
 		start_timer(regular_dad_spawn_interval,"regular_dad")
+	if spawn_tough_dad:
+		start_timer(tough_dad_spawn_interval,"tough_dad")
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -19,11 +29,40 @@ func start_timer(spawn_interval, typeofdad):
 		regular_dad_spawn_timer.one_shot = false
 		regular_dad_spawn_timer.wait_time = spawn_interval
 		add_child(regular_dad_spawn_timer)
+		spawn_timers.append(regular_dad_spawn_timer)
 		regular_dad_spawn_timer.timeout.connect(_on_regdad_spawn_timer_timeout)
 		regular_dad_spawn_timer.start()
 		return
+	if typeofdad == "tough_dad":
+		tough_dad_spawn_timer = Timer.new()
+		tough_dad_spawn_timer.one_shot = false
+		tough_dad_spawn_timer.wait_time = spawn_interval
+		add_child(tough_dad_spawn_timer)
+		spawn_timers.append(tough_dad_spawn_timer)
+		tough_dad_spawn_timer.timeout.connect(_on_toughdad_spawn_timer_timeout)
+		tough_dad_spawn_timer.start()
+		
+func kill_all_dads():
+	for i in range(1, enemies.size()):
+		if enemies[i] != null:
+			enemies[i].queue_free()
+	enemies = []
+	
+func stop_all_timers():
+	for timer in spawn_timers:
+		timer.stop()
+func start_all_timers():
+	for timer in spawn_timers:
+		timer.start()	
 		
 func _on_regdad_spawn_timer_timeout() -> void:
 	var reg_dad = regular_dad.instantiate()
 	reg_dad.global_position = $Marker2D.global_position
 	add_child(reg_dad)
+	enemies.append(reg_dad)
+
+func _on_toughdad_spawn_timer_timeout() -> void:
+	var tog_dad = tough_dad.instantiate()
+	tog_dad.global_position = $Marker2D.global_position
+	add_child(tog_dad)
+	enemies.append(tog_dad)

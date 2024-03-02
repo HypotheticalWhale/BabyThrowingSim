@@ -22,7 +22,7 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
-spawn_reg_dad = true
+spawn_tough_dad = true
 
 [node name="PorchBackground" type="Sprite2D" parent="."]
 z_index = -2
