@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=25 format=3 uid="uid://o5alyyhdvq4h"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
@@ -19,6 +19,11 @@
 [ext_resource type="Texture2D" uid="uid://c3a5rb57jvkrl" path="res://assets/UpgradesButtonNormal.png" id="11_pfjov"]
 [ext_resource type="Texture2D" uid="uid://dajxh02mihts4" path="res://assets/UpgradesButtonPressed.png" id="12_ygahd"]
 [ext_resource type="Texture2D" uid="uid://b3fiajblgvew4" path="res://assets/UpgradesButtonHover.png" id="13_4ekb5"]
+[ext_resource type="Script" path="res://Scenes/Interior.gd" id="13_s0b3w"]
+[ext_resource type="Texture2D" uid="uid://cs2fnodikj1wk" path="res://assets/PermaSpeedButtonNormal.png" id="16_dlk23"]
+[ext_resource type="Texture2D" uid="uid://tue3cvq4psa0" path="res://assets/PermaSpeedButtonPressed.png" id="17_sg5xq"]
+[ext_resource type="Texture2D" uid="uid://cvnte6106mkni" path="res://assets/PermaDexterityButtonNormal.png" id="18_u5byo"]
+[ext_resource type="Texture2D" uid="uid://cki8m7d3vhd7u" path="res://assets/PermaDexterityButtonPressed.png" id="19_4myyn"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
@@ -61,6 +66,7 @@ script = ExtResource("11_72rcm")
 z_index = -1
 position = Vector2(-51, 46)
 texture = ExtResource("2_8bhpa")
+script = ExtResource("13_s0b3w")
 
 [node name="PermaDamageButton" type="TextureButton" parent="Porch/Interior"]
 offset_left = -56.0
@@ -75,6 +81,42 @@ texture_pressed = ExtResource("4_0eyy7")
 position = Vector2(-39, 18)
 texture = ExtResource("5_2vydq")
 hframes = 4
+
+[node name="PermaSpeedButton" type="TextureButton" parent="Porch/Interior"]
+offset_left = -18.0
+offset_top = -26.0
+offset_right = 22.0
+offset_bottom = 14.0
+pivot_offset = Vector2(56, 14)
+theme = ExtResource("7_83w2i")
+texture_normal = ExtResource("16_dlk23")
+texture_pressed = ExtResource("17_sg5xq")
+
+[node name="PermaSpeedIndicator" type="Sprite2D" parent="Porch/Interior"]
+position = Vector2(-1, 18)
+texture = ExtResource("5_2vydq")
+hframes = 4
+
+[node name="PermaDexterityButton" type="TextureButton" parent="Porch/Interior"]
+offset_left = 18.0
+offset_top = -26.0
+offset_right = 58.0
+offset_bottom = 14.0
+pivot_offset = Vector2(56, 14)
+theme = ExtResource("7_83w2i")
+texture_normal = ExtResource("18_u5byo")
+texture_pressed = ExtResource("19_4myyn")
+
+[node name="PermaDexterityIndicator" type="Sprite2D" parent="Porch/Interior"]
+position = Vector2(36, 18)
+texture = ExtResource("5_2vydq")
+hframes = 4
+
+[node name="PermaAcceptDialog" type="AcceptDialog" parent="Porch/Interior"]
+title = "ARE YOU SURE THO"
+initial_position = 1
+size = Vector2i(360, 100)
+theme = ExtResource("7_83w2i")
 
 [node name="Billboard" type="Sprite2D" parent="."]
 z_index = -2
@@ -102,3 +144,6 @@ position = Vector2(50, 256)
 [node name="LevelUpOptions" parent="." instance=ExtResource("4_2tcou")]
 
 [connection signal="pressed" from="Porch/StartButton" to="Porch/StartButton" method="_on_pressed"]
+[connection signal="pressed" from="Porch/Interior/PermaDamageButton" to="Porch/Interior" method="_on_perma_damage_button_pressed"]
+[connection signal="canceled" from="Porch/Interior/PermaAcceptDialog" to="Porch/Interior" method="_on_perma_accept_dialog_canceled"]
+[connection signal="confirmed" from="Porch/Interior/PermaAcceptDialog" to="Porch/Interior" method="_on_perma_accept_dialog_confirmed"]
