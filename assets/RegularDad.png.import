@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://so1vmpt5rc3f"
-path="res://.godot/imported/Dad.png-9a1ccb2593b24c5a9090835868aeab6c.ctex"
+uid="uid://dcspnrl5mkl3v"
+path="res://.godot/imported/RegularDad.png-dba26b335b1bf41c91dcc09c1ab8f4e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Dad.png"
-dest_files=["res://.godot/imported/Dad.png-9a1ccb2593b24c5a9090835868aeab6c.ctex"]
+source_file="res://assets/RegularDad.png"
+dest_files=["res://.godot/imported/RegularDad.png-dba26b335b1bf41c91dcc09c1ab8f4e0.ctex"]
 
 [params]
 
