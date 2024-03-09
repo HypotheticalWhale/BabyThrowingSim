@@ -145,5 +145,7 @@ position = Vector2(50, 256)
 
 [connection signal="pressed" from="Porch/StartButton" to="Porch/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="Porch/Interior/PermaDamageButton" to="Porch/Interior" method="_on_perma_damage_button_pressed"]
+[connection signal="pressed" from="Porch/Interior/PermaSpeedButton" to="Porch/Interior" method="_on_perma_speed_button_pressed"]
+[connection signal="pressed" from="Porch/Interior/PermaDexterityButton" to="Porch/Interior" method="_on_perma_dexterity_button_pressed"]
 [connection signal="canceled" from="Porch/Interior/PermaAcceptDialog" to="Porch/Interior" method="_on_perma_accept_dialog_canceled"]
 [connection signal="confirmed" from="Porch/Interior/PermaAcceptDialog" to="Porch/Interior" method="_on_perma_accept_dialog_confirmed"]
