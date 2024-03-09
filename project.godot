@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GlobalVars="*res://UI/GlobalVars.gd"
 SceneManager="*res://UI/SceneManager.gd"
+PermaUpgrades="*res://UI/PermaUpgrades.gd"
 
 [display]
 

@@ -1,34 +1,50 @@
 extends Sprite2D
+var damage_upgrade_cost = 1
+var speed_upgrade_cost = 1
+var reload_upgrade_cost = 1
 
 
 func _on_perma_damage_button_pressed():
 	$PermaAcceptDialog.title = "DMG"	
-	$PermaAcceptDialog.dialog_text = "Make your babies bite harder on impact?"
 	$PermaAcceptDialog.visible = true
-
-
+	if GlobalVars.current_money >= damage_upgrade_cost:
+		$PermaAcceptDialog.dialog_text = "Make your babies bite harder on impact? Cost: $" + str(damage_upgrade_cost)
+	else:
+		$PermaAcceptDialog.dialog_text = "You're broke... You need $" + str(damage_upgrade_cost)
+	
 func _on_perma_speed_button_pressed():
 	$PermaAcceptDialog.title = "SPD"	
-	$PermaAcceptDialog.dialog_text = "Make your babies more aerodynamic?"	
 	$PermaAcceptDialog.visible = true
-
-
+	if GlobalVars.current_money >= speed_upgrade_cost:
+		$PermaAcceptDialog.dialog_text = "Make your babies more aerodynamic? Cost: $" + str(speed_upgrade_cost)
+	else:
+		$PermaAcceptDialog.dialog_text = "You're broke... You need $" + str(speed_upgrade_cost)
+		
 func _on_perma_dexterity_button_pressed():
 	$PermaAcceptDialog.title = "DEX"	
-	$PermaAcceptDialog.dialog_text = "Reload your babies faster?"
 	$PermaAcceptDialog.visible = true
+	if GlobalVars.current_money >= reload_upgrade_cost:
+		$PermaAcceptDialog.dialog_text = "Reload your babies faster? Cost: $" + str(reload_upgrade_cost)
+	else:
+		$PermaAcceptDialog.dialog_text = "You're broke... You need $" + str(reload_upgrade_cost)
 	
 	
 func _on_perma_accept_dialog_confirmed():
-	match $PermaAcceptDialog.title:
-		"DMG":
-			print("Damage up")
-			
-		"SPD":
-			print("spd up")
-			
-		"DEX":
-			print("Dex up")
+	if "You're broke..." in $PermaAcceptDialog.dialog_text:
+		return
+	if $PermaAcceptDialog.title == "DMG":
+		GlobalVars.current_money -= damage_upgrade_cost
+		damage_upgrade_cost *= 2
+		PermaUpgrades.dmg_lvl += 1
+	if $PermaAcceptDialog.title == "SPD":
+		GlobalVars.current_money -= speed_upgrade_cost
+		speed_upgrade_cost *= 2
+		PermaUpgrades.dmg_lvl += 1
+	if $PermaAcceptDialog.title == "DEX":
+		GlobalVars.current_money -= reload_upgrade_cost
+		reload_upgrade_cost *= 2
+		PermaUpgrades.dmg_lvl += 1
+
 
 
 func _on_perma_accept_dialog_canceled():

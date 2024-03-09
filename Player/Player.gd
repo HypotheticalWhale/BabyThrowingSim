@@ -70,7 +70,9 @@ func _physics_process(delta):
 	spawn_less_index = current_run_upgrades["enemies-spawn-less"]
 	GlobalVars.spawn_less_multiplier = enemies_spawn_less_options[spawn_less_index]
 	if current_run_upgrades["reload-speed"] > 0:
-		reload_timer.wait_time = reload_speed_options[current_run_upgrades["reload-speed"]]
+		var baby = current_projectile.instantiate()
+		var get_reload_speed = baby.reload_speed
+		reload_timer.wait_time = get_reload_speed * reload_speed_options[current_run_upgrades["reload-speed"]]
 	if current_run_upgrades["enemies-close-freeze"] > 0:
 		spawn_freeze_aoe.wait_time = freeze_enemy_timer_options[current_run_upgrades["enemies-close-freeze"]]
 	if current_run_upgrades["enemies-close-damage"] > 0:
@@ -90,6 +92,11 @@ func _input(event):
 
 func shoot_projectile():
 	var baby = current_projectile.instantiate()	
+	baby.initial_damage = PermaUpgrades.dmg_upgrade
+	baby.reload_speed = PermaUpgrades.reload_upgrade
+	print(PermaUpgrades.dmg_upgrade,baby.initial_damage)
+	print(PermaUpgrades.reload_upgrade,baby.reload_speed )
+	
 	if current_run_upgrades["damage-up"] > 0:
 		baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["damage-up"]]
 	if current_run_upgrades["bounce"] > 0:
@@ -99,15 +106,17 @@ func shoot_projectile():
 	add_child(baby)
 	var mouse_pos = get_global_mouse_position()
 	var direction = (mouse_pos - baby.global_position).normalized()
-	var initial_speed = 700  # Set your desired speed
+	var initial_speed = 700 * PermaUpgrades.spd_upgrade
 	baby.linear_velocity = direction * initial_speed
 	# Set cooldown timer for shooting
 	can_shoot = false
 	reload_timer.start()
 	if current_run_upgrades["multi"] >= 1 and multi:
-		var shiftedPos = Vector2(global_position.x, global_position.y+20)
+		var shiftedPos = Vector2(global_position.x+20, global_position.y+20)
 		baby.global_position = shiftedPos
 		baby = current_projectile.instantiate()
+		baby.initial_damage = PermaUpgrades.dmg_upgrade
+		baby.reload_speed = PermaUpgrades.reload_upgrade
 		if current_run_upgrades["bounce"] > 0:
 			baby.bounce = current_run_upgrades["bounce"]
 		if current_run_upgrades["damage-up"] > 0:
@@ -117,16 +126,18 @@ func shoot_projectile():
 		add_child(baby)
 		mouse_pos = get_global_mouse_position()
 		direction = (mouse_pos - baby.global_position).normalized()
-		initial_speed = 900  # Set your desired speed
+		initial_speed = 900  * PermaUpgrades.spd_upgrade
 		baby.linear_velocity = direction * initial_speed
 		baby.gravity = 3
 		# Set cooldown timer for shooting
 		can_shoot = false
 		reload_timer.start()
 	if current_run_upgrades["multi"] == 2 and multi:
-		var shiftedPos = Vector2(global_position.x, global_position.y-20)
+		var shiftedPos = Vector2(global_position.x-20, global_position.y-20)
 		baby.global_position = shiftedPos
 		baby = current_projectile.instantiate()
+		baby.initial_damage = PermaUpgrades.dmg_upgrade
+		baby.reload_speed = PermaUpgrades.reload_upgrade
 		if current_run_upgrades["damage-up"] > 0:
 			baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["damage-up"]]
 		if current_run_upgrades["bounce"] > 0:
@@ -136,7 +147,7 @@ func shoot_projectile():
 		add_child(baby)
 		mouse_pos = get_global_mouse_position()
 		direction = (mouse_pos - baby.global_position).normalized()
-		initial_speed = 600  # Set your desired speed
+		initial_speed = 600  * PermaUpgrades.spd_upgrade
 		baby.linear_velocity = direction * initial_speed
 		baby.gravity = 7		
 		# Set cooldown timer for shooting

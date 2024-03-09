@@ -7,14 +7,20 @@ var reload_speed = 1.0
 var exploding = 0
 var bounce = 0
 var initial_damage = 1
+var speed = 1
+var gravity_vector
 var damage = 1
 var bounced = 0
 var explosion_scene = preload("res://Projectile/Explosion.tscn")
 var damage_number_scene = preload("res://Enemy/DamageNumber.tscn")
 var allowed_time_to_bounce_options = [0,3,6,9,12,15]
 
+func _ready():
+	damage = initial_damage
+
 func _integrate_forces(state):
-	linear_velocity += Vector2(0, gravity) * state.step
+	gravity_vector = Vector2(0, gravity) * speed
+	linear_velocity += gravity_vector * state.step
 	rotation = linear_velocity.angle()  # This will orient the fireball in its movement direction
 	
 	if bounce >= 1:
