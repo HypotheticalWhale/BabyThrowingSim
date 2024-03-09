@@ -13,6 +13,21 @@ var skill_upgrade_options = [
 	"max-health",
 	"heal-periodically",
 ]
+
+var skill_upgrade_icon_dict = {
+	"exploding": "res://assets/ExplodingIcon.png",
+	"bounce": "res://assets/ExplodingIcon.png", #missing
+	"multi": "res://assets/MultiIcon.png",
+	"enemies-spawn-less": "res://assets/MultiIcon.png", #missin
+	"enemies-close-freeze": "res://assets/FreezeIcon.png",
+	"enemies-close-damage": "res://assets/FreezeIcon.png", #missing
+	"enemies-close-slow": "res://assets/SlowIcon.png",
+	"damage-up": "res://assets/DamageUp.png",
+	"reload-speed": "res://assets/ReloadSpeed.png",
+	"max-health": "res://assets/MaxHealthIcon.png",
+	"heal-periodically": "res://assets/HealPeriodically.png",
+}
+
 @onready var current_run_upgrades = get_tree().current_scene.get_node("Player").current_run_upgrades
 
 
@@ -38,8 +53,13 @@ func randomize_options():
 			selected.append(random_index)
 			picked_skills.append(skill_upgrade_options[random_index])
 	$VBoxContainer/HBoxContainer/FirstButton.current_skill = picked_skills[0]
+	$VBoxContainer/HBoxContainer/FirstButton/UpgradeIcon.texture = load(skill_upgrade_icon_dict[picked_skills[0]])
+	
 	$VBoxContainer/HBoxContainer/SecondButton.current_skill = picked_skills[1]
+	$VBoxContainer/HBoxContainer/SecondButton/UpgradeIcon.texture = load(skill_upgrade_icon_dict[picked_skills[1]])
+	
 	$VBoxContainer/HBoxContainer/ThirdButton.current_skill = picked_skills[2]
+	$VBoxContainer/HBoxContainer/ThirdButton/UpgradeIcon.texture = load(skill_upgrade_icon_dict[picked_skills[2]])
 	
 func reset_pick_options():
 	picked_skills = []
