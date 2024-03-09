@@ -82,6 +82,7 @@ func point_head_to_mouse():
 	var mouse_pos = get_global_mouse_position()  # Get the global position of the mouse cursor
 	var direction = (mouse_pos - global_position).normalized()  # Calculate the direction to the cursor
 	var angle = atan2(direction.y, direction.x)  # Calculate the angle in radians
+	$Sprite.rotation = angle
 
 func _input(event):
 	if can_shoot and Input.is_action_pressed("shoot"):
