@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cau1pwllcc5mo"]
 
 [ext_resource type="Script" path="res://Projectile/FreezeArea.gd" id="1_pylxx"]
-[ext_resource type="Texture2D" uid="uid://diiukwxb3gw6r" path="res://assets/Flash.png" id="2_3ofw4"]
+[ext_resource type="Texture2D" uid="uid://diiukwxb3gw6r" path="res://assets/Flash.png" id="2_a1ouk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_36rgd"]
 size = Vector2(193, 591)
@@ -22,7 +22,6 @@ shape = SubResource("RectangleShape2D_36rgd")
 modulate = Color(1, 1, 1, 0.439216)
 position = Vector2(0, 18.5)
 texture = ExtResource("2_a1ouk")
-
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2

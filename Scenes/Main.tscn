@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=26 format=3 uid="uid://o5alyyhdvq4h"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://tue3cvq4psa0" path="res://assets/PermaSpeedButtonPressed.png" id="17_sg5xq"]
 [ext_resource type="Texture2D" uid="uid://cvnte6106mkni" path="res://assets/PermaDexterityButtonNormal.png" id="18_u5byo"]
 [ext_resource type="Texture2D" uid="uid://cki8m7d3vhd7u" path="res://assets/PermaDexterityButtonPressed.png" id="19_4myyn"]
+[ext_resource type="Texture2D" uid="uid://c4cc5s2kpfbcr" path="res://assets/Camera.png" id="25_ant1q"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
@@ -143,6 +144,11 @@ position = Vector2(428, 196)
 position = Vector2(50, 256)
 
 [node name="LevelUpOptions" parent="." instance=ExtResource("4_2tcou")]
+
+[node name="FreezeCameraSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(193, 222)
+texture = ExtResource("25_ant1q")
 
 [connection signal="pressed" from="Porch/StartButton" to="Porch/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="Porch/Interior/PermaDamageButton" to="Porch/Interior" method="_on_perma_damage_button_pressed"]

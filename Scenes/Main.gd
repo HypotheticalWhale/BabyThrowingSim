@@ -9,6 +9,7 @@ var tough_dad_spawn_timer
 var type = "main"
 var enemies = []
 var spawn_timers = []
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var reg_dad = regular_dad.instantiate()
