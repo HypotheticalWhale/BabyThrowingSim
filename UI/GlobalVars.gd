@@ -30,6 +30,7 @@ func reset_all_stats():
 	spawn_less_multiplier = 0
 	get_tree().current_scene.get_node("Player").MAX_HEALTH = 1
 	get_tree().current_scene.get_node("Player").reset_upgrades()
+	get_tree().current_scene.get_node("FreezeCameraSprite").visible = false
 	
 func check_if_player_levels():
 	if current_exp == exp_to_next_level:
