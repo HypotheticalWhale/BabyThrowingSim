@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ehop2xyxy2f0"]
 
 [ext_resource type="Script" path="res://Enemy/ToughDad/ToughDad.gd" id="1_qss4x"]
-[ext_resource type="Texture2D" uid="uid://ox5174pwio7w" path="res://assets/Mom.png" id="2_jv6t7"]
+[ext_resource type="Texture2D" uid="uid://so1vmpt5rc3f" path="res://assets/ToughDad.png" id="2_qot3l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_62wf4"]
 
@@ -11,10 +11,9 @@
 light_mask = 128
 collision_layer = 128
 script = ExtResource("1_qss4x")
-initial_speed = 50.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_jv6t7")
+texture = ExtResource("2_qot3l")
 hframes = 2
 vframes = 2
 
