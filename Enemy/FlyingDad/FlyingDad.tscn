@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://g4u6nwm5vo1o"]
+
+[ext_resource type="Script" path="res://Enemy/FlyingDad/FlyingDad.gd" id="1_ptsd8"]
+[ext_resource type="Texture2D" uid="uid://ox5174pwio7w" path="res://assets/Mom.png" id="1_uikaw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4q7n0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdbm8"]
+
+[node name="FlyingDad" type="CharacterBody2D"]
+position = Vector2(-2, 0)
+collision_layer = 128
+script = ExtResource("1_ptsd8")
+spawn_interval = 4.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_uikaw")
+hframes = 2
+vframes = 2
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_4q7n0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bdbm8")
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

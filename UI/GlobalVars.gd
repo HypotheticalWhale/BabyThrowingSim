@@ -33,7 +33,7 @@ func reset_all_stats():
 	get_tree().current_scene.get_node("FreezeCameraSprite").visible = false
 	
 func check_if_player_levels():
-	if current_exp == exp_to_next_level:
+	if current_exp >= exp_to_next_level:
 		current_level += 1
 		level_up()
 		#exp_to_next_level *= 2 change when we dw to debug anymore

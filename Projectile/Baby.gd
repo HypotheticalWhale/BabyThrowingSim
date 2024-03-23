@@ -15,8 +15,6 @@ var explosion_scene = preload("res://Projectile/Explosion.tscn")
 var damage_number_scene = preload("res://Enemy/DamageNumber.tscn")
 var allowed_time_to_bounce_options = [0,3,6,9,12,15]
 
-func _ready():
-	damage = initial_damage
 
 func _integrate_forces(state):
 	gravity_vector = Vector2(0, gravity) * speed

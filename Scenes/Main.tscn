@@ -28,8 +28,7 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
-spawn_reg_dad = true
-spawn_tough_dad = true
+spawn_drunk_dad = true
 
 [node name="PorchBackground" type="Sprite2D" parent="."]
 z_index = -2
@@ -136,6 +135,9 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(890, 302)
+
+[node name="FlyingMarker2D" type="Marker2D" parent="."]
+position = Vector2(890, 213)
 
 [node name="CombatCameraMarker" type="Marker2D" parent="."]
 position = Vector2(428, 196)

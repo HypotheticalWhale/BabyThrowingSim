@@ -7,8 +7,8 @@ extends CharacterBody2D
 @export var damage: int = 1
 @export var exp:int = 1
 @export var money_drop_rate: float = 0.4
-@export var MAX_HP:int = 1
-@export var current_hp:int = 1
+@export var MAX_HP = 1.0
+@export var current_hp = 1.0
 var speed
 
 var you_got_cash = preload("res://Enemy/DollarSign.tscn")
@@ -19,6 +19,7 @@ func _ready():
 	velocity = direction * speed
 
 func _physics_process(delta: float) -> void:
+
 	spawn_interval = 2.0 * GlobalVars.spawn_less_multiplier
 	move_and_slide()
 
@@ -50,6 +51,6 @@ func _on_hurtbox_area_entered(area):
 		await get_tree().create_timer(1.0).timeout
 		velocity = direction * speed
 		return
-	if not area.owner.type == "player":
+	if area.owner.type == "projectile":
 		get_hit(area.owner.damage)
 		return 

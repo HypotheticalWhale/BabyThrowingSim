@@ -53,6 +53,7 @@ func _ready():
 	
 	
 func _physics_process(delta):
+
 	point_head_to_mouse()
 	if not exploding:
 		if current_run_upgrades["exploding"] >= 1:
@@ -94,11 +95,10 @@ func shoot_projectile():
 	var baby = current_projectile.instantiate()	
 	baby.initial_damage = PermaUpgrades.dmg_upgrade
 	baby.reload_speed = PermaUpgrades.reload_upgrade
-	print(PermaUpgrades.dmg_upgrade,baby.initial_damage)
-	print(PermaUpgrades.reload_upgrade,baby.reload_speed )
-	
 	if current_run_upgrades["damage-up"] > 0:
 		baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["damage-up"]]
+	else:
+		baby.damage = baby.initial_damage
 	if current_run_upgrades["bounce"] > 0:
 		baby.bounce = current_run_upgrades["bounce"]
 	if exploding:
@@ -112,7 +112,7 @@ func shoot_projectile():
 	can_shoot = false
 	reload_timer.start()
 	if current_run_upgrades["multi"] >= 1 and multi:
-		var shiftedPos = Vector2(global_position.x+20, global_position.y+20)
+		var shiftedPos = Vector2(global_position.x+30, global_position.y+15)
 		baby.global_position = shiftedPos
 		baby = current_projectile.instantiate()
 		baby.initial_damage = PermaUpgrades.dmg_upgrade
@@ -121,6 +121,8 @@ func shoot_projectile():
 			baby.bounce = current_run_upgrades["bounce"]
 		if current_run_upgrades["damage-up"] > 0:
 			baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["damage-up"]]
+		else:
+			baby.damage = baby.initial_damage
 		if exploding:
 			baby.exploding = current_run_upgrades["exploding"]
 		add_child(baby)
@@ -133,13 +135,15 @@ func shoot_projectile():
 		can_shoot = false
 		reload_timer.start()
 	if current_run_upgrades["multi"] == 2 and multi:
-		var shiftedPos = Vector2(global_position.x-20, global_position.y-20)
+		var shiftedPos = Vector2(global_position.x-30 , global_position.y-15)
 		baby.global_position = shiftedPos
 		baby = current_projectile.instantiate()
 		baby.initial_damage = PermaUpgrades.dmg_upgrade
 		baby.reload_speed = PermaUpgrades.reload_upgrade
 		if current_run_upgrades["damage-up"] > 0:
 			baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["damage-up"]]
+		else:
+			baby.damage = baby.initial_damage
 		if current_run_upgrades["bounce"] > 0:
 			baby.bounce = current_run_upgrades["bounce"]
 		if exploding:

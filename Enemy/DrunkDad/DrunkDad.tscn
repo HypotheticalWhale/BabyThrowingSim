@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://jc3fm5ahsbhp"]
+
+[ext_resource type="Script" path="res://Enemy/DrunkDad/DrunkDad.gd" id="1_sa77y"]
+[ext_resource type="Texture2D" uid="uid://46knn8816ogc" path="res://assets/Billboard.png" id="2_kbw6d"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_by4kp"]
+radius = 44.0114
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nsyuq"]
+radius = 44.0
+
+[node name="DrunkDad" type="CharacterBody2D"]
+collision_layer = 128
+script = ExtResource("1_sa77y")
+initial_speed = 60.0
+spawn_interval = 20.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.161719, 0.161719)
+texture = ExtResource("2_kbw6d")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_by4kp")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nsyuq")
+
+[node name="DrunkTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="timeout" from="DrunkTimer" to="." method="_on_drunk_timer_timeout"]

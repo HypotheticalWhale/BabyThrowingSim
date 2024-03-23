@@ -7,8 +7,8 @@ extends CharacterBody2D
 @export var damage: int = 1
 @export var exp:int = 1
 @export var money_drop_rate: float = 0.4
-@export var MAX_HP = 3.0
-@export var current_hp = 3.0
+@export var MAX_HP = 2.0
+@export var current_hp = 2.0
 var speed
 
 var you_got_cash = preload("res://Enemy/DollarSign.tscn")
@@ -50,5 +50,6 @@ func _on_hurtbox_area_entered(area):
 		velocity = direction * speed
 		return
 	if area.owner.type == "projectile":
+		print("got hit with ",area.owner.damage)
 		get_hit(area.owner.damage)
 		return 
