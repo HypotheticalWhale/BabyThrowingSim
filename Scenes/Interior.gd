@@ -36,14 +36,19 @@ func _on_perma_accept_dialog_confirmed():
 		GlobalVars.current_money -= damage_upgrade_cost
 		damage_upgrade_cost *= 2
 		PermaUpgrades.dmg_lvl += 1
+		$PermaDamageIndicator.frame = PermaUpgrades.dmg_lvl
+		
 	if $PermaAcceptDialog.title == "SPD":
 		GlobalVars.current_money -= speed_upgrade_cost
 		speed_upgrade_cost *= 2
-		PermaUpgrades.dmg_lvl += 1
+		PermaUpgrades.spd_lvl += 1
+		$PermaSpeedIndicator.frame = PermaUpgrades.spd_lvl
+		
 	if $PermaAcceptDialog.title == "DEX":
 		GlobalVars.current_money -= reload_upgrade_cost
 		reload_upgrade_cost *= 2
-		PermaUpgrades.dmg_lvl += 1
+		PermaUpgrades.reload_lvl += 1
+		$PermaDexterityIndicator.frame = PermaUpgrades.reload_lvl
 
 
 
