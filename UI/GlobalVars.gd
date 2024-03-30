@@ -14,7 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	check_if_player_levels()
-	if GlobalVars.current_health == 0:
+	if GlobalVars.current_health <= 0:
 		print("You went insane... going home to take a break")
 		SceneManager.change_scene("combat", "interior")
 		get_tree().current_scene.kill_all_dads()
@@ -31,6 +31,7 @@ func reset_all_stats():
 	get_tree().current_scene.get_node("Player").MAX_HEALTH = 1
 	get_tree().current_scene.get_node("Player").reset_upgrades()
 	get_tree().current_scene.get_node("FreezeCameraSprite").visible = false
+
 	
 func check_if_player_levels():
 	if current_exp >= exp_to_next_level:

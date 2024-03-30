@@ -30,8 +30,6 @@
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
-spawn_reg_dad = true
-spawn_tough_dad = true
 
 [node name="PorchBackground" type="Sprite2D" parent="."]
 z_index = -2
@@ -136,6 +134,9 @@ texture = ExtResource("4_onrnb")
 position = Vector2(428, 196)
 zoom = Vector2(1.5, 1.5)
 
+[node name="FlyingMarker2D" type="Marker2D" parent="."]
+position = Vector2(890, 211)
+
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(890, 302)
 
@@ -152,9 +153,32 @@ visible = false
 position = Vector2(193, 222)
 texture = ExtResource("25_ant1q")
 
+[node name="StartSpawningRegularTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="StartSpawningToughTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="StartSpawningFlyingTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="StartSpawningDrunkTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
 [connection signal="pressed" from="Porch/StartButton" to="Porch/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="Porch/Interior/PermaDamageButton" to="Porch/Interior" method="_on_perma_damage_button_pressed"]
 [connection signal="pressed" from="Porch/Interior/PermaSpeedButton" to="Porch/Interior" method="_on_perma_speed_button_pressed"]
 [connection signal="pressed" from="Porch/Interior/PermaDexterityButton" to="Porch/Interior" method="_on_perma_dexterity_button_pressed"]
 [connection signal="canceled" from="Porch/Interior/PermaAcceptDialog" to="Porch/Interior" method="_on_perma_accept_dialog_canceled"]
 [connection signal="confirmed" from="Porch/Interior/PermaAcceptDialog" to="Porch/Interior" method="_on_perma_accept_dialog_confirmed"]
+[connection signal="timeout" from="StartSpawningRegularTimer" to="." method="_on_start_spawning_regular_timer_timeout"]
+[connection signal="timeout" from="StartSpawningToughTimer" to="." method="_on_start_spawning_tough_timer_timeout"]
+[connection signal="timeout" from="StartSpawningFlyingTimer" to="." method="_on_start_spawning_flying_timer_timeout"]
+[connection signal="timeout" from="StartSpawningDrunkTimer" to="." method="_on_start_spawning_drunk_timer_timeout"]

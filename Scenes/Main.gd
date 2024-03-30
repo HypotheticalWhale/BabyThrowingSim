@@ -57,8 +57,11 @@ func start_timer(spawn_interval, typeofdad):
 		tough_dad_spawn_timer.wait_time = spawn_interval
 		add_child(tough_dad_spawn_timer)
 		spawn_timers.append(tough_dad_spawn_timer)
+		
 		tough_dad_spawn_timer.timeout.connect(_on_toughdad_spawn_timer_timeout)
 		tough_dad_spawn_timer.start()
+		return
+		
 	if typeofdad == "flying_dad":
 		flying_dad_spawn_timer = Timer.new()
 		flying_dad_spawn_timer.one_shot = false
@@ -67,6 +70,8 @@ func start_timer(spawn_interval, typeofdad):
 		spawn_timers.append(flying_dad_spawn_timer)
 		flying_dad_spawn_timer.timeout.connect(_on_flyingdad_spawn_timer_timeout)
 		flying_dad_spawn_timer.start()
+		return
+		
 	if typeofdad == "drunk_dad":
 		drunk_dad_spawn_timer = Timer.new()
 		drunk_dad_spawn_timer.one_shot = false
@@ -75,6 +80,7 @@ func start_timer(spawn_interval, typeofdad):
 		spawn_timers.append(drunk_dad_spawn_timer)
 		drunk_dad_spawn_timer.timeout.connect(_on_drunkdad_spawn_timer_timeout)
 		drunk_dad_spawn_timer.start()
+		return
 		
 func kill_all_dads():
 	for i in range(1, enemies.size()):
@@ -85,9 +91,17 @@ func kill_all_dads():
 func stop_all_timers():
 	for timer in spawn_timers:
 		timer.stop()
+	spawn_timers = []
+	get_tree().current_scene.get_node("StartSpawningRegularTimer").stop()
+	get_tree().current_scene.get_node("StartSpawningToughTimer").stop()
+	get_tree().current_scene.get_node("StartSpawningFlyingTimer").stop()
+	get_tree().current_scene.get_node("StartSpawningDrunkTimer").stop()
+	
 func start_all_timers():
-	for timer in spawn_timers:
-		timer.start()	
+	get_tree().current_scene.get_node("StartSpawningRegularTimer").start()
+	get_tree().current_scene.get_node("StartSpawningToughTimer").start()
+	get_tree().current_scene.get_node("StartSpawningFlyingTimer").start()
+	get_tree().current_scene.get_node("StartSpawningDrunkTimer").start()
 		
 func _on_regdad_spawn_timer_timeout() -> void:
 	var reg_dad = regular_dad.instantiate()
@@ -112,3 +126,27 @@ func _on_drunkdad_spawn_timer_timeout() -> void:
 	drunked_dad.global_position = $Marker2D.global_position
 	add_child(drunked_dad)
 	enemies.append(drunked_dad)
+
+
+func _on_start_spawning_regular_timer_timeout():
+	var reg_dad = regular_dad.instantiate()
+	var regular_dad_spawn_interval = reg_dad.spawn_interval
+	start_timer(regular_dad_spawn_interval,"regular_dad")
+
+
+func _on_start_spawning_tough_timer_timeout():
+	var tog_dad = tough_dad.instantiate()
+	var tough_dad_spawn_interval = tog_dad.spawn_interval
+	start_timer(tough_dad_spawn_interval,"tough_dad")
+
+
+func _on_start_spawning_flying_timer_timeout():
+	var fly_dad = flying_dad.instantiate()
+	var flying_dad_spawn_interval = fly_dad.spawn_interval
+	start_timer(flying_dad_spawn_interval,"flying_dad")
+
+
+func _on_start_spawning_drunk_timer_timeout():
+	var drunked_dad = drunk_dad.instantiate()
+	var drunk_dad_spawn_interval = drunked_dad.spawn_interval
+	start_timer(drunk_dad_spawn_interval,"drunk_dad")

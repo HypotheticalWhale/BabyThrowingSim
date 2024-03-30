@@ -10,3 +10,6 @@ func _on_pressed():
 	GlobalVars.process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().current_scene.get_node("Player").MAX_HEALTH = 1
 	GlobalVars.current_health = 1
+	
+
+	
