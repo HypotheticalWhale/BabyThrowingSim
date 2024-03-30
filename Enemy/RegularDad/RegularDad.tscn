@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpy1vdq6nwblq"]
+[gd_scene load_steps=7 format=3 uid="uid://bpy1vdq6nwblq"]
 
 [ext_resource type="Script" path="res://Enemy/RegularDad/RegularDad.gd" id="1_h77ta"]
-[ext_resource type="Texture2D" uid="uid://dcspnrl5mkl3v" path="res://assets/RegularDad.png" id="2_67wy4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17r2i"]
 
@@ -48,9 +47,9 @@ _data = {
 [node name="RegularDad" type="CharacterBody2D"]
 collision_layer = 128
 script = ExtResource("1_h77ta")
+initial_speed = 150.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_67wy4")
 hframes = 2
 vframes = 2
 frame = 1

@@ -9,6 +9,7 @@ extends Node2D
 @onready var flying_dad = preload("res://Enemy/FlyingDad/FlyingDad.tscn")
 @onready var drunk_dad = preload("res://Enemy/DrunkDad/DrunkDad.tscn")
 
+var myass
 var regular_dad_spawn_timer
 var tough_dad_spawn_timer
 var flying_dad_spawn_timer
