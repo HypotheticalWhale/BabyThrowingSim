@@ -21,6 +21,7 @@ var spawn_timers = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	SaveAndLoad.load_game()
 	var reg_dad = regular_dad.instantiate()
 	var regular_dad_spawn_interval = reg_dad.spawn_interval
 	var tog_dad = tough_dad.instantiate()
