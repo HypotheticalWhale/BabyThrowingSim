@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5kwochsing33"]
+[gd_scene load_steps=8 format=3 uid="uid://b5kwochsing33"]
 
 [ext_resource type="Script" path="res://UI/CurrentMoney.gd" id="1_058lx"]
 [ext_resource type="Theme" uid="uid://brjt2pwolmayy" path="res://assets/RetroGamingTheme.tres" id="1_bdjcf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://UI/CurrentHealth.gd" id="2_427qk"]
 [ext_resource type="Script" path="res://UI/CurrentLevel.gd" id="4_4y85q"]
 [ext_resource type="Script" path="res://UI/MaxHealth.gd" id="4_ovbsm"]
+[ext_resource type="Script" path="res://UI/CurrentHighscore.gd" id="7_ywgva"]
 
 [node name="InGameOverlay" type="CanvasLayer"]
 process_mode = 3
@@ -140,3 +141,25 @@ theme = ExtResource("1_bdjcf")
 theme_override_font_sizes/font_size = 22
 text = " mom
 "
+
+[node name="HighscoreMargin" type="MarginContainer" parent="TopLeftContainer"]
+layout_mode = 2
+theme = ExtResource("1_bdjcf")
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+
+[node name="HighscoreContainer" type="HBoxContainer" parent="TopLeftContainer/HighscoreMargin"]
+layout_mode = 2
+theme = ExtResource("1_bdjcf")
+
+[node name="HighscoreLabel" type="Label" parent="TopLeftContainer/HighscoreMargin/HighscoreContainer"]
+layout_mode = 2
+theme = ExtResource("1_bdjcf")
+theme_override_font_sizes/font_size = 22
+text = "Highscore: "
+
+[node name="CurrentHighscore" type="Label" parent="TopLeftContainer/HighscoreMargin/HighscoreContainer"]
+layout_mode = 2
+theme = ExtResource("1_bdjcf")
+theme_override_font_sizes/font_size = 22
+script = ExtResource("7_ywgva")
