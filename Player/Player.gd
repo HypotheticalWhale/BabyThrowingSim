@@ -53,7 +53,6 @@ func _ready():
 	
 	
 func _physics_process(delta):
-
 	point_head_to_mouse()
 	if not exploding:
 		if current_run_upgrades["exploding"] >= 1:

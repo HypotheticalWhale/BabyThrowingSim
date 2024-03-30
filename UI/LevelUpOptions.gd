@@ -39,8 +39,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-	
+	current_run_upgrades = get_tree().current_scene.get_node("Player").current_run_upgrades
+		
 # UTILITY FUNCTIONS
 func randomize_options():
 	randomize()
