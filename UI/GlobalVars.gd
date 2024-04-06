@@ -26,7 +26,12 @@ func _process(delta):
 		
 func reset_all_stats():
 	if current_level > highscore:
+		var highscore_label = get_tree().current_scene.get_node("InGameOverlay/TopLeftContainer/HighscoreMargin/HighscoreContainer/CurrentHighscore")
+		highscore_label.modulate = Color(0,255,0)
+		await get_tree().create_timer(5).timeout
+		highscore_label.modulate = Color(255,255,255)
 		highscore = current_level
+
 	current_exp = 0
 	current_health = 0
 	current_level = 0
