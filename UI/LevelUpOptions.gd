@@ -18,9 +18,9 @@ var skill_upgrade_icon_dict = {
 	"exploding": "res://assets/ExplodingIcon.png",
 	"bounce": "res://assets/BounceIcon.png", #missing
 	"multi": "res://assets/MultiIcon.png",
-	"enemies-spawn-less": "res://assets/MultiIcon.png", #missin
+	"enemies-spawn-less": "res://assets/EnemiesSpawnLessIcon.png", #missin
 	"enemies-close-freeze": "res://assets/FreezeIcon.png",
-	"enemies-close-damage": "res://assets/FreezeIcon.png", #missing
+	"enemies-close-damage": "res://assets/DamageAreaIcon.png", #missing
 	"enemies-close-slow": "res://assets/SlowIcon.png",
 	"damage-up": "res://assets/DamageUp.png",
 	"reload-speed": "res://assets/ReloadSpeed.png",

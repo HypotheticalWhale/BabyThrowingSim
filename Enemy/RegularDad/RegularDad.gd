@@ -12,6 +12,7 @@ extends CharacterBody2D
 var speed
 
 var you_got_cash = preload("res://Enemy/DollarSign.tscn")
+var damage_number_scene = preload("res://Enemy/DamageNumber.tscn")
 
 func _ready():
 	speed = initial_speed
@@ -25,6 +26,12 @@ func _physics_process(delta: float) -> void:
 
 func get_hit(damage):
 	current_hp -= damage
+	var damage_number = damage_number_scene.instantiate()
+	var currentPos = global_position
+	var shiftedPos = Vector2(currentPos.x + 1, currentPos.y)	
+	get_tree().current_scene.add_child(damage_number)
+	damage_number.global_position = shiftedPos
+	damage_number.get_child(0).text = str(damage)
 	if current_hp <= 0:
 		GlobalVars.current_exp += exp
 		var randomValue := randf()
