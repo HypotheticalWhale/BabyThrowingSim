@@ -204,6 +204,7 @@ func _on_damage_enemy_timer_timeout():
 func _on_heal_timer_timeout():
 	if GlobalVars.current_health < MAX_HEALTH:
 		GlobalVars.current_health += 1
+		$AnimationPlayer.play("heal_periodically")
 	heal_timer.wait_time = heal_timer_options[current_run_upgrades["heal-periodically"]]
 	heal_timer.start()
 		
