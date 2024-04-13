@@ -3,7 +3,7 @@ extends Node
 var id = "GlobalVars"
 var current_exp = 0
 var current_health = 0
-var current_money = 100
+var current_money = 0
 var current_level:int = 0
 var highscore:int = 0
 var exp_to_next_level:int = 1
@@ -49,7 +49,7 @@ func check_if_player_levels():
 	if current_exp >= exp_to_next_level:
 		current_level += 1
 		level_up()
-		#exp_to_next_level *= 2 change when we dw to debug anymore
+		exp_to_next_level *= 2 
 		current_exp = 0
 		get_tree().paused = true
 

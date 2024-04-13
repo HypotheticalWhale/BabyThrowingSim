@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=29 format=3 uid="uid://o5alyyhdvq4h"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://4kjde4mrohju" path="res://assets/trapdoor.png" id="8_p06lc"]
 [ext_resource type="Script" path="res://UI/StartButton.gd" id="11_72rcm"]
 [ext_resource type="Texture2D" uid="uid://c3a5rb57jvkrl" path="res://assets/UpgradesButtonNormal.png" id="11_pfjov"]
+[ext_resource type="Texture2D" uid="uid://d1eq1rkmn2lds" path="res://assets/DamageUp.png" id="12_c136k"]
 [ext_resource type="Texture2D" uid="uid://dajxh02mihts4" path="res://assets/UpgradesButtonPressed.png" id="12_ygahd"]
 [ext_resource type="Texture2D" uid="uid://b3fiajblgvew4" path="res://assets/UpgradesButtonHover.png" id="13_4ekb5"]
 [ext_resource type="Script" path="res://Scenes/Interior.gd" id="13_s0b3w"]
@@ -63,6 +64,33 @@ texture_normal = ExtResource("11_pfjov")
 texture_pressed = ExtResource("12_ygahd")
 texture_hover = ExtResource("13_4ekb5")
 script = ExtResource("11_72rcm")
+
+[node name="TextureRect" type="TextureRect" parent="Porch/StartButton"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 16.0
+offset_right = 96.0
+offset_bottom = 80.0
+texture = ExtResource("12_c136k")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Porch/StartButton"]
+custom_minimum_size = Vector2(70, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -44.0
+offset_right = 72.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.998578, 1)
+theme = ExtResource("7_83w2i")
+text = "Start"
+fit_content = true
 
 [node name="Interior" type="Sprite2D" parent="Porch"]
 z_index = -1
