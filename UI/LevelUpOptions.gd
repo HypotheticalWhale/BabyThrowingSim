@@ -91,6 +91,8 @@ func _on_first_button_pressed():
 	reset_pick_options()
 	get_tree().paused = false
 	get_tree().current_scene.get_node("Billboard/Content").visible = true
+	get_tree().current_scene.get_node("Billboard").z_index = -2
+	get_tree().current_scene.get_node("Billboard").modulate.a = 1	
 	visible = false
 	set_process_input(false)				
 
@@ -112,6 +114,8 @@ func _on_second_button_pressed():
 	reset_pick_options()
 	get_tree().paused = false
 	get_tree().current_scene.get_node("Billboard/Content").visible = true	
+	get_tree().current_scene.get_node("Billboard").z_index = -2
+	get_tree().current_scene.get_node("Billboard").modulate.a = 1	
 	visible = false
 	set_process_input(false)				
 
@@ -133,5 +137,7 @@ func _on_third_button_pressed():
 	reset_pick_options()
 	get_tree().paused = false
 	get_tree().current_scene.get_node("Billboard/Content").visible = true	
+	get_tree().current_scene.get_node("Billboard").z_index = -2
+	get_tree().current_scene.get_node("Billboard").modulate.a = 1
 	visible = false
 	set_process_input(false)				
