@@ -1,7 +1,7 @@
 extends Sprite2D
-var damage_upgrade_cost = 1
-var speed_upgrade_cost = 1
-var reload_upgrade_cost = 1
+var damage_upgrade_cost = 10
+var speed_upgrade_cost = 10
+var reload_upgrade_cost = 10
 
 
 func _on_perma_damage_button_pressed():
