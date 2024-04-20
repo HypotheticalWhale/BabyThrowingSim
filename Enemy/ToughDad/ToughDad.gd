@@ -14,6 +14,7 @@ var speed
 var you_got_cash = preload("res://Enemy/DollarSign.tscn")
 var damage_number_scene = preload("res://Enemy/DamageNumber.tscn")
 func _ready():
+	$AnimationPlayer.play("walk_left")
 	speed = initial_speed
 	velocity = direction * speed
 

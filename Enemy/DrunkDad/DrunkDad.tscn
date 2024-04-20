@@ -1,13 +1,51 @@
-[gd_scene load_steps=5 format=3 uid="uid://jc3fm5ahsbhp"]
+[gd_scene load_steps=8 format=3 uid="uid://jc3fm5ahsbhp"]
 
 [ext_resource type="Script" path="res://Enemy/DrunkDad/DrunkDad.gd" id="1_sa77y"]
-[ext_resource type="Texture2D" uid="uid://46knn8816ogc" path="res://assets/Billboard.png" id="2_kbw6d"]
+[ext_resource type="Texture2D" uid="uid://cj4qakjabg4hf" path="res://assets/DrunkDad.png" id="2_5vydu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_by4kp"]
 radius = 44.0114
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nsyuq"]
 radius = 44.0
+
+[sub_resource type="Animation" id="Animation_ile5x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_enjoa"]
+resource_name = "walk_left"
+length = 1.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsnpi"]
+_data = {
+"RESET": SubResource("Animation_ile5x"),
+"walk_left": SubResource("Animation_enjoa")
+}
 
 [node name="DrunkDad" type="CharacterBody2D"]
 collision_layer = 128
@@ -19,7 +57,10 @@ current_hp = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.161719, 0.161719)
-texture = ExtResource("2_kbw6d")
+texture = ExtResource("2_5vydu")
+hframes = 2
+vframes = 2
+frame = 1
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 4
@@ -33,6 +74,11 @@ shape = SubResource("CircleShape2D_nsyuq")
 
 [node name="DrunkTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tsnpi")
+}
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
