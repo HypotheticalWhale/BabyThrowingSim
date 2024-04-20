@@ -29,7 +29,7 @@ var current_run_upgrades = {
 var enemies_spawn_less_options = [1,0.95,0.9,0.85,0.8,0.75]
 var spawn_less_index
 var freeze_enemy_timer_options = [0,3,2.2,1.7,1.5,1]
-var damage_enemy_timer_options = [0,3,1,1.7,1.5,1]
+var damage_enemy_timer_options = [0,3,2.7,2,1.7,1]
 var heal_timer_options = [1,10,9,8,7,6,5]
 var slow_enemy_options = [1,0.6,0.5,0.4,0.3,0.2]
 var damage_up_options = [0,0.5,1,1.5,2,2.5]
@@ -111,7 +111,7 @@ func shoot_projectile():
 	can_shoot = false
 	reload_timer.start()
 	if current_run_upgrades["multi"] >= 1 and multi:
-		var shiftedPos = Vector2(global_position.x+30, global_position.y+15)
+		var shiftedPos = Vector2(global_position.x, global_position.y)
 		baby.global_position = shiftedPos
 		baby = current_projectile.instantiate()
 		baby.initial_damage = PermaUpgrades.dmg_upgrade
@@ -134,7 +134,7 @@ func shoot_projectile():
 		can_shoot = false
 		reload_timer.start()
 	if current_run_upgrades["multi"] == 2 and multi:
-		var shiftedPos = Vector2(global_position.x-30 , global_position.y-15)
+		var shiftedPos = Vector2(global_position.x, global_position.y)
 		baby.global_position = shiftedPos
 		baby = current_projectile.instantiate()
 		baby.initial_damage = PermaUpgrades.dmg_upgrade
