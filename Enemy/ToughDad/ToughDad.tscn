@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ehop2xyxy2f0"]
+[gd_scene load_steps=8 format=3 uid="uid://ehop2xyxy2f0"]
 
 [ext_resource type="Script" path="res://Enemy/ToughDad/ToughDad.gd" id="1_qss4x"]
 [ext_resource type="Texture2D" uid="uid://so1vmpt5rc3f" path="res://assets/ToughDad.png" id="2_qot3l"]
@@ -6,6 +6,44 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_62wf4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jreix"]
+
+[sub_resource type="Animation" id="Animation_ile5x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_enjoa"]
+resource_name = "walk_left"
+length = 1.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsnpi"]
+_data = {
+"RESET": SubResource("Animation_ile5x"),
+"walk_left": SubResource("Animation_enjoa")
+}
 
 [node name="ToughDad" type="CharacterBody2D"]
 light_mask = 128
@@ -16,6 +54,7 @@ script = ExtResource("1_qss4x")
 texture = ExtResource("2_qot3l")
 hframes = 2
 vframes = 2
+frame = 1
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 4
@@ -26,6 +65,11 @@ shape = SubResource("CircleShape2D_62wf4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jreix")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tsnpi")
+}
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

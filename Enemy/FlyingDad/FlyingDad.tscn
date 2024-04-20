@@ -1,11 +1,49 @@
-[gd_scene load_steps=5 format=3 uid="uid://g4u6nwm5vo1o"]
+[gd_scene load_steps=8 format=3 uid="uid://g4u6nwm5vo1o"]
 
 [ext_resource type="Script" path="res://Enemy/FlyingDad/FlyingDad.gd" id="1_ptsd8"]
-[ext_resource type="Texture2D" uid="uid://ox5174pwio7w" path="res://assets/Mom.png" id="1_uikaw"]
+[ext_resource type="Texture2D" uid="uid://dg65dk4dr0lkk" path="res://assets/FlyingDad.png" id="2_7u57s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4q7n0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bdbm8"]
+
+[sub_resource type="Animation" id="Animation_ile5x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_enjoa"]
+resource_name = "walk_left"
+length = 1.00001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tsnpi"]
+_data = {
+"RESET": SubResource("Animation_ile5x"),
+"walk_left": SubResource("Animation_enjoa")
+}
 
 [node name="FlyingDad" type="CharacterBody2D"]
 position = Vector2(-2, 0)
@@ -14,9 +52,10 @@ script = ExtResource("1_ptsd8")
 spawn_interval = 4.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_uikaw")
+texture = ExtResource("2_7u57s")
 hframes = 2
 vframes = 2
+frame = 1
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 4
@@ -27,6 +66,11 @@ shape = SubResource("CircleShape2D_4q7n0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_bdbm8")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tsnpi")
+}
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
