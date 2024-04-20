@@ -21,6 +21,7 @@ GlobalVars="*res://UI/GlobalVars.gd"
 SceneManager="*res://UI/SceneManager.gd"
 PermaUpgrades="*res://UI/PermaUpgrades.gd"
 SaveAndLoad="*res://UI/SaveAndLoad.gd"
+VFX="*res://UI/VFX.gd"
 
 [display]
 
