@@ -158,6 +158,7 @@ func shoot_projectile():
 		reload_timer.start()
 			
 func get_hit(damage):
+	VFX.screenshake(damage+10)
 	GlobalVars.current_health -= damage
 
 func reset_upgrades():

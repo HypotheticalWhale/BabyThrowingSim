@@ -159,6 +159,7 @@ texture = ExtResource("4_onrnb")
 [node name="InGameOverlay" parent="." instance=ExtResource("2_tsnw5")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 position = Vector2(428, 196)
 zoom = Vector2(1.5, 1.5)
 

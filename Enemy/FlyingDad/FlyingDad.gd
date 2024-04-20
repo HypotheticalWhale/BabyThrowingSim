@@ -22,6 +22,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func get_hit(damage):
+	VFX.screenshake(damage-1)
 	current_hp -= damage
 	var damage_number = damage_number_scene.instantiate()
 	var currentPos = global_position
