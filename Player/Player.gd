@@ -200,7 +200,7 @@ func _on_freeze_enemy_timer_timeout():
 func _on_damage_enemy_timer_timeout():
 	var damage_aoe = damage_area.instantiate()
 	get_tree().current_scene.add_child(damage_aoe)
-	damage_aoe.global_position = Vector2(199, 219)
+	damage_aoe.global_position = Vector2(230, 219)
 
 func _on_heal_timer_timeout():
 	if GlobalVars.current_health < MAX_HEALTH:
