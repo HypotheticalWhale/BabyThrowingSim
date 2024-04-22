@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=29 format=3 uid="uid://o5alyyhdvq4h"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://cvnte6106mkni" path="res://assets/PermaDexterityButtonNormal.png" id="18_u5byo"]
 [ext_resource type="Texture2D" uid="uid://cki8m7d3vhd7u" path="res://assets/PermaDexterityButtonPressed.png" id="19_4myyn"]
 [ext_resource type="Texture2D" uid="uid://baa8gta483r1a" path="res://assets/ReloadCarts.png" id="22_bhchm"]
+[ext_resource type="Script" path="res://Scenes/Billboard.gd" id="24_5r5lw"]
 [ext_resource type="Texture2D" uid="uid://c4cc5s2kpfbcr" path="res://assets/Camera.png" id="25_ant1q"]
 [ext_resource type="Texture2D" uid="uid://nnxw1pyyu6x" path="res://assets/BillboardContent.png" id="25_k0gl5"]
 
@@ -126,6 +127,11 @@ texture = ExtResource("3_wfr5g")
 
 [node name="Content" type="Sprite2D" parent="Billboard"]
 texture = ExtResource("25_k0gl5")
+script = ExtResource("24_5r5lw")
+
+[node name="ChangeContentTimer" type="Timer" parent="Billboard"]
+wait_time = 5.0
+autostart = true
 
 [node name="InGameOverlay" parent="." instance=ExtResource("2_tsnw5")]
 
@@ -179,6 +185,9 @@ autostart = true
 [connection signal="pressed" from="Porch/Interior/PermaDexterityButton" to="Porch/Interior" method="_on_perma_dexterity_button_pressed"]
 [connection signal="canceled" from="Porch/Interior/PermaAcceptDialog" to="Porch/Interior" method="_on_perma_accept_dialog_canceled"]
 [connection signal="confirmed" from="Porch/Interior/PermaAcceptDialog" to="Porch/Interior" method="_on_perma_accept_dialog_confirmed"]
+[connection signal="timeout" from="Billboard/ChangeContentTimer" to="." method="_on_change_content_timer_timeout"]
+[connection signal="timeout" from="Billboard/ChangeContentTimer" to="Billboard" method="_on_change_content_timer_timeout"]
+[connection signal="timeout" from="Billboard/ChangeContentTimer" to="Billboard/Content" method="_on_change_content_timer_timeout"]
 [connection signal="timeout" from="StartSpawningRegularTimer" to="." method="_on_start_spawning_regular_timer_timeout"]
 [connection signal="timeout" from="StartSpawningToughTimer" to="." method="_on_start_spawning_tough_timer_timeout"]
 [connection signal="timeout" from="StartSpawningFlyingTimer" to="." method="_on_start_spawning_flying_timer_timeout"]

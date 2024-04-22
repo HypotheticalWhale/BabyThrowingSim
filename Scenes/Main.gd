@@ -152,3 +152,4 @@ func _on_start_spawning_drunk_timer_timeout():
 	var drunked_dad = drunk_dad.instantiate()
 	var drunk_dad_spawn_interval = drunked_dad.spawn_interval
 	start_timer(drunk_dad_spawn_interval,"drunk_dad")
+
