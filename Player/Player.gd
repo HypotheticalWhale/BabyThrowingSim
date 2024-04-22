@@ -188,7 +188,6 @@ func _on_reload_timer_timeout():
 	can_shoot = true
 
 func _on_hitbox_body_entered(body):
-	print(body)
 	get_hit(body.damage)
 	body.queue_free()
 
