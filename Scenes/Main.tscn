@@ -34,7 +34,7 @@ script = ExtResource("1_64lo6")
 
 [node name="PorchBackground" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(411, 184)
+position = Vector2(410, 192)
 texture = ExtResource("4_h3b1c")
 
 [node name="Player" parent="." instance=ExtResource("1_jcchd")]
@@ -122,7 +122,7 @@ theme = ExtResource("7_83w2i")
 
 [node name="Billboard" type="Sprite2D" parent="."]
 z_index = -2
-position = Vector2(491, 158)
+position = Vector2(490, 167)
 texture = ExtResource("3_wfr5g")
 
 [node name="Content" type="Sprite2D" parent="Billboard"]

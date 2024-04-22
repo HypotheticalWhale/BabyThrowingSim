@@ -1,12 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5kwochsing33"]
+[gd_scene load_steps=9 format=3 uid="uid://b5kwochsing33"]
 
 [ext_resource type="Script" path="res://UI/CurrentMoney.gd" id="1_058lx"]
 [ext_resource type="Theme" uid="uid://brjt2pwolmayy" path="res://assets/RetroGamingTheme.tres" id="1_bdjcf"]
-[ext_resource type="Script" path="res://UI/CurrentExp.gd" id="1_l5nsb"]
 [ext_resource type="Script" path="res://UI/CurrentHealth.gd" id="2_427qk"]
 [ext_resource type="Script" path="res://UI/CurrentLevel.gd" id="4_4y85q"]
 [ext_resource type="Script" path="res://UI/MaxHealth.gd" id="4_ovbsm"]
+[ext_resource type="Script" path="res://UI/ProgressBar.gd" id="5_fc4co"]
 [ext_resource type="Script" path="res://UI/CurrentHighscore.gd" id="7_ywgva"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1qht"]
+bg_color = Color(0.909804, 0.415686, 0.45098, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
 
 [node name="InGameOverlay" type="CanvasLayer"]
 process_mode = 3
@@ -83,8 +95,9 @@ text = "0"
 script = ExtResource("4_ovbsm")
 
 [node name="TopLeftContainer" type="VBoxContainer" parent="."]
-offset_right = 111.0
-offset_bottom = 55.0
+custom_minimum_size = Vector2(200, 2.08165e-12)
+offset_right = 1041.0
+offset_bottom = 107.0
 size_flags_horizontal = 0
 theme = ExtResource("1_bdjcf")
 
@@ -94,24 +107,12 @@ theme = ExtResource("1_bdjcf")
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 
-[node name="ExpContainer" type="HBoxContainer" parent="TopLeftContainer/ExpMargin"]
+[node name="ProgressBar" type="ProgressBar" parent="TopLeftContainer/ExpMargin"]
 layout_mode = 2
 theme = ExtResource("1_bdjcf")
-
-[node name="ExpLabel" type="Label" parent="TopLeftContainer/ExpMargin/ExpContainer"]
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 0
-theme = ExtResource("1_bdjcf")
-theme_override_font_sizes/font_size = 22
-text = "Confidence:"
-
-[node name="CurrentExp" type="Label" parent="TopLeftContainer/ExpMargin/ExpContainer"]
-layout_mode = 2
-theme = ExtResource("1_bdjcf")
-theme_override_font_sizes/font_size = 22
-text = "0"
-script = ExtResource("1_l5nsb")
+theme_override_styles/background = SubResource("StyleBoxFlat_h1qht")
+step = 1.0
+script = ExtResource("5_fc4co")
 
 [node name="LevelMargin" type="MarginContainer" parent="TopLeftContainer"]
 layout_mode = 2
