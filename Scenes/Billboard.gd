@@ -17,9 +17,7 @@ func get_next_item():
 	current_index += 1
 	if current_index >= all_textures.size():
 		current_index = 0
-	print(all_textures)
 	return all_textures[current_index]
 	
 func _on_change_content_timer_timeout():
-	print(get_next_item())
 	texture = get_next_item()

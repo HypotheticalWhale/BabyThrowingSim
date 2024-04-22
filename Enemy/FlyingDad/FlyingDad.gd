@@ -58,6 +58,5 @@ func _on_hurtbox_area_entered(area):
 		velocity = direction * speed
 		return
 	if area.owner.type == "projectile":
-		print("got hit with ",area.owner.damage)
 		get_hit(area.owner.damage)
 		return 

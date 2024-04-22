@@ -24,7 +24,6 @@ func load_game():
 
 		var node_data = json.get_data()
 
-		print(node_data)
 		# Firstly, we need to create the object and add it to the tree and set its position.
 		if node_data["id"] == "GlobalVars":
 			GlobalVars.highscore = node_data["highscore"]
