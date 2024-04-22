@@ -6,7 +6,7 @@ var current_health = 0
 var current_money = 0
 var current_level:int = 0
 var highscore:int = 0
-var exp_to_next_level:int = 1
+var exp_to_next_level:int = 3
 var spawn_less_multiplier = 0
 
 func _ready():
@@ -35,7 +35,7 @@ func reset_all_stats():
 	current_exp = 0
 	current_health = 0
 	current_level = 0
-	exp_to_next_level = 1
+	exp_to_next_level = 3
 	spawn_less_multiplier = 0
 	get_tree().current_scene.get_node("Player").MAX_HEALTH = 1
 	get_tree().current_scene.get_node("Player").reset_upgrades()
