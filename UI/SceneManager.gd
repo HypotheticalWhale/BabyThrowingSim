@@ -9,20 +9,21 @@ func change_scene(old_scene, new_scene):
 		var trapdoor = get_tree().current_scene.get_node("Porch/Trapdoor")
 		await trapdoor_tween.tween_property(trapdoor, "rotation_degrees", -125, 0.5).finished
 		
-		var player = get_tree().current_scene.get_node("Player")
-		player.get_node("AnimationPlayer").play("combat_to_trapdoor")
-		await player.get_node("AnimationPlayer").animation_finished
-		player.get_node("AnimationPlayer").play("trapdoor_to_interior")
-		await player.get_node("AnimationPlayer").animation_finished
+		#var player = get_tree().current_scene.get_node("Player")
+		#player.get_node("AnimationPlayer").play("combat_to_trapdoor")
+		#await player.get_node("AnimationPlayer").animation_finished
+		#player.get_node("AnimationPlayer").play("trapdoor_to_interior")
+		#await player.get_node("AnimationPlayer").animation_finished
 		
 		var camera_movement_tween = get_tree().create_tween()
 		var new_camera_position = get_tree().current_scene.get_node("InteriorCameraMarker").global_position
+		var player_position = get_tree().current_scene.get_node("Player").global_position
 		var camera_movement_duration = 1
 		var new_camera_zoom = Vector2(6, 6)
 		var camera_zoom_tween = get_tree().create_tween()		
-		Engine.time_scale = 0.5		
-		camera_zoom_tween.tween_property(camera, "zoom", new_camera_zoom, camera_movement_duration)
-		await get_tree().create_timer(0.5)
+		camera_movement_tween.tween_property(camera, "global_position", player_position, camera_movement_duration).set_trans(Tween.TRANS_QUAD)		
+		Engine.time_scale = 0.5				
+		await camera_zoom_tween.tween_property(camera, "zoom", new_camera_zoom, camera_movement_duration).finished
 		camera_movement_tween.tween_property(camera, "global_position", new_camera_position, camera_movement_duration).set_trans(Tween.TRANS_QUAD)
 		new_camera_zoom = Vector2(4, 4)
 		camera_zoom_tween.tween_property(camera, "zoom", new_camera_zoom, camera_movement_duration)
