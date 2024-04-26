@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=31 format=3 uid="uid://o5alyyhdvq4h"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://gni7cn8wa1ws" path="res://UI/LevelUpOptions.tscn" id="4_2tcou"]
 [ext_resource type="Texture2D" uid="uid://bgq4kmvjrbmjx" path="res://assets/PorchBackground.png" id="4_h3b1c"]
 [ext_resource type="Texture2D" uid="uid://c6wu4ks0moel7" path="res://assets/DamageRack.png" id="5_2vydq"]
+[ext_resource type="Texture2D" uid="uid://bhe74q7vk1oxk" path="res://assets/mouse-sprite.png" id="5_lgtua"]
+[ext_resource type="Texture2D" uid="uid://y07dj612fw3m" path="res://assets/55abfeff259a667.png" id="5_ymtpn"]
 [ext_resource type="Theme" uid="uid://brjt2pwolmayy" path="res://assets/RetroGamingTheme.tres" id="7_83w2i"]
 [ext_resource type="Texture2D" uid="uid://bimjbvl02s345" path="res://assets/PorchFacade.png" id="7_r06g6"]
 [ext_resource type="Texture2D" uid="uid://bxkb3tvqnnb7n" path="res://assets/Porch.png" id="7_tpx61"]
@@ -43,6 +45,43 @@ texture = ExtResource("4_h3b1c")
 position = Vector2(71, 230)
 texture = ExtResource("7_tpx61")
 
+[node name="Instructions" type="Node2D" parent="Porch"]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.7, 0.7)
+
+[node name="MouseSprite" type="Sprite2D" parent="Porch/Instructions"]
+position = Vector2(-55, -22)
+rotation = 0.667374
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_lgtua")
+
+[node name="SpacebarSprite" type="Sprite2D" parent="Porch/Instructions"]
+position = Vector2(-19, -1)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("5_ymtpn")
+
+[node name="RichTextLabel2" type="Label" parent="Porch/Instructions"]
+texture_filter = 3
+offset_left = -69.0
+offset_top = -10.0
+offset_right = 21.0
+offset_bottom = 18.0
+scale = Vector2(0.622332, 0.622332)
+theme = ExtResource("7_83w2i")
+theme_override_font_sizes/font_size = 22
+text = "+"
+
+[node name="RichTextLabel" type="Label" parent="Porch/Instructions"]
+texture_filter = 3
+offset_left = 15.0
+offset_top = -10.0
+offset_right = 105.0
+offset_bottom = 18.0
+scale = Vector2(0.622332, 0.622332)
+theme = ExtResource("7_83w2i")
+theme_override_font_sizes/font_size = 22
+text = "to fire"
+
 [node name="PorchWall" type="Sprite2D" parent="Porch"]
 position = Vector2(-51, 34)
 texture = ExtResource("7_r06g6")
@@ -53,6 +92,7 @@ texture = ExtResource("8_p06lc")
 offset = Vector2(16, 11)
 
 [node name="StartButton" type="TextureButton" parent="Porch"]
+modulate = Color(1, 1, 1, 0)
 offset_left = 28.0
 offset_top = 19.0
 offset_right = 156.0

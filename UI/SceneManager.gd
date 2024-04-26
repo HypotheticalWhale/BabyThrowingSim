@@ -30,6 +30,7 @@ func change_scene(old_scene, new_scene):
 		player.get_node("AnimationPlayer").play("trapdoor_to_interior")
 		await player.get_node("AnimationPlayer").animation_finished
 		var porch_wall_transparency_tween = get_tree().create_tween()
+		
 		var porch_wall = get_tree().current_scene.get_node("Porch/PorchWall")
 		var porch_wall_final_modulate = Color(1, 1, 1, 0.2)
 		
@@ -40,10 +41,14 @@ func change_scene(old_scene, new_scene):
 			camera_movement_duration
 		)
 		
-		get_tree().current_scene.get_node("Porch/StartButton").visible = true
-	
+		var modulate_start = get_tree().create_tween()
+		modulate_start.tween_property(get_tree().current_scene.get_node("Porch/StartButton"),"modulate:a",1,0.4)
+		var modulate_tween = get_tree().create_tween()		
+		modulate_tween.tween_property(get_tree().current_scene.get_node("Porch/Instructions"),"modulate:a",1,0.4)				
+		
 	if old_scene == "interior" and new_scene == "combat":
-		get_tree().current_scene.get_node("Porch/StartButton").visible = false
+		var modulate_start = get_tree().create_tween()
+		modulate_start.tween_property(get_tree().current_scene.get_node("Porch/StartButton"),"modulate:a",0,0.4)
 		
 		var player = get_tree().current_scene.get_node("Player")
 		player.get_node("AnimationPlayer").play("interior_to_trapdoor")
@@ -74,5 +79,9 @@ func change_scene(old_scene, new_scene):
 			porch_wall_final_modulate,
 			camera_movement_duration
 		)
+		var modulate_tween = get_tree().create_tween()
+		modulate_tween.tween_property(get_tree().current_scene.get_node("Porch/Instructions"),"modulate:a",0,0.4)		
+		
+		
 		
 
