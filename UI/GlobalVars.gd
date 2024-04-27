@@ -57,10 +57,13 @@ func reset_all_stats():
 	
 func check_if_player_levels():
 	if current_exp >= exp_to_next_level:
+		get_tree().current_scene.get_node("LevelUp").play()
+		
 		current_level += 1
 		level_up()
 		exp_to_next_level *= 2 
 		current_exp = 0
+		
 		get_tree().paused = true
 
 func level_up():
