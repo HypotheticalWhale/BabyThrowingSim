@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5kwochsing33"]
+[gd_scene load_steps=10 format=3 uid="uid://b5kwochsing33"]
 
 [ext_resource type="Script" path="res://UI/CurrentMoney.gd" id="1_058lx"]
 [ext_resource type="Theme" uid="uid://brjt2pwolmayy" path="res://assets/RetroGamingTheme.tres" id="1_bdjcf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://UI/MaxHealth.gd" id="4_ovbsm"]
 [ext_resource type="Script" path="res://UI/ProgressBar.gd" id="5_fc4co"]
 [ext_resource type="Script" path="res://UI/CurrentHighscore.gd" id="7_ywgva"]
+[ext_resource type="AudioStream" uid="uid://bgrwe3iathups" path="res://Sounds/button_press.ogg" id="8_aj7f2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h1qht"]
 bg_color = Color(0.909804, 0.415686, 0.45098, 1)
@@ -164,3 +165,6 @@ layout_mode = 2
 theme = ExtResource("1_bdjcf")
 theme_override_font_sizes/font_size = 22
 script = ExtResource("7_ywgva")
+
+[node name="ButtonPress" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_aj7f2")

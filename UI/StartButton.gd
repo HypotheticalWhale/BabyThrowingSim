@@ -4,6 +4,7 @@ extends TextureButton
 
 
 func _on_pressed():
+	get_tree().current_scene.get_node("ButtonPress").play()
 	disabled = true
 	await SceneManager.change_scene("interior", "combat")
 	GlobalVars.can_click = true

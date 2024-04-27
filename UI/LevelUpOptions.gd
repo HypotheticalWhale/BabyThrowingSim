@@ -76,6 +76,7 @@ func reset_pick_options():
 			
 # GET INPUT FROM PLAYER
 func _on_first_button_pressed():
+	get_tree().current_scene.get_node("ButtonPress").play()
 	current_run_upgrades[$VBoxContainer/HBoxContainer/FirstButton.current_skill] += 1
 	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "max-health":
 		GlobalVars.current_health += 1
@@ -98,6 +99,7 @@ func _on_first_button_pressed():
 
 
 func _on_second_button_pressed():
+	get_tree().current_scene.get_node("ButtonPress").play()	
 	current_run_upgrades[$VBoxContainer/HBoxContainer/SecondButton.current_skill] += 1
 	if $VBoxContainer/HBoxContainer/SecondButton.current_skill == "max-health":
 		print("upgrade max_health")
@@ -121,6 +123,7 @@ func _on_second_button_pressed():
 
 
 func _on_third_button_pressed():
+	get_tree().current_scene.get_node("ButtonPress").play()	
 	current_run_upgrades[$VBoxContainer/HBoxContainer/ThirdButton.current_skill] += 1
 	if $VBoxContainer/HBoxContainer/ThirdButton.current_skill == "max-health":
 		print("upgrade max_health")
