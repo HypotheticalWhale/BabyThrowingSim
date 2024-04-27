@@ -19,12 +19,21 @@ func _process(delta):
 	check_if_player_levels()
 	if GlobalVars.current_health <= 0:
 		can_click = false
+		fade_combat_track_out_and_fade_house_track_in()
+		
 		print("You went insane... going home to take a break")
 		SceneManager.change_scene("combat", "interior")
 		get_tree().current_scene.kill_all_dads()
 		get_tree().current_scene.stop_all_timers()
 		reset_all_stats()
 		process_mode = Node.PROCESS_MODE_DISABLED
+
+func fade_combat_track_out_and_fade_house_track_in():
+	var new_tween = get_tree().create_tween()
+	new_tween.tween_property(get_tree().current_scene.get_node("BGMusicCombat"), "volume_db", -100, 3)
+	await new_tween.finished
+	get_tree().current_scene.get_node("BGMusicCombat").stop()
+	get_tree().current_scene.get_node("BGMusicHouse").play()
 		
 func reset_all_stats():
 	if current_level > highscore:
