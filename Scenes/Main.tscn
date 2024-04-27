@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=33 format=3 uid="uid://o5alyyhdvq4h"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://c4cc5s2kpfbcr" path="res://assets/Camera.png" id="25_ant1q"]
 [ext_resource type="Texture2D" uid="uid://nnxw1pyyu6x" path="res://assets/BillboardContent.png" id="25_k0gl5"]
 [ext_resource type="AudioStream" uid="uid://bgrwe3iathups" path="res://Sounds/button_press.ogg" id="31_jsfl3"]
+[ext_resource type="AudioStream" uid="uid://cvbuu8l6npny6" path="res://Sounds/podcast-jazz-bossa-nova-acoustic-guitar-good-mood-music-199628.mp3" id="31_e6h1k"]
+[ext_resource type="AudioStream" uid="uid://c7ox6loomthq" path="res://Sounds/Deserted.wav" id="31_tykqa"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
@@ -222,6 +224,11 @@ autostart = true
 
 [node name="ButtonPress" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_jsfl3")
+[node name="BGMusicHouse" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_e6h1k")
+
+[node name="BGMusicCombat" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_tykqa")
 
 [connection signal="pressed" from="Porch/StartButton" to="Porch/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="Porch/Interior/PermaDamageButton" to="Porch/Interior" method="_on_perma_damage_button_pressed"]
