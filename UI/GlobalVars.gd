@@ -8,6 +8,7 @@ var current_level:int = 0
 var highscore:int = 0
 var exp_to_next_level:int = 5
 var spawn_less_multiplier = 0
+var can_click = true 
 
 func _ready():
 	pass # Replace with function body.
@@ -17,6 +18,7 @@ func _ready():
 func _process(delta):
 	check_if_player_levels()
 	if GlobalVars.current_health <= 0:
+		can_click = false
 		print("You went insane... going home to take a break")
 		SceneManager.change_scene("combat", "interior")
 		get_tree().current_scene.kill_all_dads()

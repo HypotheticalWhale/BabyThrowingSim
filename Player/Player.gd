@@ -87,7 +87,7 @@ func point_head_to_mouse():
 	$Sprite.rotation = angle
 
 func _input(event):
-	if can_shoot and Input.is_action_pressed("shoot"):
+	if can_shoot and Input.is_action_pressed("shoot") and GlobalVars.can_click:
 		shoot_projectile()
 
 func shoot_projectile():

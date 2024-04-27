@@ -24,6 +24,7 @@ func change_scene(old_scene, new_scene):
 		camera_zoom_tween.tween_property(camera, "zoom", new_camera_zoom, camera_movement_duration)
 		Engine.time_scale = 1		
 		await get_tree().create_timer(1)
+		
 		var player = get_tree().current_scene.get_node("Player")
 		player.get_node("AnimationPlayer").play("combat_to_trapdoor")
 		await player.get_node("AnimationPlayer").animation_finished
@@ -44,7 +45,8 @@ func change_scene(old_scene, new_scene):
 		var modulate_start = get_tree().create_tween()
 		modulate_start.tween_property(get_tree().current_scene.get_node("Porch/StartButton"),"modulate:a",1,0.4)
 		var modulate_tween = get_tree().create_tween()		
-		modulate_tween.tween_property(get_tree().current_scene.get_node("Porch/Instructions"),"modulate:a",1,0.4)				
+		modulate_tween.tween_property(get_tree().current_scene.get_node("Porch/Instructions"),"modulate:a",1,0.4)
+		get_tree().current_scene.get_node("Porch/StartButton").disabled = false
 		
 	if old_scene == "interior" and new_scene == "combat":
 		var modulate_start = get_tree().create_tween()
@@ -81,6 +83,7 @@ func change_scene(old_scene, new_scene):
 		)
 		var modulate_tween = get_tree().create_tween()
 		modulate_tween.tween_property(get_tree().current_scene.get_node("Porch/Instructions"),"modulate:a",0,0.4)		
+		get_tree().current_scene.get_node("Porch/StartButton").disabled = true
 		
 		
 		
