@@ -52,8 +52,8 @@ collision_layer = 128
 script = ExtResource("1_sa77y")
 initial_speed = 60.0
 spawn_interval = 20.0
-MAX_HP = 30.0
-current_hp = 30.0
+MAX_HP = 20.0
+current_hp = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
