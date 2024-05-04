@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=36 format=3 uid="uid://o5alyyhdvq4h"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
@@ -31,9 +31,10 @@
 [ext_resource type="Texture2D" uid="uid://c4cc5s2kpfbcr" path="res://assets/Camera.png" id="25_ant1q"]
 [ext_resource type="Texture2D" uid="uid://nnxw1pyyu6x" path="res://assets/BillboardContent.png" id="25_k0gl5"]
 [ext_resource type="AudioStream" uid="uid://bygxpxaly7h4b" path="res://Sounds/podcast-jazz-bossa-nova-acoustic-guitar-good-mood-music-199628.mp3" id="31_e6h1k"]
-[ext_resource type="AudioStream" uid="uid://b1affx66homkw" path="res://Sounds/Deserted.wav" id="31_tykqa"]
-[ext_resource type="AudioStream" uid="uid://dkqvsixdngq1" path="res://Sounds/button_press.mp3" id="31_vob4n"]
+[ext_resource type="AudioStream" uid="uid://dkh8dijqd07w1" path="res://Sounds/button_press.mp3" id="31_vob4n"]
+[ext_resource type="AudioStream" uid="uid://d1mb5r0ntgi0e" path="res://Sounds/audiomass-output.wav" id="33_nwmp1"]
 [ext_resource type="AudioStream" uid="uid://bmypayw2vvghe" path="res://Sounds/level_up.mp3" id="34_0memw"]
+[ext_resource type="AudioStream" uid="uid://coluqm71sgsld" path="res://Sounds/594008__tlldrkstrngr__frankie-groan-03.wav" id="35_w0nrw"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
@@ -224,17 +225,24 @@ one_shot = true
 autostart = true
 
 [node name="ButtonPress" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("31_vob4n")
 
 [node name="BGMusicHouse" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_e6h1k")
 
 [node name="BGMusicCombat" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("31_tykqa")
+stream = ExtResource("33_nwmp1")
 
 [node name="LevelUp" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("34_0memw")
+volume_db = -10.4
+
+[node name="BasicDadDieSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("35_w0nrw")
+volume_db = 11.2
 
 [connection signal="pressed" from="Porch/StartButton" to="Porch/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="Porch/Interior/PermaDamageButton" to="Porch/Interior" method="_on_perma_damage_button_pressed"]

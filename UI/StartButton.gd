@@ -1,8 +1,5 @@
 extends TextureButton
 
-
-
-
 func _on_pressed():
 	get_tree().current_scene.get_node("ButtonPress").play()
 	disabled = true
@@ -13,11 +10,11 @@ func _on_pressed():
 	GlobalVars.process_mode = Node.PROCESS_MODE_ALWAYS
 	get_tree().current_scene.get_node("Player").MAX_HEALTH = 1
 	GlobalVars.current_health = 1
-		
+	
 
 func fade_house_track_out_and_play_combat_track():
 	var new_tween = get_tree().create_tween()
-	new_tween.tween_property(get_node("../../BGMusicHouse"), "volume_db", -100, 3)
+	new_tween.tween_property(get_node("../../BGMusicHouse"), "volume_db", -100, 1)
 	await new_tween.finished
 	$"../../BGMusicHouse".stop()
 	$"../../BGMusicCombat".volume_db = 0

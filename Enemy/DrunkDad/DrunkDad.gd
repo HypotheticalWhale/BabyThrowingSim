@@ -38,6 +38,7 @@ func get_hit(damage):
 		if randomValue <= money_drop_rate:
 			var give_player_money = you_got_cash.instantiate()
 			get_tree().current_scene.add_child(give_player_money)
+			get_tree().current_scene.get_node("BasicDadDieSound").play()
 			give_player_money.global_position = global_position
 			GlobalVars.current_money += 1
 		self.queue_free()

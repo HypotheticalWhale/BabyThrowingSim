@@ -6,24 +6,24 @@ var slow_area = preload("res://Projectile/SlowAura.tscn")
 var current_exp = 0
 var type = "player"
 var can_shoot: bool = true
-var exploding: bool = false
-var multi:bool = false
+var poopy_diaper: bool = false
+var split_personality:bool = false
 var slow:bool = false
 var slow_aoe
 signal gameover
 
 var current_run_upgrades = {
-	"exploding":0,
-	"bounce":0,
-	"multi":0,
-	"enemies-spawn-less":0,
-	"enemies-close-freeze":0,
-	"enemies-close-damage":0,
-	"enemies-close-slow":0,
-	"damage-up":0,
-	"reload-speed":0,
-	"max-health":0,
-	"heal-periodically":0,
+	"poopy-diaper":0,
+	"bouncy":0,
+	"split-personality":0,
+	"traffic-jam":0,
+	"occasional-selfie":0,
+	"become-successful":0,
+	"start-yapping":0,
+	"baby-biters":0,
+	"arms-day":0,
+	"calcium-and-collagen":0,
+	"nature-sounds":0,
 }
 
 var enemies_spawn_less_options = [1,0.95,0.9,0.85,0.8,0.75]
@@ -54,31 +54,31 @@ func _ready():
 	
 func _physics_process(delta):
 	point_head_to_mouse()
-	if not exploding:
-		if current_run_upgrades["exploding"] >= 1:
-			exploding = true
-	if not multi:
-		if current_run_upgrades["multi"] >= 1:
-			multi = true
+	if not poopy_diaper:
+		if current_run_upgrades["poopy-diaper"] >= 1:
+			poopy_diaper = true
+	if not split_personality:
+		if current_run_upgrades["split-personality"] >= 1:
+			split_personality = true
 	if not slow:
-		if current_run_upgrades["enemies-close-slow"]:
+		if current_run_upgrades["start-yapping"]:
 			slow_aoe = slow_area.instantiate()
 			get_tree().current_scene.add_child(slow_aoe)
 			stuff_to_reset.append(slow_aoe)
 			slow_aoe.global_position = Vector2(199, 219)
 			slow = true
-	spawn_less_index = current_run_upgrades["enemies-spawn-less"]
+	spawn_less_index = current_run_upgrades["traffic-jam"]
 	GlobalVars.spawn_less_multiplier = enemies_spawn_less_options[spawn_less_index]
-	if current_run_upgrades["reload-speed"] > 0:
+	if current_run_upgrades["arms-day"] > 0:
 		var baby = current_projectile.instantiate()
 		var get_reload_speed = baby.reload_speed
-		reload_timer.wait_time = get_reload_speed * reload_speed_options[current_run_upgrades["reload-speed"]]
-	if current_run_upgrades["enemies-close-freeze"] > 0:
-		spawn_freeze_aoe.wait_time = freeze_enemy_timer_options[current_run_upgrades["enemies-close-freeze"]]
-	if current_run_upgrades["enemies-close-damage"] > 0:
-		spawn_damage_aoe.wait_time = damage_enemy_timer_options[current_run_upgrades["enemies-close-damage"]]
-	if current_run_upgrades["enemies-close-slow"] > 0:
-		slow_aoe.slow_multiplier = slow_enemy_options[current_run_upgrades["enemies-close-slow"]]
+		reload_timer.wait_time = get_reload_speed * reload_speed_options[current_run_upgrades["arms-day"]]
+	if current_run_upgrades["occasional-selfie"] > 0:
+		spawn_freeze_aoe.wait_time = freeze_enemy_timer_options[current_run_upgrades["occasional-selfie"]]
+	if current_run_upgrades["become-successful"] > 0:
+		spawn_damage_aoe.wait_time = damage_enemy_timer_options[current_run_upgrades["become-successful"]]
+	if current_run_upgrades["start-yapping"] > 0:
+		slow_aoe.slow_multiplier = slow_enemy_options[current_run_upgrades["start-yapping"]]
 	
 func point_head_to_mouse():
 	var mouse_pos = get_global_mouse_position()  # Get the global position of the mouse cursor
@@ -94,14 +94,14 @@ func shoot_projectile():
 	var baby = current_projectile.instantiate()	
 	baby.initial_damage = PermaUpgrades.dmg_upgrade
 	baby.reload_speed = PermaUpgrades.reload_upgrade
-	if current_run_upgrades["damage-up"] > 0:
-		baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["damage-up"]]
+	if current_run_upgrades["baby-biters"] > 0:
+		baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["baby-biters"]]
 	else:
 		baby.damage = baby.initial_damage
-	if current_run_upgrades["bounce"] > 0:
-		baby.bounce = current_run_upgrades["bounce"]
-	if exploding:
-		baby.exploding = current_run_upgrades["exploding"]
+	if current_run_upgrades["bouncy"] > 0:
+		baby.bouncy = current_run_upgrades["bouncy"]
+	if poopy_diaper:
+		baby.poopy_diaper = current_run_upgrades["poopy-diaper"]
 	add_child(baby)
 	var mouse_pos = get_global_mouse_position()
 	var direction = (mouse_pos - baby.global_position).normalized()
@@ -110,20 +110,20 @@ func shoot_projectile():
 	# Set cooldown timer for shooting
 	can_shoot = false
 	reload_timer.start()
-	if current_run_upgrades["multi"] >= 1 and multi:
+	if current_run_upgrades["split-personality"] >= 1 and split_personality:
 		var shiftedPos = Vector2(global_position.x, global_position.y)
 		baby.global_position = shiftedPos
 		baby = current_projectile.instantiate()
 		baby.initial_damage = PermaUpgrades.dmg_upgrade
 		baby.reload_speed = PermaUpgrades.reload_upgrade
-		if current_run_upgrades["bounce"] > 0:
-			baby.bounce = current_run_upgrades["bounce"]
-		if current_run_upgrades["damage-up"] > 0:
-			baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["damage-up"]]
+		if current_run_upgrades["bouncy"] > 0:
+			baby.bouncy = current_run_upgrades["bouncy"]
+		if current_run_upgrades["baby-biters"] > 0:
+			baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["baby-biters"]]
 		else:
 			baby.damage = baby.initial_damage
-		if exploding:
-			baby.exploding = current_run_upgrades["exploding"]
+		if poopy_diaper:
+			baby.poopy_diaper= current_run_upgrades["poopy-diaper"]
 		add_child(baby)
 		mouse_pos = get_global_mouse_position()
 		direction = (mouse_pos - baby.global_position).normalized()
@@ -133,20 +133,20 @@ func shoot_projectile():
 		# Set cooldown timer for shooting
 		can_shoot = false
 		reload_timer.start()
-	if current_run_upgrades["multi"] == 2 and multi:
+	if current_run_upgrades["split-personality"] == 2 and split_personality:
 		var shiftedPos = Vector2(global_position.x, global_position.y)
 		baby.global_position = shiftedPos
 		baby = current_projectile.instantiate()
 		baby.initial_damage = PermaUpgrades.dmg_upgrade
 		baby.reload_speed = PermaUpgrades.reload_upgrade
-		if current_run_upgrades["damage-up"] > 0:
-			baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["damage-up"]]
+		if current_run_upgrades["baby-biters"] > 0:
+			baby.damage = baby.initial_damage + damage_up_options[current_run_upgrades["baby-biters"]]
 		else:
 			baby.damage = baby.initial_damage
-		if current_run_upgrades["bounce"] > 0:
-			baby.bounce = current_run_upgrades["bounce"]
-		if exploding:
-			baby.exploding = current_run_upgrades["exploding"]
+		if current_run_upgrades["bouncy"] > 0:
+			baby.bouncy = current_run_upgrades["bouncy"]
+		if poopy_diaper:
+			baby.poopy_diaper = current_run_upgrades["poopy-diaper"]
 		add_child(baby)
 		mouse_pos = get_global_mouse_position()
 		direction = (mouse_pos - baby.global_position).normalized()
@@ -163,20 +163,20 @@ func get_hit(damage):
 
 func reset_upgrades():
 	current_run_upgrades = {
-	"exploding":0,
-	"bounce":0,
-	"multi":0,
-	"enemies-spawn-less":0,
-	"enemies-close-freeze":0,
-	"enemies-close-damage":0,
-	"enemies-close-slow":0,
-	"damage-up":0,
-	"reload-speed":0,
-	"max-health":0,
-	"heal-periodically":0,
+	"poopy-diaper":0,
+	"bouncy":0,
+	"split-personality":0,
+	"traffic-jam":0,
+	"occasional-selfie":0,
+	"become-successful":0,
+	"start-yapping":0,
+	"baby-biters":0,
+	"arms-day":0,
+	"calcium-and-collagen":0,
+	"nature-sounds":0,
 	}
-	exploding = false
-	multi = false
+	poopy_diaper = false
+	split_personality = false
 	slow = false
 	for timer in all_timers:
 		timer.stop()
@@ -205,6 +205,6 @@ func _on_heal_timer_timeout():
 	if GlobalVars.current_health < MAX_HEALTH:
 		GlobalVars.current_health += 1
 		$AnimationPlayer.play("heal_periodically")
-	heal_timer.wait_time = heal_timer_options[current_run_upgrades["heal-periodically"]]
+	heal_timer.wait_time = heal_timer_options[current_run_upgrades["nature-sounds"]]
 	heal_timer.start()
 		

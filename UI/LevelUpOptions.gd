@@ -1,31 +1,31 @@
 extends CanvasLayer
 
 var skill_upgrade_options = [
-	"exploding",
-	"bounce",
-	"multi",
-	"enemies-spawn-less",
-	"enemies-close-freeze",
-	"enemies-close-damage",
-	"enemies-close-slow",
-	"damage-up",
-	"reload-speed",
-	"max-health",
-	"heal-periodically",
+	"poopy-diaper",
+	"bouncy",
+	"split-personality",
+	"traffic-jam",
+	"occasional-selfie",
+	"become-successful",
+	"start-yapping",
+	"baby-biters",
+	"arms-day",
+	"calcium-and-collagen",
+	"nature-sounds",
 ]
 
 var skill_upgrade_icon_dict = {
-	"exploding": "res://assets/ExplodingIcon.png",
-	"bounce": "res://assets/BounceIcon.png", #missing
-	"multi": "res://assets/MultiIcon.png",
-	"enemies-spawn-less": "res://assets/EnemiesSpawnLessIcon.png", #missin
-	"enemies-close-freeze": "res://assets/FreezeIcon.png",
-	"enemies-close-damage": "res://assets/DamageAreaIcon.png", #missing
-	"enemies-close-slow": "res://assets/SlowIcon.png",
-	"damage-up": "res://assets/DamageUp.png",
-	"reload-speed": "res://assets/ReloadSpeed.png",
-	"max-health": "res://assets/MaxHealthIcon.png",
-	"heal-periodically": "res://assets/HealPeriodically.png",
+	"poopy-diaper": "res://assets/ExplodingIcon.png",
+	"bouncy": "res://assets/BounceIcon.png", #missing
+	"split-personality": "res://assets/MultiIcon.png",
+	"traffic-jam": "res://assets/EnemiesSpawnLessIcon.png", #missin
+	"occasional-selfie": "res://assets/FreezeIcon.png",
+	"become-successful": "res://assets/DamageAreaIcon.png", #missing
+	"start-yapping": "res://assets/SlowIcon.png",
+	"baby-biters": "res://assets/DamageUp.png",
+	"arms-day": "res://assets/ReloadSpeed.png",
+	"calcium-and-collagen": "res://assets/MaxHealthIcon.png",
+	"nature-sounds": "res://assets/HealPeriodically.png",
 }
 
 @onready var current_run_upgrades = get_tree().current_scene.get_node("Player").current_run_upgrades
@@ -64,13 +64,13 @@ func randomize_options():
 func reset_pick_options():
 	picked_skills = []
 	for upgrade in current_run_upgrades.keys():
-		if upgrade == "multi" and current_run_upgrades[upgrade] == 2 and current_run_upgrades.has(upgrade):
-			print("Multi is at level 3. Remove from dictionary")			
+		if upgrade == "split-personality" and current_run_upgrades[upgrade] == 2 and current_run_upgrades.has(upgrade):
+			print("split-personality is at level 3. Remove from dictionary")			
 			skill_upgrade_options.erase(upgrade)
 			
 		if current_run_upgrades[upgrade] == 5 and current_run_upgrades.has(upgrade):
 			print(upgrade + " is at level 5. Remove from dictionary")
-			if upgrade != "max-health":
+			if upgrade != "calcium-and-collagen":
 				skill_upgrade_options.erase(upgrade)
 			print("new upgrade array: ",skill_upgrade_options)
 			
@@ -78,15 +78,15 @@ func reset_pick_options():
 func _on_first_button_pressed():
 	get_tree().current_scene.get_node("ButtonPress").play()
 	current_run_upgrades[$VBoxContainer/HBoxContainer/FirstButton.current_skill] += 1
-	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "max-health":
+	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "calcium-and-collagen":
 		GlobalVars.current_health += 1
 		get_tree().current_scene.get_node("Player").MAX_HEALTH += 1
-	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "enemies-close-freeze":
+	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "occasional-selfie":
 		get_tree().current_scene.get_node("Player").get_node("freeze_enemy_timer").start()
 		get_tree().current_scene.get_node("FreezeCameraSprite").visible = true
-	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "enemies-close-damage":
+	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "become-successful":
 		get_tree().current_scene.get_node("Player").get_node("damage_enemy_timer").start()
-	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "heal-periodically":
+	if $VBoxContainer/HBoxContainer/FirstButton.current_skill == "nature-sounds":
 		get_tree().current_scene.get_node("Player").get_node("heal_timer").start()
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
@@ -101,16 +101,16 @@ func _on_first_button_pressed():
 func _on_second_button_pressed():
 	get_tree().current_scene.get_node("ButtonPress").play()	
 	current_run_upgrades[$VBoxContainer/HBoxContainer/SecondButton.current_skill] += 1
-	if $VBoxContainer/HBoxContainer/SecondButton.current_skill == "max-health":
+	if $VBoxContainer/HBoxContainer/SecondButton.current_skill == "calcium-and-collagen":
 		print("upgrade max_health")
 		GlobalVars.current_health += 1
 		get_tree().current_scene.get_node("Player").MAX_HEALTH += 1
-	if $VBoxContainer/HBoxContainer/SecondButton.current_skill == "enemies-close-freeze":
+	if $VBoxContainer/HBoxContainer/SecondButton.current_skill == "occasional-selfie":
 		get_tree().current_scene.get_node("Player").get_node("freeze_enemy_timer").start()
 		get_tree().current_scene.get_node("FreezeCameraSprite").visible = true		
-	if $VBoxContainer/HBoxContainer/SecondButton.current_skill == "enemies-close-damage":
+	if $VBoxContainer/HBoxContainer/SecondButton.current_skill == "become-successful":
 		get_tree().current_scene.get_node("Player").get_node("damage_enemy_timer").start()
-	if $VBoxContainer/HBoxContainer/SecondButton.current_skill == "heal-periodically":
+	if $VBoxContainer/HBoxContainer/SecondButton.current_skill == "nature-sounds":
 		get_tree().current_scene.get_node("Player").get_node("heal_timer").start()
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
@@ -125,16 +125,16 @@ func _on_second_button_pressed():
 func _on_third_button_pressed():
 	get_tree().current_scene.get_node("ButtonPress").play()	
 	current_run_upgrades[$VBoxContainer/HBoxContainer/ThirdButton.current_skill] += 1
-	if $VBoxContainer/HBoxContainer/ThirdButton.current_skill == "max-health":
+	if $VBoxContainer/HBoxContainer/ThirdButton.current_skill == "calcium-and-collagen":
 		print("upgrade max_health")
 		GlobalVars.current_health += 1
 		get_tree().current_scene.get_node("Player").MAX_HEALTH += 1
-	if $VBoxContainer/HBoxContainer/ThirdButton.current_skill == "enemies-close-freeze":
+	if $VBoxContainer/HBoxContainer/ThirdButton.current_skill == "occasional-selfie":
 		get_tree().current_scene.get_node("Player").get_node("freeze_enemy_timer").start()
 		get_tree().current_scene.get_node("FreezeCameraSprite").visible = true
-	if $VBoxContainer/HBoxContainer/ThirdButton.current_skill == "enemies-close-damage":
+	if $VBoxContainer/HBoxContainer/ThirdButton.current_skill == "become-successful":
 		get_tree().current_scene.get_node("Player").get_node("damage_enemy_timer").start()
-	if $VBoxContainer/HBoxContainer/ThirdButton.current_skill == "heal-periodically":
+	if $VBoxContainer/HBoxContainer/ThirdButton.current_skill == "nature-sounds":
 		get_tree().current_scene.get_node("Player").get_node("heal_timer").start()
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
