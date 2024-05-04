@@ -6,7 +6,7 @@ var current_health = 0
 var current_money = 0
 var current_level:int = 0
 var highscore:int = 0
-var exp_to_next_level:int = 5
+var exp_to_next_level:int = 1
 var spawn_less_multiplier = 0
 var can_click = true 
 
@@ -31,7 +31,7 @@ func _process(delta):
 
 func fade_combat_track_out_and_play_house_track():
 	var new_tween = get_tree().create_tween()
-	new_tween.tween_property(get_tree().current_scene.get_node("BGMusicCombat"), "volume_db", -100, 3)
+	new_tween.tween_property(get_tree().current_scene.get_node("BGMusicCombat"), "volume_db", -100, 1)
 	await new_tween.finished
 	get_tree().current_scene.get_node("BGMusicCombat").stop()
 	
@@ -50,7 +50,7 @@ func reset_all_stats():
 	current_exp = 0
 	current_health = 0
 	current_level = 0
-	exp_to_next_level = 5
+	exp_to_next_level = 1
 	spawn_less_multiplier = 0
 	get_tree().current_scene.get_node("Player").MAX_HEALTH = 1
 	get_tree().current_scene.get_node("Player").reset_upgrades()
@@ -65,7 +65,7 @@ func check_if_player_levels():
 		
 		current_level += 1
 		level_up()
-		exp_to_next_level *= 2 
+		#exp_to_next_level *= 2  
 		current_exp = 0
 		
 		get_tree().paused = true
