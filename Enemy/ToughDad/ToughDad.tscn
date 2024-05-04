@@ -49,6 +49,7 @@ _data = {
 light_mask = 128
 collision_layer = 128
 script = ExtResource("1_qss4x")
+initial_speed = 70.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_qot3l")

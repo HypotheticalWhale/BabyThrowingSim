@@ -40,7 +40,7 @@ var stuff_to_reset = []
 @onready var spawn_damage_aoe = $damage_enemy_timer
 @onready var heal_timer = $heal_timer
 @onready var reload_timer = $reload_timer
-@export var MAX_HEALTH = 1
+@export var MAX_HEALTH = 2
 
 func _ready():
 	var baby = current_projectile.instantiate()
@@ -192,11 +192,13 @@ func _on_hitbox_body_entered(body):
 	body.queue_free()
 
 func _on_freeze_enemy_timer_timeout():
+	get_tree().current_scene.get_node("CameraSnapSound").play()
 	var freeze_aoe = freeze_area.instantiate()
 	get_tree().current_scene.add_child(freeze_aoe)
 	freeze_aoe.global_position = Vector2(199, 219)
 	
 func _on_damage_enemy_timer_timeout():
+	get_tree().current_scene.get_node("DamageAreaSound").play()	
 	var damage_aoe = damage_area.instantiate()
 	get_tree().current_scene.add_child(damage_aoe)
 	damage_aoe.global_position = Vector2(230, 219)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://o5alyyhdvq4h"]
+[gd_scene load_steps=40 format=3 uid="uid://o5alyyhdvq4h"]
 
 [ext_resource type="Script" path="res://Scenes/Main.gd" id="1_64lo6"]
 [ext_resource type="PackedScene" uid="uid://c4hm1g85durbr" path="res://Player/Player.tscn" id="1_jcchd"]
@@ -34,7 +34,11 @@
 [ext_resource type="AudioStream" uid="uid://dkh8dijqd07w1" path="res://Sounds/button_press.mp3" id="31_vob4n"]
 [ext_resource type="AudioStream" uid="uid://d1mb5r0ntgi0e" path="res://Sounds/audiomass-output.wav" id="33_nwmp1"]
 [ext_resource type="AudioStream" uid="uid://bmypayw2vvghe" path="res://Sounds/level_up.mp3" id="34_0memw"]
+[ext_resource type="AudioStream" uid="uid://cyps458y233x3" path="res://Sounds/camera_snap.wav" id="35_idoxf"]
 [ext_resource type="AudioStream" uid="uid://coluqm71sgsld" path="res://Sounds/594008__tlldrkstrngr__frankie-groan-03.wav" id="35_w0nrw"]
+[ext_resource type="AudioStream" uid="uid://bmxdbf6xtn12b" path="res://Sounds/sigh.wav" id="36_bl6nd"]
+[ext_resource type="AudioStream" uid="uid://dtqm31bqk2wst" path="res://Sounds/DamageArea.wav" id="38_s1ian"]
+[ext_resource type="AudioStream" uid="uid://dns6i6355158d" path="res://Sounds/Exploding.wav" id="39_5p44d"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_64lo6")
@@ -220,7 +224,7 @@ one_shot = true
 autostart = true
 
 [node name="StartSpawningDrunkTimer" type="Timer" parent="."]
-wait_time = 60.0
+wait_time = 0.001
 one_shot = true
 autostart = true
 
@@ -239,10 +243,27 @@ process_mode = 3
 stream = ExtResource("34_0memw")
 volume_db = -10.4
 
+[node name="CameraSnapSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("35_idoxf")
+
 [node name="BasicDadDieSound" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("35_w0nrw")
 volume_db = 11.2
+
+[node name="GameOverSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("36_bl6nd")
+pitch_scale = 1.5
+
+[node name="DamageAreaSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("38_s1ian")
+
+[node name="ExplodingSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("39_5p44d")
 
 [connection signal="pressed" from="Porch/StartButton" to="Porch/StartButton" method="_on_pressed"]
 [connection signal="pressed" from="Porch/Interior/PermaDamageButton" to="Porch/Interior" method="_on_perma_damage_button_pressed"]
