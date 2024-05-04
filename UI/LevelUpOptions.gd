@@ -138,6 +138,7 @@ func _on_third_button_pressed():
 		get_tree().current_scene.get_node("Player").get_node("heal_timer").start()
 	get_tree().current_scene.get_node("Player").current_run_upgrades = current_run_upgrades		
 	reset_pick_options()
+	print("hello")
 	get_tree().paused = false
 	get_tree().current_scene.get_node("Billboard/Content").visible = true	
 	get_tree().current_scene.get_node("Billboard").z_index = -2
