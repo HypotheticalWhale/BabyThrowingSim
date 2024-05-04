@@ -38,7 +38,7 @@ func _ready():
 		start_timer(flying_dad_spawn_interval,"flying_dad")
 	if spawn_drunk_dad:
 		start_timer(drunk_dad_spawn_interval,"drunk_dad")
-	GlobalVars.current_health -= 1
+	GlobalVars.current_health -= 2
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

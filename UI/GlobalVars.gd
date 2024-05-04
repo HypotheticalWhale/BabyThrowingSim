@@ -6,7 +6,7 @@ var current_health = 0
 var current_money = 0
 var current_level:int = 0
 var highscore:int = 0
-var exp_to_next_level:int = 1
+var exp_to_next_level:int = 5
 var spawn_less_multiplier = 0
 var can_click = true 
 
@@ -19,6 +19,7 @@ func _process(delta):
 	check_if_player_levels()
 	if GlobalVars.current_health <= 0:
 		can_click = false
+		get_tree().current_scene.get_node("GameOverSound").play()
 		fade_combat_track_out_and_play_house_track()
 		
 		print("You went insane... going home to take a break")
@@ -50,9 +51,9 @@ func reset_all_stats():
 	current_exp = 0
 	current_health = 0
 	current_level = 0
-	exp_to_next_level = 1
+	exp_to_next_level = 5
 	spawn_less_multiplier = 0
-	get_tree().current_scene.get_node("Player").MAX_HEALTH = 1
+	get_tree().current_scene.get_node("Player").MAX_HEALTH = 2
 	get_tree().current_scene.get_node("Player").reset_upgrades()
 	get_tree().current_scene.get_node("FreezeCameraSprite").visible = false
 	
@@ -65,7 +66,7 @@ func check_if_player_levels():
 		
 		current_level += 1
 		level_up()
-		#exp_to_next_level *= 2  
+		exp_to_next_level *= 2  
 		current_exp = 0
 		
 		get_tree().paused = true

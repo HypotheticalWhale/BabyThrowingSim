@@ -8,8 +8,8 @@ func _on_pressed():
 	GlobalVars.can_click = true
 	get_tree().current_scene.start_all_timers()
 	GlobalVars.process_mode = Node.PROCESS_MODE_ALWAYS
-	get_tree().current_scene.get_node("Player").MAX_HEALTH = 1
-	GlobalVars.current_health = 1
+	get_tree().current_scene.get_node("Player").MAX_HEALTH = 2
+	GlobalVars.current_health = 2
 	
 
 func fade_house_track_out_and_play_combat_track():

@@ -28,6 +28,20 @@ var skill_upgrade_icon_dict = {
 	"nature-sounds": "res://assets/HealPeriodically.png",
 }
 
+var skill_tooltip_text_dict = {
+	"poopy-diaper": "Give your babies exploding diapers!",
+	"bouncy": "I'm rubber you're glue, whatever you say bounces off me and sticks to you.", #missing
+	"split-personality": "Accidental mother of many.",
+	"traffic-jam": "Those dads won't turn up as often now.", #missin
+	"occasional-selfie": "Camera eats first!",
+	"become-successful": "Dads are allergic to successful women.", #missing
+	"start-yapping": "Put your suitors to sleep with constant yapping.",
+	"baby-biters": "Babies now bite on impact!",
+	"arms-day": "Reload babies faster.",
+	"calcium-and-collagen": "Vitamins make your maximum sanity higher.",
+	"nature-sounds": "Recover sanity over time.",
+}
+
 @onready var current_run_upgrades = get_tree().current_scene.get_node("Player").current_run_upgrades
 
 
@@ -53,12 +67,15 @@ func randomize_options():
 			selected.append(random_index)
 			picked_skills.append(skill_upgrade_options[random_index])
 	$VBoxContainer/HBoxContainer/FirstButton.current_skill = picked_skills[0]
+	$VBoxContainer/HBoxContainer/FirstButton.tooltip_text = skill_tooltip_text_dict[picked_skills[0]]
 	$VBoxContainer/HBoxContainer/FirstButton/UpgradeIcon.texture = load(skill_upgrade_icon_dict[picked_skills[0]])
 	
 	$VBoxContainer/HBoxContainer/SecondButton.current_skill = picked_skills[1]
+	$VBoxContainer/HBoxContainer/SecondButton.tooltip_text = skill_tooltip_text_dict[picked_skills[1]]	
 	$VBoxContainer/HBoxContainer/SecondButton/UpgradeIcon.texture = load(skill_upgrade_icon_dict[picked_skills[1]])
 	
 	$VBoxContainer/HBoxContainer/ThirdButton.current_skill = picked_skills[2]
+	$VBoxContainer/HBoxContainer/ThirdButton.tooltip_text = skill_tooltip_text_dict[picked_skills[2]]	
 	$VBoxContainer/HBoxContainer/ThirdButton/UpgradeIcon.texture = load(skill_upgrade_icon_dict[picked_skills[2]])
 	
 func reset_pick_options():
@@ -120,7 +137,7 @@ func _on_second_button_pressed():
 	get_tree().current_scene.get_node("Billboard").modulate.a = 1	
 	visible = false
 	set_process_input(false)				
-
+	
 
 func _on_third_button_pressed():
 	get_tree().current_scene.get_node("ButtonPress").play()	

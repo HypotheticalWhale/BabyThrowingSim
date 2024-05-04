@@ -51,6 +51,7 @@ func _on_area_2d_body_entered(body):
 func _on_area_2d_area_entered(area):
 	var currentPos = global_position
 	if poopy_diaper >= 1:
+		get_tree().current_scene.get_node("ExplodingSound").play()
 		var explode = explosion_scene.instantiate()
 		explode.level = poopy_diaper		
 		get_tree().current_scene.add_child(explode)

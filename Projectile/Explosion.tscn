@@ -10,6 +10,7 @@ var damage = 1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play(\"explode\")
+	
 	if level == 1:
 		scale.x = 1.2
 		scale.y = 1.2
