@@ -32,6 +32,7 @@ func get_hit(damage):
 	damage_number.global_position = shiftedPos
 	damage_number.get_child(0).text = str(damage)
 	if current_hp <= 0:
+		get_tree().current_scene.get_node("BasicDadDieSound").play()
 		GlobalVars.current_exp += exp
 		var randomValue := randf()
 		if randomValue <= money_drop_rate:
